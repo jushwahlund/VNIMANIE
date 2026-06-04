@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Vnimanie — динамичный монтаж для экспертов</title>
+  <meta name="description" content="Динамичный монтаж вертикальных роликов для экспертов и личных брендов. Оживляем говорящие головы, усиливаем смыслы, юмор и удержание через монтаж, SFX и визуальные метафоры." />
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0d0d0d;
+      --card: rgba(255, 255, 255, 0.045);
+      --card-border: rgba(255, 255, 255, 0.11);
+      --text: #f4f4f4;
+      --muted: #a6a6a6;
+      --muted-2: #737373;
+      --white: #ffffff;
+      --accent: #ffffff;
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 30%),
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.055), transparent 24%),
+        #050505;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at center, black, transparent 75%);
+      opacity: 0.45;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .brand-mark svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      place-items: center;
+      padding: 56px 0 92px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-card {
+      width: 100%;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025)),
+        rgba(0,0,0,0.4);
+      box-shadow: 0 30px 120px rgba(0,0,0,0.65);
+      padding: clamp(36px, 7vw, 86px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.16), transparent 42%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-eye {
+      width: min(260px, 58vw);
+      margin: 0 auto 34px;
+      opacity: 0.98;
+      filter: drop-shadow(0 0 24px rgba(255,255,255,0.08));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 13px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 22px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .eyebrow span {
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      display: block;
+      box-shadow: 0 0 18px rgba(255,255,255,0.6);
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(42px, 7.8vw, 92px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      font-weight: 760;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .hero p strong {
+      color: var(--text);
+      font-weight: 520;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-size: 15px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #050505;
+      border-color: #fff;
+      font-weight: 650;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .hero-proof {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 13px;
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .section-note {
+      max-width: 440px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cases-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .case-card,
+    .review-card,
+    .step-card,
+    .offer-card {
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .case-preview {
+      height: 420px;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(255,255,255,0.16), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .phone-frame {
+      width: 190px;
+      height: 335px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        #080808;
+      display: grid;
+      place-items: center;
+      color: var(--muted-2);
+      font-size: 13px;
+      text-align: center;
+      padding: 22px;
+      box-shadow: 0 22px 80px rgba(0,0,0,0.5);
+    }
+
+    .case-body {
+      padding: 22px;
+    }
+
+    .case-body h3 {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .case-body p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 7px 9px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+    }
+
+    .offer-section {
+      padding-top: 20px;
+    }
+
+    .offer-card {
+      padding: clamp(26px, 5vw, 48px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .offer-card h2 {
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .offer-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .offer-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .offer-list div {
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .offer-list strong {
+      color: var(--text);
+      font-weight: 540;
+    }
+
+    .reviews-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .review-card {
+      padding: 24px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-text {
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .review-author {
+      margin-top: 24px;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .step-card {
+      padding: 22px;
+    }
+
+    .step-num {
+      color: var(--muted-2);
+      font-size: 13px;
+      margin-bottom: 34px;
+    }
+
+    .step-card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .final-cta {
+      text-align: center;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(34px, 7vw, 80px);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%),
+        rgba(255,255,255,0.035);
+      margin-bottom: 80px;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(34px, 5.5vw, 70px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 20px auto 0;
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .cases-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .offer-card {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-note {
+        margin-top: 12px;
+      }
+
+      .case-preview {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 22px, var(--max));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-card {
+        border-radius: 26px;
+        padding: 34px 18px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-eye {
+        width: 190px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="nav">
+      <a href="#" class="brand" aria-label="Vnimanie">
+        <span class="brand-mark">
+          <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 40C21 18 39 9 60 9C81 9 99 18 113 40C99 62 81 71 60 71C39 71 21 62 7 40Z" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M72 40C72 53.2 61.2 64 48 64C34.8 64 24 53.2 24 40C24 26.8 34.8 16 48 16" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            <path d="M60 39C60 30 72 30 72 39C72 52 50 49 50 36C50 18 82 18 82 40" stroke="white" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Vnimanie</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#cases">Кейсы</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#process">Процесс</a>
+        <a href="#contact">Связаться</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card" data-reveal>
+          <div class="hero-content">
+            <svg class="logo-eye" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Vnimanie logo">
+              <path d="M28 110C67 52 119 28 180 28C241 28 293 52 332 110C293 168 241 192 180 192C119 192 67 168 28 110Z"
+                stroke="white" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M214 110C214 147.6 183.6 178 146 178C108.4 178 78 147.6 78 110C78 72.4 108.4 42 146 42"
+                stroke="white" stroke-width="13" stroke-linecap="round"/>
+              <path d="M180 108C180 84 212 84 212 108C212 144 150 137 150 101C150 51 238 51 238 110"
+                stroke="white" stroke-width="13" stroke-linecap="round"/>
+            </svg>
+
+            <div class="eyebrow">
+              <span></span>
+              Монтаж, который управляет вниманием
+            </div>
+
+            <h1>Оживляем экспертные ролики</h1>
+
+            <p>
+              Делаем динамичный вертикальный монтаж для экспертов и личных брендов:
+              усиливаем <strong>смысл, юмор, ритм и удержание</strong> через SFX,
+              визуальные метафоры, моушн и авторскую сборку.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://t.me/USERNAME" target="_blank">
+                Связаться
+                <span>→</span>
+              </a>
+              <a class="btn btn-secondary" href="#cases">
+                Смотреть кейсы
+              </a>
+            </div>
+
+            <div class="hero-proof">
+              <div class="pill">Вертикальные ролики</div>
+              <div class="pill">8–12 видео в месяц</div>
+              <div class="pill">Для экспертов и личных брендов</div>
+              <div class="pill">От 4 000 ₽ / ролик</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-section" data-reveal>
+        <div class="offer-card">
+          <div>
+            <h2>Не просто нарезка. Режиссура внимания.</h2>
+            <p>
+              Мы не добавляем эффекты “чтобы было шумно”. Каждый акцент должен помогать зрителю:
+              быстрее понять мысль, почувствовать шутку, не выпасть из темпа и досмотреть ролик.
+            </p>
+          </div>
+
+          <div class="offer-list">
+            <div><strong>Ритм:</strong> убираем провисы и собираем речь в живой темп.</div>
+            <div><strong>SFX:</strong> усиливаем панчи, эмоции и смысловые повороты.</div>
+            <div><strong>Визуализация:</strong> превращаем идеи в понятные образы.</div>
+            <div><strong>Анализ:</strong> смотрим статистику серии и даём рекомендации.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title">Кейсы</h2>
+          <p class="section-note">
+            Здесь будут лучшие работы: before/after, breakdown’ы и объяснение,
+            какие монтажные решения усилили ролик.
+          </p>
+        </div>
+
+        <div class="grid cases-grid">
+          <article class="case-card" data-reveal>
+            <div class="case-preview">
+              <div class="phone-frame">
+                Вставь сюда видео / GIF / превью ролика
+              </div>
+            </div>
+            <div class="case-body">
+              <h3>Треш-объявления с Авито</h3>
+              <p>
+                Формат с юмором и перечислением объявлений. Задача — сделать выпуск не списком,
+                а живым роликом с визуальными панчами и понятным темпом.
+              </p>
+              <div class="tags">
+                <span class="tag">юмор</span>
+                <span class="tag">SFX</span>
+                <span class="tag">визуализация</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card" data-reveal>
+            <div class="case-preview">
+              <div class="phone-frame">
+                Вставь сюда before / after
+              </div>
+            </div>
+            <div class="case-body">
+              <h3>Говорящая голова → живой ролик</h3>
+              <p>
+                Усиливаем речь спикера через ритм, крупные акценты, графику,
+                звуковые реакции и визуальные метафоры.
+              </p>
+              <div class="tags">
+                <span class="tag">эксперт</span>
+                <span class="tag">ритм</span>
+                <span class="tag">моушн</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card" data-reveal>
+            <div class="case-preview">
+              <div class="phone-frame">
+                Вставь сюда screen-recording таймлайна
+              </div>
+            </div>
+            <div class="case-body">
+              <h3>Аудио → полноценный vertical</h3>
+              <p>
+                Когда есть только голос, монтаж берёт на себя визуальное повествование:
+                ассеты, сцены, текст, движение, звук и структура.
+              </p>
+              <div class="tags">
+                <span class="tag">audio-first</span>
+                <span class="tag">PNG</span>
+                <span class="tag">storytelling</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title">Отзывы</h2>
+          <p class="section-note">
+            Главная задача отзывов — показать не “мне понравилось”, а что клиенту стало проще,
+            понятнее и сильнее выпускать контент.
+          </p>
+        </div>
+
+        <div class="grid reviews-grid">
+          <article class="review-card" data-reveal>
+            <p class="review-text">
+              “Монтаж оживил формат. Шутки стали считываться лучше, ролики выглядят динамично,
+              а зрителю проще смотреть до конца.”
+            </p>
+            <div class="review-author">Клиент / экспертный контент</div>
+          </article>
+
+          <article class="review-card" data-reveal>
+            <p class="review-text">
+              “Понравилось, что команда не просто выполняет ТЗ, а сама предлагает решения:
+              где усилить, где ускорить, где добавить визуальную идею.”
+            </p>
+            <div class="review-author">Личный бренд / vertical content</div>
+          </article>
+
+          <article class="review-card" data-reveal>
+            <p class="review-text">
+              “Сроки понятные, правки быстрые, стиль не шаблонный. Видно, что в ролик реально
+              погружаются.”
+            </p>
+            <div class="review-author">Пакет роликов / 8–12 в месяц</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title">Как работаем</h2>
+          <p class="section-note">
+            Процесс нужен, чтобы клиенту было спокойно: он понимает путь от исходников
+            до готовой серии роликов.
+          </p>
+        </div>
+
+        <div class="grid steps-grid">
+          <div class="step-card" data-reveal>
+            <div class="step-num">01</div>
+            <h3>Бриф</h3>
+            <p>Понимаем формат, спикера, стиль, задачи и референсы.</p>
+          </div>
+
+          <div class="step-card" data-reveal>
+            <div class="step-num">02</div>
+            <h3>Первый ролик</h3>
+            <p>Собираем стартовую версию и фиксируем монтажный язык.</p>
+          </div>
+
+          <div class="step-card" data-reveal>
+            <div class="step-num">03</div>
+            <h3>Серия</h3>
+            <p>Делаем пакет роликов в едином стиле, без хаоса и микроменеджмента.</p>
+          </div>
+
+          <div class="step-card" data-reveal>
+            <div class="step-num">04</div>
+            <h3>Анализ</h3>
+            <p>Смотрим удержание, реакции и даём рекомендации по улучшению формата.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="final-cta" data-reveal>
+          <h2>Есть повторяющийся формат? Давайте сделаем его живым.</h2>
+          <p>
+            Подходит экспертам и личным брендам, которым нужен не шаблонный монтаж,
+            а авторская сборка с ритмом, юмором, SFX и визуальными акцентами.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://t.me/USERNAME" target="_blank">
+              Написать в Telegram
+              <span>→</span>
+            </a>
+            <a class="btn btn-secondary" href="#cases">
+              Посмотреть кейсы
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© Vnimanie — video editing studio</div>
+        <div>Динамичный монтаж для экспертов</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll("[data-reveal]");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    items.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
