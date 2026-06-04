@@ -64,9 +64,12 @@
       text-decoration: none;
     }
 
-    .page {
-      width: min(100% - 32px, var(--max));
-      margin: 0 auto;
+   .page {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
     }
 
     .nav {
@@ -547,9 +550,10 @@
       }
     }
 
-    @media (max-width: 640px) {
-      .page {
-        width: min(100% - 22px, var(--max));
+   .page {
+  width: 100%;
+  padding: 0 14px;
+}
       }
 
       .nav-links {
