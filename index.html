@@ -367,16 +367,19 @@
       height: 335px;
       border: 1px solid rgba(255,255,255,0.16);
       border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-        #080808;
-      display: grid;
-      place-items: center;
-      color: var(--muted-2);
-      font-size: 13px;
-      text-align: center;
-      padding: 22px;
+      background: #080808;
+      overflow: hidden;
+      display: block;
       box-shadow: 0 22px 80px rgba(0,0,0,0.5);
+    }
+
+    .case-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px;
+      display: block;
+      background: #050505;
     }
 
     .case-body {
@@ -687,19 +690,26 @@
           <article class="case-card" data-reveal>
             <div class="case-preview">
               <div class="phone-frame">
-                Вставь сюда видео / GIF / превью ролика
+                <video
+                  class="case-video"
+                  src="nauch.mp4"
+                  poster="nauchcase.png"
+                  controls
+                  preload="metadata"
+                  playsinline
+                ></video>
               </div>
             </div>
             <div class="case-body">
-              <h3>Треш-объявления с Авито</h3>
+              <h3>Научный / экспертный ролик</h3>
               <p>
-                Формат с юмором и перечислением объявлений. Задача — сделать выпуск не списком,
-                а живым роликом с визуальными панчами и понятным темпом.
+                Динамичный вертикальный монтаж для экспертной подачи: удержание внимания,
+                визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.
               </p>
               <div class="tags">
-                <span class="tag">юмор</span>
+                <span class="tag">эксперт</span>
+                <span class="tag">ритм</span>
                 <span class="tag">SFX</span>
-                <span class="tag">визуализация</span>
               </div>
             </div>
           </article>
@@ -707,18 +717,25 @@
           <article class="case-card" data-reveal>
             <div class="case-preview">
               <div class="phone-frame">
-                Вставь сюда before / after
+                <video
+                  class="case-video"
+                  src="sdvg.mp4"
+                  poster="sdvgcase.png"
+                  controls
+                  preload="metadata"
+                  playsinline
+                ></video>
               </div>
             </div>
             <div class="case-body">
-              <h3>Говорящая голова → живой ролик</h3>
+              <h3>СДВГ / личный бренд</h3>
               <p>
-                Усиливаем речь спикера через ритм, крупные акценты, графику,
-                звуковые реакции и визуальные метафоры.
+                Оживление говорящей головы через быстрый темп, крупные акценты,
+                графику, звуковые реакции и визуализацию смыслов спикера.
               </p>
               <div class="tags">
-                <span class="tag">эксперт</span>
-                <span class="tag">ритм</span>
+                <span class="tag">личный бренд</span>
+                <span class="tag">юмор</span>
                 <span class="tag">моушн</span>
               </div>
             </div>
@@ -727,19 +744,26 @@
           <article class="case-card" data-reveal>
             <div class="case-preview">
               <div class="phone-frame">
-                Вставь сюда screen-recording таймлайна
+                <video
+                  class="case-video"
+                  src="sketch.mp4"
+                  poster="sketchcase.png"
+                  controls
+                  preload="metadata"
+                  playsinline
+                ></video>
               </div>
             </div>
             <div class="case-body">
-              <h3>Аудио → полноценный vertical</h3>
+              <h3>Скетч / динамичный формат</h3>
               <p>
-                Когда есть только голос, монтаж берёт на себя визуальное повествование:
-                ассеты, сцены, текст, движение, звук и структура.
+                Монтаж с упором на юмор, тайминг, визуальные панчи и звуковые акценты,
+                чтобы сцена ощущалась живее и быстрее считывалась зрителем.
               </p>
               <div class="tags">
-                <span class="tag">audio-first</span>
-                <span class="tag">PNG</span>
-                <span class="tag">storytelling</span>
+                <span class="tag">скетч</span>
+                <span class="tag">панчи</span>
+                <span class="tag">визуализация</span>
               </div>
             </div>
           </article>
