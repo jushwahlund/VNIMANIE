@@ -508,10 +508,84 @@
       transform: translateY(0);
     }
 
+
+    /* SHOWREEL PHONE */
+    .showreel-section { padding: 96px 0; }
+    .showreel-layout {
+      min-height: 720px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 68% 42%, rgba(255,255,255,0.13), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)), rgba(0,0,0,0.42);
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: 32px;
+      padding: clamp(34px, 5vw, 70px);
+    }
+    .showreel-copy { position: relative; z-index: 2; }
+    .section-kicker { display: inline-flex; align-items: center; gap: 9px; color: var(--warm); text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; font-weight: 800; margin-bottom: 18px; }
+    .section-kicker .star-icon { width: 26px; height: 26px; display: inline-grid; place-items: center; border: 1px solid rgba(216,202,188,0.22); border-radius: 999px; color: #fff; background: rgba(255,255,255,0.045); letter-spacing: 0; font-size: 14px; }
+    .showreel-copy h2 { max-width: 620px; font-size: clamp(42px, 6vw, 86px); line-height: 0.94; letter-spacing: -0.075em; margin-bottom: 22px; }
+    .showreel-copy p { max-width: 520px; color: var(--muted); font-size: 17px; line-height: 1.6; }
+    .reels-phone-stage { position: relative; display: grid; place-items: center; min-height: 630px; }
+    .reels-phone { width: min(350px, 78vw); aspect-ratio: 9/16; border: 2px solid rgba(255,255,255,0.18); border-radius: 46px; background: #050505; overflow: hidden; position: relative; box-shadow: 0 34px 120px rgba(0,0,0,0.72), 0 0 80px rgba(255,255,255,0.08); cursor: grab; user-select: none; touch-action: pan-y; }
+    .reels-phone:active { cursor: grabbing; }
+    .phone-notch { position: absolute; top: 0; left: 50%; width: 42%; height: 30px; transform: translateX(-50%); border-radius: 0 0 19px 19px; background: #050505; z-index: 5; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+    .reels-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #050505; transition: opacity .22s ease, transform .22s ease; opacity: 1; transform: scale(1); }
+    .reels-video.is-fading { opacity: 0; transform: scale(1.015); }
+    .reels-gradient { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,0.28), transparent 22%), linear-gradient(0deg, rgba(0,0,0,0.78), transparent 42%); z-index: 2; }
+    .sound-toggle { position: absolute; right: 14px; bottom: 112px; z-index: 6; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.42); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: transform .2s ease, background .2s ease; }
+    .sound-toggle:hover { transform: scale(1.04); background: rgba(255,255,255,0.11); }
+    .reels-caption { position: absolute; left: 18px; right: 18px; bottom: 22px; z-index: 4; }
+    .reels-counter { color: rgba(255,255,255,0.62); font-size: 12px; margin-bottom: 8px; }
+    .reels-caption h3 { color: #fff; font-size: 18px; line-height: 1.2; letter-spacing: -0.03em; text-shadow: 0 2px 18px rgba(0,0,0,0.72); }
+    .reel-arrow { position: absolute; left: 50%; z-index: 7; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.045); color: #fff; font-size: 23px; cursor: pointer; transform: translateX(-50%); transition: transform .2s ease, background .2s ease, border-color .2s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .reel-arrow:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.32); }
+    .reel-arrow-up { top: 16px; }
+    .reel-arrow-down { bottom: 16px; }
+    .reel-arrow-up:hover { transform: translateX(-50%) translateY(-2px); }
+    .reel-arrow-down:hover { transform: translateX(-50%) translateY(2px); }
+    .reel-hint { position: absolute; right: clamp(18px, 3vw, 44px); bottom: clamp(18px, 3vw, 44px); color: var(--muted-2); font-size: 13px; line-height: 1.45; max-width: 250px; }
+
+    /* REVIEWS ROULETTE */
+    .reviews-section { padding: 96px 0; }
+    .reviews-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+    .reviews-title-wrap h2 { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
+    .reviews-rating { display: inline-flex; align-items: center; gap: 10px; color: var(--warm); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .reviews-rating .rating-star { width: 34px; height: 34px; border-radius: 999px; display: grid; place-items: center; border: 1px solid rgba(216,202,188,0.22); background: rgba(255,255,255,0.045); color: #fff; font-size: 16px; letter-spacing: 0; }
+    .reviews-controls { display: flex; gap: 12px; flex-shrink: 0; }
+    .review-nav-btn { width: 52px; height: 52px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .review-nav-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.28); }
+    .reviews-carousel { overflow: hidden; padding: 18px 0 26px; }
+    .reviews-track { min-height: 390px; display: flex; align-items: center; justify-content: center; gap: 16px; perspective: 1200px; }
+    .review-slide { width: min(520px, 72vw); min-height: 330px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 46%), rgba(255,255,255,0.045); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; opacity: 0.42; transform: scale(0.82); transition: transform .32s ease, opacity .32s ease, filter .32s ease; filter: blur(0.3px); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .review-slide.is-active { opacity: 1; transform: scale(1); filter: blur(0); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 50%), rgba(255,255,255,0.07); box-shadow: 0 30px 110px rgba(0,0,0,0.42); }
+    .review-slide.is-side { opacity: 0.62; transform: scale(0.88); }
+    .review-slide.is-outer { opacity: 0.22; transform: scale(0.76); }
+    .review-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .review-photo { width: 58px; height: 58px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); background: radial-gradient(circle at 50% 28%, rgba(255,255,255,0.18), transparent 44%), rgba(255,255,255,0.045); overflow: hidden; flex-shrink: 0; display: grid; place-items: center; color: var(--muted-2); font-size: 11px; }
+    .review-photo::after { content: 'фото'; }
+    .review-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
+    .review-photo img[src=''] { display: none; }
+    .review-meta h3 { font-size: 17px; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .review-meta p { color: var(--muted-2); font-size: 13px; }
+    .stars { color: #fff; letter-spacing: 0.08em; font-size: 14px; margin-bottom: 18px; }
+    .review-slide blockquote { color: var(--text); font-size: 17px; line-height: 1.55; font-weight: 600; letter-spacing: -0.01em; }
+    .review-slide footer { border: 0; padding: 0; color: var(--muted-2); font-size: 13px; margin-top: 22px; }
+
     @media (max-width: 920px) {
       .page {
         padding: 0 20px;
       }
+
+      .showreel-layout { grid-template-columns: 1fr; min-height: auto; text-align: center; }
+      .showreel-copy p { margin: 0 auto; }
+      .reels-phone-stage { min-height: 600px; }
+      .reel-hint { position: static; margin: -10px auto 0; text-align: center; }
+      .reviews-top { display: block; }
+      .reviews-controls { margin-top: 18px; }
+      .reviews-track { min-height: 430px; }
+      .review-slide { width: min(560px, 82vw); }
+      .review-slide.is-outer { display: none; }
+
 
       .nav-inner {
         padding: 0 20px;
@@ -552,6 +626,21 @@
       .page {
         padding: 0 14px;
       }
+
+      .showreel-section, .reviews-section { padding: 58px 0; }
+      .showreel-layout { padding: 28px 18px; border-radius: 26px; }
+      .showreel-copy h2 { font-size: 44px; }
+      .reels-phone-stage { min-height: 520px; }
+      .reels-phone { width: min(80vw, 310px); border-radius: 38px; }
+      .phone-notch { height: 26px; }
+      .reel-arrow { width: 44px; height: 44px; font-size: 21px; }
+      .reels-caption h3 { font-size: 16px; }
+      .sound-toggle { width: 40px; height: 40px; bottom: 104px; }
+      .reviews-track { min-height: 380px; }
+      .review-slide { width: 86vw; min-height: 315px; padding: 20px; }
+      .review-slide.is-side { display: none; }
+      .review-slide blockquote { font-size: 15px; }
+
 
       .nav {
         height: 66px;
@@ -687,6 +776,32 @@
         </div>
       </section>
 
+
+      <section id="showreel" class="showreel-section" data-reveal>
+        <div class="showreel-layout">
+          <div class="showreel-copy">
+            <div class="section-kicker"><span class="star-icon">✦</span> showreel</div>
+            <h2>Фрагменты наших работ</h2>
+            <p>Короткие отрывки монтажа: эстетика, юмор, SFX, моушн, VFX, экспертные ролики, влоги и промо-форматы.</p>
+          </div>
+          <div class="reels-phone-stage" id="reelsStage">
+            <button class="reel-arrow reel-arrow-up" type="button" id="reelPrev" aria-label="Предыдущий фрагмент">↑</button>
+            <div class="reels-phone" id="reelsPhone">
+              <div class="phone-notch"></div>
+              <video id="reelsVideo" class="reels-video" src="showreel/01.mp4" playsinline preload="metadata" muted></video>
+              <div class="reels-gradient"></div>
+              <button class="sound-toggle" type="button" id="soundToggle" aria-label="Включить или выключить звук">🔇</button>
+              <div class="reels-caption">
+                <div class="reels-counter" id="reelsCounter">01 / 11</div>
+                <h3 id="reelsCaption">Эстетичный формат — стиль, ритм, визуальная подача</h3>
+              </div>
+            </div>
+            <button class="reel-arrow reel-arrow-down" type="button" id="reelNext" aria-label="Следующий фрагмент">↓</button>
+          </div>
+          <div class="reel-hint">Листайте фрагменты стрелками или зажмите телефон и проведите вверх/вниз.</div>
+        </div>
+      </section>
+
       <section id="cases">
         <div class="section-head" data-reveal>
           <h2 class="section-title">Кейсы</h2>
@@ -776,37 +891,23 @@
         </div>
       </section>
 
-      <section id="reviews">
-        <div class="section-head" data-reveal>
-          <h2 class="section-title">Отзывы</h2>
+
+      <section id="reviews" class="reviews-section">
+        <div class="reviews-top" data-reveal>
+          <div class="reviews-title-wrap">
+            <div class="reviews-rating"><span class="rating-star">★</span> 5.0 / 5 по отзывам</div>
+            <h2>Отзывы</h2>
+          </div>
+          <div class="reviews-controls">
+            <button class="review-nav-btn" type="button" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
+            <button class="review-nav-btn" type="button" id="reviewNext" aria-label="Следующий отзыв">›</button>
+          </div>
         </div>
-
-        <div class="grid reviews-grid">
-          <article class="review-card" data-reveal>
-            <p class="review-text">
-              “Монтаж оживил формат. Шутки стали считываться лучше, ролики выглядят динамично,
-              а зрителю проще смотреть до конца.”
-            </p>
-            <div class="review-author">Клиент / экспертный контент</div>
-          </article>
-
-          <article class="review-card" data-reveal>
-            <p class="review-text">
-              “Понравилось, что команда не просто выполняет ТЗ, а сама предлагает решения:
-              где усилить, где ускорить, где добавить визуальную идею.”
-            </p>
-            <div class="review-author">Личный бренд / vertical content</div>
-          </article>
-
-          <article class="review-card" data-reveal>
-            <p class="review-text">
-              “Сроки понятные, правки быстрые, стиль не шаблонный. Видно, что в ролик реально
-              погружаются.”
-            </p>
-            <div class="review-author">Пакет роликов / 8–12 в месяц</div>
-          </article>
+        <div class="reviews-carousel" data-reveal>
+          <div class="reviews-track" id="reviewsTrack"></div>
         </div>
       </section>
+
 
       <section id="process">
         <div class="section-head" data-reveal>
@@ -868,6 +969,173 @@
       </div>
     </footer>
   </div>
+
+
+  <script>
+    const showreelItems = [
+      { src: "showreel/01.mp4", caption: "Эстетичный формат — стиль, ритм, визуальная подача" },
+      { src: "showreel/02.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" },
+      { src: "showreel/03.mp4", caption: "Промо с нуля — сценарий, озвучка, рекламный темп" },
+      { src: "showreel/04.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
+      { src: "showreel/05.mp4", caption: "Моушн с нуля — визуализируем аудиодорожку" },
+      { src: "showreel/06.mp4", caption: "VFX / имидж — динамика, переходы, статус" },
+      { src: "showreel/07.mp4", caption: "Влог — живой вертикальный монтаж" },
+      { src: "showreel/08.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
+      { src: "showreel/09.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
+      { src: "showreel/10.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" },
+      { src: "showreel/11.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" }
+    ];
+
+    let currentReel = 0;
+    let reelVisible = false;
+    let soundEnabled = false;
+    let isChangingReel = false;
+    const reelsVideo = document.getElementById("reelsVideo");
+    const reelsCaption = document.getElementById("reelsCaption");
+    const reelsCounter = document.getElementById("reelsCounter");
+    const reelsPhone = document.getElementById("reelsPhone");
+    const reelsStage = document.getElementById("reelsStage");
+    const soundToggle = document.getElementById("soundToggle");
+
+    function pauseAllOtherVideos(activeVideo) {
+      document.querySelectorAll("video").forEach((video) => {
+        if (video !== activeVideo) { video.pause(); video.volume = 0; }
+      });
+    }
+
+    async function playCurrentReel() {
+      if (!reelVisible || !reelsVideo) return;
+      pauseAllOtherVideos(reelsVideo);
+      reelsVideo.muted = !soundEnabled;
+      reelsVideo.volume = soundEnabled ? 0.85 : 0;
+      try { await reelsVideo.play(); } catch (error) {}
+    }
+
+    function fadeVolume(video, from, to, duration = 220) {
+      return new Promise((resolve) => {
+        const startTime = performance.now();
+        function step(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          video.volume = Math.max(0, Math.min(1, from + (to - from) * progress));
+          if (progress < 1) requestAnimationFrame(step); else resolve();
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    async function setReel(index) {
+      if (isChangingReel || !reelsVideo) return;
+      isChangingReel = true;
+      const nextIndex = (index + showreelItems.length) % showreelItems.length;
+      const item = showreelItems[nextIndex];
+      reelsVideo.classList.add("is-fading");
+      if (soundEnabled && !reelsVideo.muted) await fadeVolume(reelsVideo, reelsVideo.volume || 0.85, 0, 180);
+      reelsVideo.pause();
+      reelsVideo.src = item.src;
+      reelsVideo.load();
+      currentReel = nextIndex;
+      reelsCaption.textContent = item.caption;
+      reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
+      setTimeout(async () => {
+        reelsVideo.classList.remove("is-fading");
+        if (reelVisible) {
+          reelsVideo.muted = !soundEnabled;
+          reelsVideo.volume = 0;
+          await playCurrentReel();
+          if (soundEnabled && !reelsVideo.muted) await fadeVolume(reelsVideo, 0, 0.85, 220);
+        }
+        isChangingReel = false;
+      }, 170);
+    }
+
+    function nextReel() { setReel(currentReel + 1); }
+    function prevReel() { setReel(currentReel - 1); }
+    document.getElementById("reelNext").addEventListener("click", nextReel);
+    document.getElementById("reelPrev").addEventListener("click", prevReel);
+
+    soundToggle.addEventListener("click", async () => {
+      soundEnabled = !soundEnabled;
+      soundToggle.textContent = soundEnabled ? "🔊" : "🔇";
+      reelsVideo.muted = !soundEnabled;
+      if (soundEnabled) {
+        pauseAllOtherVideos(reelsVideo);
+        reelsVideo.volume = 0;
+        await playCurrentReel();
+        await fadeVolume(reelsVideo, 0, 0.85, 260);
+      } else {
+        await fadeVolume(reelsVideo, reelsVideo.volume || 0.85, 0, 180);
+        reelsVideo.muted = true;
+      }
+    });
+
+    let dragStartY = null;
+    reelsPhone.addEventListener("pointerdown", (event) => { dragStartY = event.clientY; reelsPhone.setPointerCapture(event.pointerId); });
+    reelsPhone.addEventListener("pointerup", (event) => {
+      if (dragStartY === null) return;
+      const deltaY = event.clientY - dragStartY;
+      if (Math.abs(deltaY) > 42) deltaY < 0 ? nextReel() : prevReel();
+      dragStartY = null;
+    });
+
+    let wheelLocked = false;
+    reelsPhone.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      if (wheelLocked) return;
+      event.deltaY > 0 ? nextReel() : prevReel();
+      wheelLocked = true;
+      setTimeout(() => wheelLocked = false, 520);
+    }, { passive: false });
+
+    const showreelObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        reelVisible = entry.isIntersecting;
+        if (reelVisible) playCurrentReel(); else { reelsVideo.pause(); reelsVideo.volume = 0; }
+      });
+    }, { threshold: 0.45 });
+    if (reelsStage) showreelObserver.observe(reelsStage);
+    reelsVideo.addEventListener("ended", nextReel);
+    document.querySelectorAll("video").forEach((video) => video.addEventListener("play", () => pauseAllOtherVideos(video)));
+
+    const reviews = [
+      { name: "Евгений", role: "Авитолог / личный бренд", photo: "reviews/review-01.jpg", text: "Монтаж оживил формат: шутки стали считываться быстрее, объявления понятнее, а ролики выглядят динамичнее." },
+      { name: "Клиент", role: "Экспертный контент", photo: "reviews/review-02.jpg", text: "Понравилось, что команда не просто выполняет ТЗ, а сама предлагает решения: где усилить, где ускорить, где добавить визуальную идею." },
+      { name: "Клиент", role: "Пакет роликов / 8–12 в месяц", photo: "reviews/review-03.jpg", text: "Сроки понятные, правки быстрые, стиль не шаблонный. Видно, что в ролик реально погружаются." },
+      { name: "Клиент", role: "Vertical content", photo: "reviews/review-04.jpg", text: "После монтажа ролик ощущается живее: больше ритма, акцентов и понятной подачи для зрителя." },
+      { name: "Клиент", role: "Личный бренд", photo: "reviews/review-05.jpg", text: "Удобно, что после серии роликов есть не только готовые файлы, но и мысли по улучшению формата." }
+    ];
+
+    let currentReview = 0;
+    const reviewsTrack = document.getElementById("reviewsTrack");
+    function renderReviews() {
+      if (!reviewsTrack) return;
+      const offsets = [-2, -1, 0, 1, 2];
+      reviewsTrack.innerHTML = offsets.map((offset) => {
+        const index = (currentReview + offset + reviews.length) % reviews.length;
+        const review = reviews[index];
+        let className = "review-slide";
+        if (offset === 0) className += " is-active";
+        if (Math.abs(offset) === 1) className += " is-side";
+        if (Math.abs(offset) === 2) className += " is-outer";
+        return `
+          <article class="${className}">
+            <div>
+              <div class="review-card-head">
+                <div class="review-photo"><img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';"></div>
+                <div class="review-meta"><h3>${review.name}</h3><p>${review.role}</p></div>
+              </div>
+              <div class="stars" aria-label="5 звёзд">★★★★★</div>
+              <blockquote>“${review.text}”</blockquote>
+            </div>
+            <footer>VNIMANIE / отзыв клиента</footer>
+          </article>`;
+      }).join("");
+    }
+    function nextReview() { currentReview = (currentReview + 1) % reviews.length; renderReviews(); }
+    function prevReview() { currentReview = (currentReview - 1 + reviews.length) % reviews.length; renderReviews(); }
+    document.getElementById("reviewNext").addEventListener("click", nextReview);
+    document.getElementById("reviewPrev").addEventListener("click", prevReview);
+    renderReviews();
+  </script>
 
   <script>
     const items = document.querySelectorAll("[data-reveal]");
