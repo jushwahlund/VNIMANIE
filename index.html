@@ -65,7 +65,7 @@
       z-index: 1000;
       width: 100%;
       height: 74px;
-      background: rgba(20, 17, 15, 0.82);
+      background: rgba(5, 5, 5, 0.78);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
@@ -83,7 +83,7 @@
     }
 
     .brand {
-      color: var(--warm);
+      color: rgba(244,244,244,0.92);
       font-size: 15px;
       font-weight: 800;
       letter-spacing: 0.14em;
@@ -95,7 +95,7 @@
     .brand:hover { color: #fff; }
 
     .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a { color: rgba(216, 202, 188, 0.82); font-size: 15px; font-weight: 500; transition: color .2s ease; }
+    .nav-links a { color: rgba(244, 244, 244, 0.68); font-size: 15px; font-weight: 500; transition: color .2s ease; }
     .nav-links a:hover { color: #fff; }
 
     .hero {
@@ -533,53 +533,6 @@
     .section-kicker .star-icon { width: 26px; height: 26px; display: inline-grid; place-items: center; border: 1px solid rgba(216,202,188,0.22); border-radius: 999px; color: #fff; background: rgba(255,255,255,0.045); letter-spacing: 0; font-size: 14px; }
     .showreel-copy h2 { max-width: 620px; font-size: clamp(42px, 6vw, 86px); line-height: 0.94; letter-spacing: -0.075em; margin-bottom: 22px; }
     .showreel-copy p { max-width: 520px; color: var(--muted); font-size: 17px; line-height: 1.6; }
-    .reels-phone-stage { position: relative; display: grid; place-items: center; min-height: 630px; }
-    .reels-phone { width: min(350px, 78vw); aspect-ratio: 9 / 16; border: 2px solid rgba(255,255,255,0.18); border-radius: 46px; background: #050505; overflow: hidden; position: relative; box-shadow: 0 34px 120px rgba(0,0,0,0.72), 0 0 80px rgba(255,255,255,0.08); cursor: grab; user-select: none; touch-action: none; }
-    .reels-phone:active { cursor: grabbing; }
-    .phone-notch { position: absolute; top: 0; left: 50%; width: 42%; height: 30px; transform: translateX(-50%); border-radius: 0 0 19px 19px; background: #050505; z-index: 7; box-shadow: 0 6px 18px rgba(0,0,0,0.35); pointer-events: none; }
-    .reels-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; border-radius: 44px; }
-    .reels-track-vertical { width: 100%; height: 100%; will-change: transform; transition: transform .34s cubic-bezier(.22,.8,.22,1); }
-    .reel-slide { width: 100%; height: 100%; position: relative; background: #050505; overflow: hidden; }
-    .reels-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #050505; pointer-events: none; }
-    .sound-toggle { position: absolute; right: 16px; bottom: 126px; z-index: 8; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: rgba(0,0,0,0.46); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: transform .2s ease, background .2s ease; }
-    .sound-toggle:hover { transform: scale(1.04); background: rgba(255,255,255,0.12); }
-    .sound-toggle svg { width: 20px; height: 20px; display: block; }
-    .reels-caption { position: absolute; left: 18px; right: 18px; bottom: 54px; z-index: 6; pointer-events: none; }
-    .reels-counter { color: rgba(255,255,255,0.72); font-size: 12px; margin-bottom: 8px; text-shadow: 0 2px 16px rgba(0,0,0,0.78); }
-    .reels-caption h3 { color: #fff; font-size: 18px; line-height: 1.2; letter-spacing: -0.03em; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
-    .reel-arrow { position: absolute; left: 50%; z-index: 9; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.045); color: #fff; font-size: 23px; cursor: pointer; transform: translateX(-50%); transition: transform .2s ease, background .2s ease, border-color .2s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .reel-arrow:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.32); }
-    .reel-arrow-up { top: 16px; }
-    .reel-arrow-down { bottom: 16px; }
-    .reel-arrow-up:hover { transform: translateX(-50%) translateY(-2px); }
-    .reel-arrow-down:hover { transform: translateX(-50%) translateY(2px); }
-    .reel-hint { position: absolute; right: clamp(18px, 3vw, 44px); bottom: clamp(18px, 3vw, 44px); color: var(--muted-2); font-size: 13px; line-height: 1.45; max-width: 250px; }
-
-    .step-card { padding: 22px; }
-    .step-num { color: var(--muted-2); font-size: 13px; margin-bottom: 34px; }
-    .step-card h3 { margin-bottom: 10px; font-size: 18px; }
-    .step-card p { color: var(--muted); line-height: 1.5; font-size: 14px; }
-
-    .final-cta { width: 100%; text-align: center; border: 1px solid var(--card-border); border-radius: var(--radius-xl); padding: clamp(34px, 7vw, 80px); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%), rgba(255,255,255,0.035); margin-bottom: 80px; }
-    .final-cta h2 { font-size: clamp(34px, 5.5vw, 70px); line-height: 0.98; letter-spacing: -0.06em; max-width: 850px; margin: 0 auto; }
-    .final-cta p { color: var(--muted); max-width: 620px; margin: 20px auto 0; line-height: 1.6; }
-
-    footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 0; color: var(--muted-2); font-size: 13px; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-    [data-reveal].visible { opacity: 1; transform: translateY(0); }
-
-
-
-    /* VNIMANIE final fixes */
-    .showreel-cta {
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
     .reels-phone-stage {
       position: relative;
       display: grid;
@@ -587,70 +540,123 @@
       min-height: 630px;
     }
 
-    .reels-phone,
-    .reels-viewport {
-      isolation: isolate;
-      contain: paint;
+    .reels-phone {
+      width: min(350px, 78vw);
+      aspect-ratio: 9 / 16;
+      border: 2px solid rgba(255,255,255,0.18);
+      border-radius: 46px;
+      background: #050505;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 34px 120px rgba(0,0,0,0.72), 0 0 80px rgba(255,255,255,0.08);
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
     }
 
-    .reels-phone {
-      overflow: hidden;
-    }
+    .reels-phone:active { cursor: grabbing; }
 
     .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
       width: 28%;
       height: 20px;
+      transform: translateX(-50%);
       border-radius: 0 0 14px 14px;
+      background: #050505;
+      z-index: 7;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.32);
+      pointer-events: none;
     }
 
     .reels-viewport {
+      width: 100%;
+      height: 100%;
       overflow: hidden;
+      position: relative;
+      border-radius: 44px;
       background: #050505;
     }
 
     .reels-track-vertical {
-      position: relative;
-      display: block;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      transform: none !important;
-      will-change: auto;
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+      transition: transform .34s cubic-bezier(.22,.8,.22,1);
     }
 
     .reel-slide {
-      position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
       min-height: 100%;
-      flex: none;
+      flex: 0 0 100%;
+      position: relative;
       background: #050505;
       overflow: hidden;
-      will-change: transform;
-      backface-visibility: hidden;
-      transform: translateY(100%);
     }
 
     .reels-video {
-      position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .reels-caption {
-      bottom: 86px;
+      display: block;
+      background: #050505;
+      pointer-events: none;
     }
 
     .sound-toggle {
+      position: absolute;
+      right: 16px;
       bottom: 142px;
+      z-index: 8;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(0,0,0,0.46);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform .2s ease, background .2s ease, opacity .2s ease;
       opacity: 0.82;
     }
 
-    .reel-arrow {
-      display: none !important;
+    .sound-toggle:hover {
+      transform: scale(1.04);
+      background: rgba(255,255,255,0.12);
+      opacity: 1;
+    }
+
+    .sound-toggle svg { width: 20px; height: 20px; display: block; }
+
+    .reels-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 86px;
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    .reels-counter {
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.78);
+    }
+
+    .reels-caption h3 {
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.9);
     }
 
     .reel-side-controls {
@@ -667,9 +673,7 @@
       transition: opacity .2s ease;
     }
 
-    .reel-side-controls:hover {
-      opacity: 1;
-    }
+    .reel-side-controls:hover { opacity: 1; }
 
     .reel-mini-btn {
       width: 36px;
@@ -695,106 +699,25 @@
     }
 
     .reel-swipe-hint {
-      max-width: 56px;
-      color: rgba(255,255,255,0.42);
+      color: rgba(255,255,255,0.38);
       font-size: 10px;
-      line-height: 1.2;
+      line-height: 1.15;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-align: center;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
       user-select: none;
     }
 
     .reel-hint {
-      display: none !important;
-    }
-
-    #process {
-      padding-top: 96px;
-    }
-
-    .step-card {
-      min-height: 170px;
-      padding: 24px;
-    }
-
-    .step-num {
-      display: block;
+      position: absolute;
+      right: clamp(18px, 3vw, 44px);
+      bottom: clamp(18px, 3vw, 44px);
       color: var(--muted-2);
       font-size: 13px;
-      margin-bottom: 34px;
-    }
-
-    .step-card h3 {
-      margin-bottom: 10px;
-      font-size: 18px;
-      line-height: 1.2;
-    }
-
-    .step-card p {
-      color: var(--muted);
-      line-height: 1.5;
-      font-size: 14px;
-    }
-
-    .final-cta {
-      width: 100%;
-      text-align: center;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-xl);
-      padding: clamp(34px, 7vw, 80px);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%),
-        rgba(255,255,255,0.035);
-      margin-bottom: 80px;
-      box-shadow: 0 30px 120px rgba(0,0,0,0.35);
-    }
-
-    .final-cta h2 {
-      font-size: clamp(34px, 5.5vw, 70px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .final-cta p {
-      color: var(--muted);
-      max-width: 620px;
-      margin: 20px auto 0;
-      line-height: 1.6;
-    }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 28px 0;
-      color: var(--muted-2);
-      font-size: 13px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 920px) {
-      .page { padding: 0 20px; }
-      .nav-inner { padding: 0 20px; }
-      .showreel-layout { grid-template-columns: 1fr; min-height: auto; text-align: center; }
-      .showreel-copy p { margin: 0 auto; }
-      .reels-phone-stage { min-height: 600px; }
-      .reel-hint { position: static; margin: -10px auto 0; text-align: center; }
-      .reviews-top { display: block; }
-      .reviews-controls { margin-top: 18px; }
-      .reviews-carousel { height: 350px; }
-      .review-slide { width: min(560px, 82vw); }
-      .cases-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .section-head { display: block; }
-      .case-preview { min-height: 660px; padding: 34px 0; }
-      .phone-frame { width: min(72vw, 360px); }
+      line-height: 1.45;
+      max-width: 250px;
     }
 
     @media (max-width: 640px) {
@@ -818,22 +741,7 @@
       .reels-phone-stage { min-height: 520px; }
       .reels-phone { width: min(80vw, 310px); border-radius: 38px; }
       .reels-viewport { border-radius: 36px; }
-      .phone-notch { height: 26px; }
-      .reel-arrow { width: 44px; height: 44px; font-size: 21px; }
-      .reels-caption { bottom: 48px; }
-      .reels-caption h3 { font-size: 16px; }
-      .sound-toggle { width: 40px; height: 40px; bottom: 112px; }
-      .reviews-panel { border-radius: 26px; }
-      .reviews-carousel { height: 340px; }
-      .review-slide { width: 84vw; min-height: 260px; padding: 20px; }
-      .review-slide blockquote { font-size: 15px; }
-      .case-preview { min-height: auto; padding: 28px 0; }
-      .phone-frame { width: min(82vw, 320px); }
-
-      .showreel-cta {
-        justify-content: center;
-      }
-
+      .phone-notch { width: 28%; height: 18px; border-radius: 0 0 12px 12px; }
       .reel-side-controls {
         position: static;
         transform: none;
@@ -842,32 +750,99 @@
         margin-top: 14px;
         opacity: 0.86;
       }
-
       .reel-swipe-hint {
-        max-width: none;
+        writing-mode: initial;
+        transform: none;
         font-size: 10px;
       }
-
-      .phone-notch {
-        width: 28%;
-        height: 18px;
-        border-radius: 0 0 12px 12px;
-      }
-
-      .reels-caption {
-        bottom: 78px;
-      }
-
-      .sound-toggle {
-        bottom: 128px;
-      }
-
-      .step-card {
-        min-height: 150px;
-      }
-
+      .reel-mini-btn { width: 38px; height: 38px; }
+      .reels-caption { bottom: 78px; }
+      .reels-caption h3 { font-size: 16px; }
+      .sound-toggle { width: 40px; height: 40px; bottom: 128px; }
+      .reviews-panel { border-radius: 26px; }
+      .reviews-carousel { height: 340px; }
+      .review-slide { width: 84vw; min-height: 260px; padding: 20px; }
+      .review-slide blockquote { font-size: 15px; }
+      .case-preview { min-height: auto; padding: 28px 0; }
+      .phone-frame { width: min(82vw, 320px); }
       .steps-grid { grid-template-columns: 1fr; }
     }
+
+    /* VNIMANIE polish v8 */
+    .nav {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)),
+        rgba(5, 5, 5, 0.78);
+    }
+
+    .brand {
+      color: rgba(244,244,244,0.92);
+    }
+
+    .nav-links a {
+      color: rgba(244,244,244,0.68);
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    #process .section-title {
+      letter-spacing: -0.06em;
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      margin-bottom: 26px;
+      color: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.15);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 62%),
+        rgba(255,255,255,0.045);
+      box-shadow: 0 0 30px rgba(255,255,255,0.045);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .step-card {
+      min-height: 190px;
+      padding: 26px;
+    }
+
+    .final-cta .cta-row {
+      margin-top: 38px;
+    }
+
+    .final-cta .btn {
+      height: 62px;
+      padding: 0 34px;
+      font-size: 16px;
+      min-width: 190px;
+    }
+
+    .final-cta .btn-primary {
+      box-shadow:
+        0 0 26px rgba(255,255,255,0.16),
+        0 18px 54px rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 640px) {
+      .step-num {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 22px;
+      }
+
+      .final-cta .btn {
+        height: 58px;
+        min-width: 0;
+      }
+    }
+
   </style>
 </head>
 
@@ -906,8 +881,8 @@
               <div class="contact-wrapper">
                 <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
                 <div class="contact-popover" aria-label="Контакты">
-                  <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
-                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
+                  <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
+                  <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
                 </div>
               </div>
             </div>
@@ -942,17 +917,7 @@
           <div class="showreel-copy">
             <div class="section-kicker"><span class="star-icon">✦</span> showreel</div>
             <h2>Фрагменты наших работ</h2>
-            <p>Короткие отрывки монтажа: эстетика, юмор, SFX, моушн, VFX, экспертные ролики, влоги и промо-форматы.</p>
-
-            <div class="showreel-cta">
-              <div class="contact-wrapper">
-                <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
-                <div class="contact-popover" aria-label="Контакты">
-                  <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
-                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
-                </div>
-              </div>
-            </div>
+            <p>Короткие отрывки монтажа: эстетика, экспертные ролики, юмор и промо-форматы.</p>
           </div>
 
           <div class="reels-phone-stage" id="reelsStage">
@@ -968,10 +933,12 @@
 
             <div class="reel-side-controls" aria-label="Навигация по showreel">
               <button class="reel-mini-btn" type="button" id="reelPrev" aria-label="Предыдущий фрагмент">↑</button>
-              <div class="reel-swipe-hint">тяни<br>вверх / вниз</div>
+              <div class="reel-swipe-hint">drag<br>up / down</div>
               <button class="reel-mini-btn" type="button" id="reelNext" aria-label="Следующий фрагмент">↓</button>
             </div>
           </div>
+
+          <div class="reel-hint">Зажмите телефон и потяните вверх/вниз или используйте компактные кнопки сбоку.</div>
         </div>
       </section>
 
@@ -991,8 +958,8 @@
           <article class="case-card" data-reveal>
             <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sketch.mp4" poster="sketchcase.png" controls preload="metadata" playsinline></video></div></div>
             <div class="case-body">
-              <h3>Скетч / динамичный формат</h3>
-              <p>Монтаж с упором на юмор, тайминг, визуальные панчи и звуковые акценты, чтобы сцена ощущалась живее и быстрее считывалась зрителем.</p>
+              <h3>Sketchbook / Эстетичный формат</h3>
+              <p>Короткий экспертный формат с упаковкой мысли в стиле Sketchbook.</p>
               <div class="tags"><span class="tag">скетч</span><span class="tag">панчи</span><span class="tag">визуализация</span></div>
             </div>
           </article>
@@ -1009,12 +976,12 @@
       </section>
 
       <section id="process">
-        <div class="section-head" data-reveal><h2 class="section-title">Как работаем</h2></div>
+        <div class="section-head" data-reveal><h2 class="section-title">Процесс</h2></div>
 
         <div class="grid steps-grid">
-          <div class="step-card" data-reveal><div class="step-num">01</div><h3>Бриф</h3><p>Понимаем формат, спикера, стиль, задачи и референсы.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Первый ролик</h3><p>Собираем стартовую версию и фиксируем монтажный язык.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Серия</h3><p>Делаем пакет роликов в едином стиле, без хаоса и микроменеджмента.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">01</div><h3>Бриф</h3><p>Обсуждаем формат, стиль, задачу и референсы.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Первый ролик</h3><p>Собираем первую версию и фиксируем стиль серии.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Серия</h3><p>Делаем пакет роликов в едином стиле, без крупных правок формата.</p></div>
           <div class="step-card" data-reveal><div class="step-num">04</div><h3>Анализ</h3><p>Смотрим удержание, реакции и даём рекомендации по улучшению формата.</p></div>
         </div>
       </section>
@@ -1022,14 +989,13 @@
       <section id="contact">
         <div class="final-cta" data-reveal>
           <h2>Есть повторяющийся формат? Давайте сделаем его живым.</h2>
-          <p>Подходит экспертам и личным брендам, которым нужен не шаблонный монтаж, а авторская сборка с ритмом, юмором, SFX и визуальными акцентами.</p>
 
           <div class="cta-row">
             <div class="contact-wrapper">
               <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
               <div class="contact-popover" aria-label="Контакты">
-                <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
-                <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
+                <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
+                <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
               </div>
             </div>
             <a class="btn btn-secondary" href="#cases">Посмотреть кейсы</a>
@@ -1057,11 +1023,11 @@
     ];
 
     const reviews = [
-      { name: "Protegra", role: "", photo: "", text: "Шикарная работа, качественный монтаж и подборка b-roll в быстрые сроки: монтаж, озвучка и написание сценария." },
-      { name: "olyakozdoy", role: "", photo: "", text: "Все отлично, спасибо. Обязательно закажу еще. Все сделано очень быстро и без правок." },
-      { name: "Клиент", role: "", photo: "", text: "Привет, всё отлично, оправдал ожидания, уложился в сроки, которые были обговорены." },
-      { name: "SYNTHESIT", role: "", photo: "", text: "Супер! Отличные видео получились." },
-      { name: "kholerik", role: "", photo: "", text: "Быстро, чётко и со вкусом. В дальнейшем буду с вами работать." }
+      { name: "Евгений", role: "Авитолог / личный бренд", photo: "reviews/review-01.jpg", text: "Монтаж оживил формат: шутки стали считываться быстрее, объявления понятнее, а ролики выглядят динамичнее." },
+      { name: "Клиент", role: "Экспертный контент", photo: "reviews/review-02.jpg", text: "Понравилось, что команда не просто выполняет ТЗ, а сама предлагает решения: где усилить, где ускорить, где добавить визуальную идею." },
+      { name: "Клиент", role: "Пакет роликов / 8–12 в месяц", photo: "reviews/review-03.jpg", text: "Сроки понятные, правки быстрые, стиль не шаблонный. Видно, что в ролик реально погружаются." },
+      { name: "Клиент", role: "Vertical content", photo: "reviews/review-04.jpg", text: "После монтажа ролик ощущается живее: больше ритма, акцентов и понятной подачи для зрителя." },
+      { name: "Клиент", role: "Личный бренд", photo: "reviews/review-05.jpg", text: "Удобно, что после серии роликов есть не только готовые файлы, но и мысли по улучшению формата." }
     ];
 
     const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -1120,8 +1086,8 @@
 
     function renderReels() {
       if (!reelsTrackVertical) return;
-      reelsTrackVertical.innerHTML = showreelItems.map((item, index) => `
-        <div class="reel-slide" data-index="${index}"><video class="reels-video" src="${item.src}" playsinline preload="metadata" muted></video></div>
+      reelsTrackVertical.innerHTML = showreelItems.map((item) => `
+        <div class="reel-slide"><video class="reels-video" src="${item.src}" playsinline preload="metadata" muted></video></div>
       `).join("");
       updateSoundIcon();
       updateReelLayout(false);
@@ -1130,14 +1096,8 @@
     function updateReelLayout(animate = true, offset = 0) {
       if (!reelsTrackVertical || !reelsPhone) return;
       reelHeight = reelsPhone.getBoundingClientRect().height || 1;
-
-      reelsTrackVertical.querySelectorAll(".reel-slide").forEach((slide) => {
-        const index = Number(slide.dataset.index);
-        const relative = index - currentReel;
-        slide.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
-        slide.style.transform = `translateY(calc(${relative * 100}% + ${offset}px))`;
-      });
-
+      reelsTrackVertical.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
+      reelsTrackVertical.style.transform = `translateY(${(-currentReel * reelHeight) + offset}px)`;
       const item = showreelItems[currentReel];
       reelsCaption.textContent = item.caption;
       reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
@@ -1280,11 +1240,11 @@
             <div>
               <div class="review-card-head">
                 <div class="review-photo">
-                  ${review.photo ? `<img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';">` : ""}
+                  <img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';">
                 </div>
                 <div class="review-meta">
                   <h3>${review.name}</h3>
-                  ${review.role ? `<p>${review.role}</p>` : ""}
+                  <p>${review.role}</p>
                 </div>
               </div>
 
@@ -1307,20 +1267,38 @@
 
       reviewsTrack.querySelectorAll(".review-slide").forEach((card) => {
         const offset = Number(card.dataset.offset);
-        const abs = Math.abs(offset);
         const x = (offset * reviewStep) + dragOffset;
+        const distance = Math.min(Math.abs(x) / reviewStep, 2);
+        const centerPower = Math.max(0, 1 - distance);
+        const sidePower = Math.max(0, 1 - Math.abs(distance - 1));
 
-        const scale = abs === 0 ? 1 : abs === 1 ? 0.86 : 0.74;
-        const opacity = abs === 0 ? 1 : abs === 1 ? 0.62 : 0.26;
-        const z = abs === 0 ? 5 : abs === 1 ? 3 : 1;
+        let scale;
+        if (distance <= 1) {
+          scale = 0.88 + 0.16 * (1 - distance);
+        } else {
+          scale = 0.74 + 0.14 * (2 - distance);
+        }
+
+        const opacity = Math.max(0.22, 0.26 + 0.74 * centerPower + 0.30 * sidePower);
+        const blur = 0.35 * (1 - centerPower);
+        const z = Math.round(100 - distance * 28);
+        const glow = centerPower;
 
         card.style.transition = animate
-          ? "transform .38s cubic-bezier(.22,.8,.22,1), opacity .28s ease, filter .28s ease, background .28s ease, box-shadow .28s ease"
+          ? "transform .46s cubic-bezier(.22,.8,.22,1), opacity .36s ease, filter .36s ease, background .36s ease, box-shadow .36s ease"
           : "none";
 
         card.style.transform = `translate(-50%, -50%) translateX(${x}px) scale(${scale})`;
         card.style.opacity = opacity;
         card.style.zIndex = z;
+        card.style.filter = `blur(${blur}px)`;
+        card.style.background = `
+          radial-gradient(circle at 50% 0%, rgba(255,255,255,${0.07 + 0.06 * glow}), transparent 50%),
+          rgba(255,255,255,${0.04 + 0.038 * glow})
+        `;
+        card.style.boxShadow = glow > 0.12
+          ? `0 30px ${70 + 45 * glow}px rgba(0,0,0,${0.30 + 0.14 * glow})`
+          : "none";
       });
     }
 
@@ -1334,7 +1312,7 @@
         currentReview = ((currentReview + direction) % reviews.length + reviews.length) % reviews.length;
         renderReviews();
         reviewAnimating = false;
-      }, 390);
+      }, 470);
     }
 
     function nextReview() { shiftReviews(1); }
@@ -1365,7 +1343,7 @@
       reviewsCarousel.classList.remove("is-dragging");
 
       let steps = Math.round(-reviewDragOffset / reviewStep);
-      if (steps === 0 && Math.abs(reviewDragOffset) > 80) {
+      if (steps === 0 && Math.abs(reviewDragOffset) > Math.min(110, reviewStep * 0.22)) {
         steps = reviewDragOffset < 0 ? 1 : -1;
       }
 
@@ -1381,7 +1359,7 @@
           currentReview = ((currentReview + steps) % reviews.length + reviews.length) % reviews.length;
           renderReviews();
           reviewAnimating = false;
-        }, 390);
+        }, 460);
       }
 
       reviewDragOffset = 0;
