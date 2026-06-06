@@ -169,7 +169,7 @@
       margin: 0 auto;
       font-size: clamp(42px, 6.5vw, 82px);
       line-height: 0.96;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.02em;
       font-weight: 760;
     }
 
@@ -200,7 +200,13 @@
 
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: #fff; color: #050505; border-color: #fff; font-weight: 700; }
+    .btn-glow {
+      box-shadow:
+        0 0 24px rgba(255,255,255,0.18),
+        0 14px 46px rgba(255,255,255,0.08);
+    }
     .btn-secondary { background: rgba(255,255,255,0.04); color: var(--text); }
+    .btn-tertiary { background: rgba(255,255,255,0.025); color: var(--muted); }
 
     .contact-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; }
     .contact-trigger { font-family: inherit; }
@@ -293,6 +299,7 @@
 
     /* REVIEWS */
     .reviews-section { padding: 72px 0 96px; }
+
     .reviews-panel {
       border: 1px solid var(--card-border);
       border-radius: var(--radius-xl);
@@ -303,46 +310,208 @@
       padding: clamp(28px, 4vw, 48px) 0;
     }
 
-    .reviews-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; padding: 0 clamp(24px, 4vw, 46px); }
-    .reviews-title-wrap h2 { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
-    .reviews-rating { display: inline-flex; align-items: center; gap: 10px; color: var(--warm); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
-    .reviews-rating .rating-star { width: 34px; height: 34px; border-radius: 999px; display: grid; place-items: center; border: 1px solid rgba(216,202,188,0.22); background: rgba(255,255,255,0.045); color: #fff; font-size: 16px; letter-spacing: 0; }
-    .reviews-controls { display: flex; gap: 12px; flex-shrink: 0; }
-    .review-nav-btn { width: 52px; height: 52px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
-    .review-nav-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.28); }
+    .reviews-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+      padding: 0 clamp(24px, 4vw, 46px);
+    }
 
-    .reviews-carousel { overflow: hidden; padding: 18px 0 26px; cursor: grab; user-select: none; touch-action: pan-y; }
-    .reviews-carousel.is-dragging { cursor: grabbing; }
-    .reviews-track { display: flex; align-items: center; gap: 18px; min-height: 310px; will-change: transform; transition: transform .36s cubic-bezier(.22,.8,.22,1); }
+    .reviews-title-wrap h2 {
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .reviews-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--warm);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .reviews-rating .rating-star {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(216,202,188,0.22);
+      background: rgba(255,255,255,0.045);
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .reviews-controls {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .review-nav-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .review-nav-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .reviews-carousel {
+      position: relative;
+      height: 340px;
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+      touch-action: pan-y;
+    }
+
+    .reviews-carousel.is-dragging {
+      cursor: grabbing;
+    }
+
+    .reviews-track {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      width: 100%;
+    }
+
     .review-slide {
-      width: min(560px, 74vw);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(600px, 74vw);
       min-height: 240px;
-      flex: 0 0 auto;
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 46%), rgba(255,255,255,0.045);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 46%),
+        rgba(255,255,255,0.045);
       padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      opacity: 0.48;
-      transform: scale(0.88);
-      transition: transform .32s ease, opacity .32s ease, filter .32s ease, background .32s ease;
+      opacity: 0.36;
       filter: blur(0.2px);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      will-change: transform, opacity;
+      transition:
+        transform .38s cubic-bezier(.22,.8,.22,1),
+        opacity .28s ease,
+        filter .28s ease,
+        background .28s ease,
+        box-shadow .28s ease;
     }
-    .review-slide.is-active { opacity: 1; transform: scale(1.04); filter: blur(0); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 50%), rgba(255,255,255,0.072); box-shadow: 0 30px 110px rgba(0,0,0,0.42); }
-    .review-slide.is-side { opacity: 0.62; transform: scale(0.92); }
-    .review-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-    .review-photo { width: 58px; height: 58px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); background: radial-gradient(circle at 50% 28%, rgba(255,255,255,0.18), transparent 44%), rgba(255,255,255,0.045); overflow: hidden; flex-shrink: 0; display: grid; place-items: center; color: var(--muted-2); font-size: 11px; position: relative; }
-    .review-photo::after { content: "фото"; position: absolute; inset: 0; display: grid; place-items: center; z-index: 1; }
-    .review-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
-    .review-meta h3 { font-size: 17px; letter-spacing: -0.02em; margin-bottom: 4px; }
-    .review-meta p { color: var(--muted-2); font-size: 13px; }
-    .stars { color: #fff; letter-spacing: 0.08em; font-size: 14px; margin-bottom: 16px; }
-    .review-slide blockquote { color: var(--text); font-size: 16px; line-height: 1.48; font-weight: 600; letter-spacing: -0.01em; }
-    .review-slide footer { border: 0; padding: 0; color: var(--muted-2); font-size: 13px; margin-top: 18px; }
+
+    .review-slide.is-active {
+      opacity: 1;
+      filter: blur(0);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 50%),
+        rgba(255,255,255,0.072);
+      box-shadow: 0 30px 110px rgba(0,0,0,0.42);
+    }
+
+    .review-slide.is-side {
+      opacity: 0.62;
+      filter: blur(0);
+    }
+
+    .review-card-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .review-photo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        radial-gradient(circle at 50% 28%, rgba(255,255,255,0.18), transparent 44%),
+        rgba(255,255,255,0.045);
+      overflow: hidden;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      color: var(--muted-2);
+      font-size: 11px;
+      position: relative;
+    }
+
+    .review-photo::after {
+      content: "фото";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 1;
+    }
+
+    .review-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .review-meta h3 {
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .review-meta p {
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    .stars {
+      color: #fff;
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .review-slide blockquote {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.48;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .review-slide footer {
+      border: 0;
+      padding: 0;
+      color: var(--muted-2);
+      font-size: 13px;
+      margin-top: 18px;
+    }
 
     /* SHOWREEL */
     .showreel-section { padding: 96px 0; }
@@ -410,7 +579,7 @@
       .reel-hint { position: static; margin: -10px auto 0; text-align: center; }
       .reviews-top { display: block; }
       .reviews-controls { margin-top: 18px; }
-      .reviews-track { min-height: 330px; }
+      .reviews-carousel { height: 350px; }
       .review-slide { width: min(560px, 82vw); }
       .cases-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -446,7 +615,7 @@
       .reels-caption h3 { font-size: 16px; }
       .sound-toggle { width: 40px; height: 40px; bottom: 112px; }
       .reviews-panel { border-radius: 26px; }
-      .reviews-track { min-height: 330px; }
+      .reviews-carousel { height: 340px; }
       .review-slide { width: 84vw; min-height: 260px; padding: 20px; }
       .review-slide blockquote { font-size: 15px; }
       .case-preview { min-height: auto; padding: 28px 0; }
@@ -479,20 +648,22 @@
               <img class="logo-eye" src="logo.png" alt="Vnimanie logo">
             </div>
 
-            <h1>V N I M A N I E</h1>
+            <h1>VNIMANIE</h1>
 
             <p>Оживляем говорящие головы и усиливаем подачу спикера через авторский монтаж.</p>
 
             <div class="cta-row">
+              <a class="btn btn-primary btn-glow" href="#showreel">Showreel <span>→</span></a>
+
+              <a class="btn btn-secondary" href="#cases">Кейсы</a>
+
               <div class="contact-wrapper">
-                <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
+                <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
                 <div class="contact-popover" aria-label="Контакты">
                   <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
                   <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
                 </div>
               </div>
-
-              <a class="btn btn-secondary" href="#cases">Смотреть кейсы</a>
             </div>
 
             <div class="hero-proof"><div class="pill">Reels / Shorts / TikTok</div></div>
@@ -816,66 +987,102 @@
     let reviewDragging = false;
     let reviewDragStartX = 0;
     let reviewDragOffset = 0;
-    let reviewStep = 578;
+    let reviewStep = 560;
+    let reviewAnimating = false;
 
     const reviewsCarousel = document.getElementById("reviewsCarousel");
     const reviewsTrack = document.getElementById("reviewsTrack");
+    const reviewOffsets = [-2, -1, 0, 1, 2];
 
-    function renderReviews() {
-      if (!reviewsTrack) return;
-      reviewsTrack.innerHTML = reviews.map((review, index) => `
-        <article class="review-slide" data-index="${index}">
-          <div>
-            <div class="review-card-head">
-              <div class="review-photo"><img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';"></div>
-              <div class="review-meta"><h3>${review.name}</h3><p>${review.role}</p></div>
-            </div>
-            <div class="stars" aria-label="5 звёзд">★★★★★</div>
-            <blockquote>“${review.text}”</blockquote>
-          </div>
-          <footer>VNIMANIE / отзыв клиента</footer>
-        </article>
-      `).join("");
-      updateReviewsLayout(false, 0);
-    }
-
-    function updateReviewClasses() {
-      reviewsTrack?.querySelectorAll(".review-slide").forEach((card, index) => {
-        card.classList.toggle("is-active", index === currentReview);
-        card.classList.toggle("is-side", Math.abs(index - currentReview) === 1);
-      });
+    function reviewIndex(offset) {
+      return ((currentReview + offset) % reviews.length + reviews.length) % reviews.length;
     }
 
     function getReviewStep() {
-      const firstCard = reviewsTrack?.querySelector(".review-slide");
-      if (!firstCard || !reviewsTrack) return 578;
-      const gap = parseFloat(getComputedStyle(reviewsTrack).gap || "18");
-      return firstCard.getBoundingClientRect().width + gap;
+      if (!reviewsCarousel) return 560;
+      const width = reviewsCarousel.getBoundingClientRect().width;
+      return clamp(width * 0.46, 390, 610);
     }
 
-    function updateReviewsLayout(animate = true, offset = 0) {
+    function renderReviews() {
+      if (!reviewsTrack) return;
+
+      reviewsTrack.innerHTML = reviewOffsets.map((offset) => {
+        const review = reviews[reviewIndex(offset)];
+        let className = "review-slide";
+        if (offset === 0) className += " is-active";
+        if (Math.abs(offset) === 1) className += " is-side";
+
+        return `
+          <article class="${className}" data-offset="${offset}">
+            <div>
+              <div class="review-card-head">
+                <div class="review-photo">
+                  <img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';">
+                </div>
+                <div class="review-meta">
+                  <h3>${review.name}</h3>
+                  <p>${review.role}</p>
+                </div>
+              </div>
+
+              <div class="stars" aria-label="5 звёзд">★★★★★</div>
+              <blockquote>“${review.text}”</blockquote>
+            </div>
+
+            <footer>VNIMANIE / отзыв клиента</footer>
+          </article>
+        `;
+      }).join("");
+
+      updateReviewsLayout(false, 0);
+    }
+
+    function updateReviewsLayout(animate = true, dragOffset = 0) {
       if (!reviewsTrack || !reviewsCarousel) return;
+
       reviewStep = getReviewStep();
-      const carouselWidth = reviewsCarousel.getBoundingClientRect().width;
-      const cardWidth = reviewsTrack.querySelector(".review-slide")?.getBoundingClientRect().width || 560;
-      const base = (carouselWidth / 2) - (cardWidth / 2) - (currentReview * reviewStep);
-      reviewsTrack.style.transition = animate ? "transform .38s cubic-bezier(.22,.8,.22,1)" : "none";
-      reviewsTrack.style.transform = `translateX(${base + offset}px)`;
-      updateReviewClasses();
+
+      reviewsTrack.querySelectorAll(".review-slide").forEach((card) => {
+        const offset = Number(card.dataset.offset);
+        const abs = Math.abs(offset);
+        const x = (offset * reviewStep) + dragOffset;
+
+        const scale = abs === 0 ? 1 : abs === 1 ? 0.86 : 0.74;
+        const opacity = abs === 0 ? 1 : abs === 1 ? 0.62 : 0.26;
+        const z = abs === 0 ? 5 : abs === 1 ? 3 : 1;
+
+        card.style.transition = animate
+          ? "transform .38s cubic-bezier(.22,.8,.22,1), opacity .28s ease, filter .28s ease, background .28s ease, box-shadow .28s ease"
+          : "none";
+
+        card.style.transform = `translate(-50%, -50%) translateX(${x}px) scale(${scale})`;
+        card.style.opacity = opacity;
+        card.style.zIndex = z;
+      });
     }
 
-    function setReview(index, animate = true) {
-      currentReview = clamp(index, 0, reviews.length - 1);
-      updateReviewsLayout(animate, 0);
+    function shiftReviews(direction) {
+      if (reviewAnimating) return;
+      reviewAnimating = true;
+
+      updateReviewsLayout(true, -direction * reviewStep);
+
+      window.setTimeout(() => {
+        currentReview = ((currentReview + direction) % reviews.length + reviews.length) % reviews.length;
+        renderReviews();
+        reviewAnimating = false;
+      }, 390);
     }
 
-    function nextReview() { setReview(currentReview >= reviews.length - 1 ? 0 : currentReview + 1); }
-    function prevReview() { setReview(currentReview <= 0 ? reviews.length - 1 : currentReview - 1); }
+    function nextReview() { shiftReviews(1); }
+    function prevReview() { shiftReviews(-1); }
 
     document.getElementById("reviewNext")?.addEventListener("click", nextReview);
     document.getElementById("reviewPrev")?.addEventListener("click", prevReview);
 
     reviewsCarousel?.addEventListener("pointerdown", (event) => {
+      if (reviewAnimating) return;
       reviewDragging = true;
       reviewDragStartX = event.clientX;
       reviewDragOffset = 0;
@@ -887,7 +1094,6 @@
     reviewsCarousel?.addEventListener("pointermove", (event) => {
       if (!reviewDragging) return;
       reviewDragOffset = event.clientX - reviewDragStartX;
-      if ((currentReview === 0 && reviewDragOffset > 0) || (currentReview === reviews.length - 1 && reviewDragOffset < 0)) reviewDragOffset *= 0.34;
       updateReviewsLayout(false, reviewDragOffset);
     });
 
@@ -895,15 +1101,34 @@
       if (!reviewDragging) return;
       reviewDragging = false;
       reviewsCarousel.classList.remove("is-dragging");
-      const steps = Math.round(-reviewDragOffset / reviewStep);
-      if (steps === 0 && Math.abs(reviewDragOffset) > 80) setReview(currentReview + (reviewDragOffset < 0 ? 1 : -1), true);
-      else setReview(currentReview + steps, true);
+
+      let steps = Math.round(-reviewDragOffset / reviewStep);
+      if (steps === 0 && Math.abs(reviewDragOffset) > 80) {
+        steps = reviewDragOffset < 0 ? 1 : -1;
+      }
+
+      steps = clamp(steps, -1, 1);
+
+      if (steps === 0) {
+        updateReviewsLayout(true, 0);
+      } else {
+        reviewAnimating = true;
+        updateReviewsLayout(true, -steps * reviewStep);
+
+        window.setTimeout(() => {
+          currentReview = ((currentReview + steps) % reviews.length + reviews.length) % reviews.length;
+          renderReviews();
+          reviewAnimating = false;
+        }, 390);
+      }
+
       reviewDragOffset = 0;
     }
 
     reviewsCarousel?.addEventListener("pointerup", releaseReviewDrag);
     reviewsCarousel?.addEventListener("pointercancel", releaseReviewDrag);
     renderReviews();
+
 
     window.addEventListener("resize", () => { updateReelLayout(false, 0); updateReviewsLayout(false, 0); });
     document.querySelectorAll("video").forEach((video) => video.addEventListener("play", () => pauseAllOtherVideos(video)));
