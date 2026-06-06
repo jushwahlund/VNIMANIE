@@ -843,6 +843,199 @@
       }
     }
 
+    /* VNIMANIE emergency final merge fixes */
+    .showreel-cta {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reel-hint {
+      display: none !important;
+    }
+
+    .reel-swipe-hint {
+      max-width: 56px;
+      color: rgba(255,255,255,0.42);
+      font-size: 10px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+      user-select: none;
+      writing-mode: initial;
+      transform: none;
+    }
+
+    .phone-notch {
+      width: 28%;
+      height: 20px;
+      border-radius: 0 0 14px 14px;
+    }
+
+    .reels-phone,
+    .reels-viewport {
+      isolation: isolate;
+      contain: paint;
+      overflow: hidden;
+    }
+
+    .reels-track-vertical {
+      position: relative;
+      display: block !important;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      transform: none !important;
+      will-change: auto;
+    }
+
+    .reel-slide {
+      position: absolute !important;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      flex: none !important;
+      background: #050505;
+      overflow: hidden;
+      will-change: transform;
+      backface-visibility: hidden;
+      transform: translateY(100%);
+    }
+
+    .reels-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #process {
+      padding-top: 96px;
+    }
+
+    .step-card {
+      min-height: 190px;
+      padding: 26px;
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      margin-bottom: 26px;
+      color: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.15);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 62%),
+        rgba(255,255,255,0.045);
+      box-shadow: 0 0 30px rgba(255,255,255,0.045);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .final-cta {
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(44px, 7vw, 90px);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%),
+        rgba(255,255,255,0.035);
+      margin-bottom: 80px;
+      box-shadow: 0 30px 120px rgba(0,0,0,0.35);
+    }
+
+    .final-cta h2 {
+      font-size: clamp(34px, 5.5vw, 70px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .final-cta .cta-row {
+      margin-top: 38px;
+    }
+
+    .final-cta .btn {
+      height: 62px;
+      padding: 0 34px;
+      font-size: 16px;
+      min-width: 190px;
+    }
+
+    .final-cta .btn-primary {
+      box-shadow:
+        0 0 26px rgba(255,255,255,0.16),
+        0 18px 54px rgba(255,255,255,0.08);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .showreel-cta {
+        justify-content: center;
+      }
+
+      .phone-notch {
+        width: 28%;
+        height: 18px;
+        border-radius: 0 0 12px 12px;
+      }
+
+      .reel-side-controls {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 14px;
+        opacity: 0.86;
+      }
+
+      .reel-swipe-hint {
+        max-width: none;
+        font-size: 10px;
+      }
+
+      .reels-caption {
+        bottom: 78px;
+      }
+
+      .sound-toggle {
+        bottom: 128px;
+      }
+
+      .step-num {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 22px;
+      }
+
+      .final-cta .btn {
+        height: 58px;
+        min-width: 0;
+      }
+    }
+
   </style>
 </head>
 
@@ -881,8 +1074,8 @@
               <div class="contact-wrapper">
                 <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
                 <div class="contact-popover" aria-label="Контакты">
-                  <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
-                  <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
+                  <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
+                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
                 </div>
               </div>
             </div>
@@ -918,6 +1111,16 @@
             <div class="section-kicker"><span class="star-icon">✦</span> showreel</div>
             <h2>Фрагменты наших работ</h2>
             <p>Короткие отрывки монтажа: эстетика, экспертные ролики, юмор и промо-форматы.</p>
+
+            <div class="showreel-cta">
+              <div class="contact-wrapper">
+                <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
+                <div class="contact-popover" aria-label="Контакты">
+                  <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
+                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="reels-phone-stage" id="reelsStage">
@@ -933,12 +1136,10 @@
 
             <div class="reel-side-controls" aria-label="Навигация по showreel">
               <button class="reel-mini-btn" type="button" id="reelPrev" aria-label="Предыдущий фрагмент">↑</button>
-              <div class="reel-swipe-hint">drag<br>up / down</div>
+              <div class="reel-swipe-hint">тяни<br>вверх / вниз</div>
               <button class="reel-mini-btn" type="button" id="reelNext" aria-label="Следующий фрагмент">↓</button>
             </div>
           </div>
-
-          <div class="reel-hint">Зажмите телефон и потяните вверх/вниз или используйте компактные кнопки сбоку.</div>
         </div>
       </section>
 
@@ -994,8 +1195,8 @@
             <div class="contact-wrapper">
               <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
               <div class="contact-popover" aria-label="Контакты">
-                <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
-                <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
+                <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
+                <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
               </div>
             </div>
             <a class="btn btn-secondary" href="#cases">Посмотреть кейсы</a>
@@ -1023,11 +1224,11 @@
     ];
 
     const reviews = [
-      { name: "Евгений", role: "Авитолог / личный бренд", photo: "reviews/review-01.jpg", text: "Монтаж оживил формат: шутки стали считываться быстрее, объявления понятнее, а ролики выглядят динамичнее." },
-      { name: "Клиент", role: "Экспертный контент", photo: "reviews/review-02.jpg", text: "Понравилось, что команда не просто выполняет ТЗ, а сама предлагает решения: где усилить, где ускорить, где добавить визуальную идею." },
-      { name: "Клиент", role: "Пакет роликов / 8–12 в месяц", photo: "reviews/review-03.jpg", text: "Сроки понятные, правки быстрые, стиль не шаблонный. Видно, что в ролик реально погружаются." },
-      { name: "Клиент", role: "Vertical content", photo: "reviews/review-04.jpg", text: "После монтажа ролик ощущается живее: больше ритма, акцентов и понятной подачи для зрителя." },
-      { name: "Клиент", role: "Личный бренд", photo: "reviews/review-05.jpg", text: "Удобно, что после серии роликов есть не только готовые файлы, но и мысли по улучшению формата." }
+      { name: "Protegra", role: "", photo: "", text: "Шикарная работа, качественный монтаж и подборка b-roll в быстрые сроки: монтаж, озвучка и написание сценария." },
+      { name: "olyakozdoy", role: "", photo: "", text: "Все отлично, спасибо. Обязательно закажу еще. Все сделано очень быстро и без правок." },
+      { name: "Клиент", role: "", photo: "", text: "Привет, всё отлично, оправдал ожидания, уложился в сроки, которые были обговорены." },
+      { name: "SYNTHESIT", role: "", photo: "", text: "Супер! Отличные видео получились." },
+      { name: "kholerik", role: "", photo: "", text: "Быстро, чётко и со вкусом. В дальнейшем буду с вами работать." }
     ];
 
     const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -1086,8 +1287,8 @@
 
     function renderReels() {
       if (!reelsTrackVertical) return;
-      reelsTrackVertical.innerHTML = showreelItems.map((item) => `
-        <div class="reel-slide"><video class="reels-video" src="${item.src}" playsinline preload="metadata" muted></video></div>
+      reelsTrackVertical.innerHTML = showreelItems.map((item, index) => `
+        <div class="reel-slide" data-index="${index}"><video class="reels-video" src="${item.src}" playsinline preload="metadata" muted></video></div>
       `).join("");
       updateSoundIcon();
       updateReelLayout(false);
@@ -1096,8 +1297,14 @@
     function updateReelLayout(animate = true, offset = 0) {
       if (!reelsTrackVertical || !reelsPhone) return;
       reelHeight = reelsPhone.getBoundingClientRect().height || 1;
-      reelsTrackVertical.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
-      reelsTrackVertical.style.transform = `translateY(${(-currentReel * reelHeight) + offset}px)`;
+
+      reelsTrackVertical.querySelectorAll(".reel-slide").forEach((slide) => {
+        const index = Number(slide.dataset.index);
+        const relative = index - currentReel;
+        slide.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
+        slide.style.transform = `translateY(calc(${relative * 100}% + ${offset}px))`;
+      });
+
       const item = showreelItems[currentReel];
       reelsCaption.textContent = item.caption;
       reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
@@ -1240,11 +1447,11 @@
             <div>
               <div class="review-card-head">
                 <div class="review-photo">
-                  <img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';">
+                  ${review.photo ? `<img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';">` : ""}
                 </div>
                 <div class="review-meta">
                   <h3>${review.name}</h3>
-                  <p>${review.role}</p>
+                  ${review.role ? `<p>${review.role}</p>` : ""}
                 </div>
               </div>
 
