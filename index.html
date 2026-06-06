@@ -22,8 +22,15 @@
       --max: 1320px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: Inter, Arial, Helvetica, sans-serif;
@@ -50,7 +57,10 @@
       z-index: -1;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .page {
       width: 100%;
@@ -92,11 +102,26 @@
       transition: color .2s ease;
     }
 
-    .brand:hover { color: #fff; }
+    .brand:hover {
+      color: #ffffff;
+    }
 
-    .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a { color: rgba(216, 202, 188, 0.82); font-size: 15px; font-weight: 500; transition: color .2s ease; }
-    .nav-links a:hover { color: #fff; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: rgba(216, 202, 188, 0.82);
+      font-size: 15px;
+      font-weight: 500;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
 
     .hero {
       min-height: calc(100vh - 74px);
@@ -128,29 +153,19 @@
       pointer-events: none;
     }
 
-    .hero-content { position: relative; z-index: 1; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
 
     .logo-eye-wrap {
       width: min(620px, 88vw);
       height: 250px;
       margin: 0 auto 24px;
-      overflow: visible;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-    }
-
-    .logo-eye-wrap::before {
-      content: "";
-      position: absolute;
-      width: min(520px, 80vw);
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.28), rgba(255,255,255,0.07) 42%, transparent 72%);
-      filter: blur(28px);
-      z-index: -1;
-      pointer-events: none;
     }
 
     .logo-eye {
@@ -159,9 +174,9 @@
       object-fit: cover;
       display: block;
       filter:
-        drop-shadow(0 0 10px rgba(255,255,255,0.38))
-        drop-shadow(0 0 38px rgba(255,255,255,0.18))
-        drop-shadow(0 0 90px rgba(255,255,255,0.11));
+        drop-shadow(0 0 10px rgba(255,255,255,0.35))
+        drop-shadow(0 0 32px rgba(255,255,255,0.14))
+        drop-shadow(0 0 70px rgba(255,255,255,0.08));
     }
 
     h1 {
@@ -169,7 +184,7 @@
       margin: 0 auto;
       font-size: clamp(42px, 6.5vw, 82px);
       line-height: 0.96;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.075em;
       font-weight: 760;
     }
 
@@ -181,7 +196,19 @@
       line-height: 1.55;
     }
 
-    .cta-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+    .hero p strong {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
 
     .btn {
       height: 52px;
@@ -195,77 +222,134 @@
       transition: transform .2s ease, background .2s ease, border-color .2s ease;
       cursor: pointer;
       border: 1px solid rgba(255,255,255,0.14);
-      font-family: inherit;
     }
 
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: #fff; color: #050505; border-color: #fff; font-weight: 700; }
-    .btn-glow {
-      box-shadow:
-        0 0 24px rgba(255,255,255,0.18),
-        0 14px 46px rgba(255,255,255,0.08);
-    }
-    .btn-secondary { background: rgba(255,255,255,0.04); color: var(--text); }
-    .btn-tertiary { background: rgba(255,255,255,0.025); color: var(--muted); }
-
-    .contact-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; }
-    .contact-trigger { font-family: inherit; }
-
-    .contact-popover {
-      position: absolute;
-      top: calc(100% + 12px);
-      left: 50%;
-      transform: translate(-50%, 8px) scale(0.96);
-      opacity: 0;
-      pointer-events: none;
-      display: flex;
-      gap: 10px;
-      padding: 9px;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      background: rgba(10,10,10,0.74);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 18px 60px rgba(0,0,0,0.42);
-      transition: opacity .22s ease, transform .22s ease;
-      z-index: 30;
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
-    .contact-wrapper.is-open .contact-popover { opacity: 1; pointer-events: auto; transform: translate(-50%, 0) scale(1); }
-
-    .contact-popover a {
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: #050505;
+    .btn-primary {
       background: #fff;
-      font-size: 13px;
-      font-weight: 850;
-      letter-spacing: 0.08em;
-      transition: transform .2s ease, background .2s ease;
+      color: #050505;
+      border-color: #fff;
+      font-weight: 700;
     }
 
-    .contact-popover a:hover { transform: translateY(-2px); background: var(--warm); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
 
-    .hero-proof { margin-top: 34px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-    .pill { color: var(--muted); border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.03); border-radius: 999px; padding: 9px 13px; font-size: 13px; }
+    .hero-proof {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-    section { padding: 82px 0; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
-    .section-title { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
-    .grid { display: grid; gap: 16px; width: 100%; }
-    .cases-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .steps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .pill {
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 13px;
+    }
 
-    .case-card, .step-card {
+    section {
+      padding: 82px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .section-note {
+      max-width: 440px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .cases-grid,
+    .reviews-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .case-card,
+    .review-card,
+    .step-card,
+    .offer-card {
       width: 100%;
       border: 1px solid var(--card-border);
       background: var(--card);
       border-radius: var(--radius-lg);
       overflow: hidden;
       backdrop-filter: blur(16px);
+    }
+
+    .offer-section {
+      padding-top: 20px;
+    }
+
+    .offer-card {
+      padding: clamp(26px, 5vw, 48px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .offer-card h2 {
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .offer-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .offer-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .offer-list div {
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .offer-list strong {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .case-preview {
@@ -290,242 +374,150 @@
       box-shadow: 0 26px 90px rgba(0,0,0,0.58);
     }
 
-    .case-video { width: 100%; height: 100%; object-fit: cover; border-radius: 30px; display: block; background: #050505; }
-    .case-body { padding: 24px; }
-    .case-body h3 { font-size: 20px; letter-spacing: -0.02em; margin-bottom: 10px; }
-    .case-body p { color: var(--muted); line-height: 1.55; font-size: 14px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-    .tag { font-size: 12px; color: var(--muted); padding: 7px 9px; border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; }
-
-    /* REVIEWS */
-    .reviews-section { padding: 72px 0 96px; }
-
-    .reviews-panel {
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-xl);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 42%),
-        rgba(255,255,255,0.032);
-      overflow: hidden;
-      padding: clamp(28px, 4vw, 48px) 0;
-    }
-
-    .reviews-top {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 28px;
-      padding: 0 clamp(24px, 4vw, 46px);
-    }
-
-    .reviews-title-wrap h2 {
-      font-size: clamp(30px, 4.2vw, 54px);
-      line-height: 1;
-      letter-spacing: -0.05em;
-    }
-
-    .reviews-rating {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--warm);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .reviews-rating .rating-star {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(216,202,188,0.22);
-      background: rgba(255,255,255,0.045);
-      color: #fff;
-      font-size: 16px;
-      letter-spacing: 0;
-    }
-
-    .reviews-controls {
-      display: flex;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-
-    .review-nav-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      color: #fff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-    }
-
-    .review-nav-btn:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.09);
-      border-color: rgba(255,255,255,0.28);
-    }
-
-    .reviews-carousel {
-      position: relative;
-      height: 340px;
-      overflow: hidden;
-      cursor: grab;
-      user-select: none;
-      touch-action: pan-y;
-    }
-
-    .reviews-carousel.is-dragging {
-      cursor: grabbing;
-    }
-
-    .reviews-track {
-      position: relative;
-      height: 100%;
-      min-height: 0;
-      width: 100%;
-    }
-
-    .review-slide {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: min(600px, 74vw);
-      min-height: 240px;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-lg);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 46%),
-        rgba(255,255,255,0.045);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      opacity: 0.36;
-      filter: blur(0.2px);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      will-change: transform, opacity;
-      transition:
-        transform .38s cubic-bezier(.22,.8,.22,1),
-        opacity .28s ease,
-        filter .28s ease,
-        background .28s ease,
-        box-shadow .28s ease;
-    }
-
-    .review-slide.is-active {
-      opacity: 1;
-      filter: blur(0);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 50%),
-        rgba(255,255,255,0.072);
-      box-shadow: 0 30px 110px rgba(0,0,0,0.42);
-    }
-
-    .review-slide.is-side {
-      opacity: 0.62;
-      filter: blur(0);
-    }
-
-    .review-card-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .review-photo {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.14);
-      background:
-        radial-gradient(circle at 50% 28%, rgba(255,255,255,0.18), transparent 44%),
-        rgba(255,255,255,0.045);
-      overflow: hidden;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      color: var(--muted-2);
-      font-size: 11px;
-      position: relative;
-    }
-
-    .review-photo::after {
-      content: "фото";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      z-index: 1;
-    }
-
-    .review-photo img {
+    .case-video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 30px;
       display: block;
-      position: relative;
-      z-index: 2;
+      background: #050505;
     }
 
-    .review-meta h3 {
-      font-size: 17px;
+    .case-body {
+      padding: 24px;
+    }
+
+    .case-body h3 {
+      font-size: 20px;
       letter-spacing: -0.02em;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
-    .review-meta p {
-      color: var(--muted-2);
-      font-size: 13px;
-    }
-
-    .stars {
-      color: #fff;
-      letter-spacing: 0.08em;
+    .case-body p {
+      color: var(--muted);
+      line-height: 1.55;
       font-size: 14px;
-      margin-bottom: 16px;
     }
 
-    .review-slide blockquote {
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.48;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    .review-slide footer {
-      border: 0;
-      padding: 0;
-      color: var(--muted-2);
-      font-size: 13px;
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-top: 18px;
     }
 
-    /* SHOWREEL */
+    .tag {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 7px 9px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+    }
+
+    .review-card {
+      padding: 24px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-text {
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .review-author {
+      margin-top: 24px;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    .step-card {
+      padding: 22px;
+    }
+
+    .step-num {
+      color: var(--muted-2);
+      font-size: 13px;
+      margin-bottom: 34px;
+    }
+
+    .step-card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .final-cta {
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(34px, 7vw, 80px);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%),
+        rgba(255,255,255,0.035);
+      margin-bottom: 80px;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(34px, 5.5vw, 70px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 20px auto 0;
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* SHOWREEL PHONE */
     .showreel-section { padding: 96px 0; }
     .showreel-layout {
       min-height: 720px;
       border: 1px solid var(--card-border);
       border-radius: var(--radius-xl);
       background: radial-gradient(circle at 68% 42%, rgba(255,255,255,0.13), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)), rgba(0,0,0,0.42);
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      align-items: center;
-      gap: 32px;
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: 32px;
       padding: clamp(34px, 5vw, 70px);
     }
     .showreel-copy { position: relative; z-index: 2; }
@@ -534,93 +526,234 @@
     .showreel-copy h2 { max-width: 620px; font-size: clamp(42px, 6vw, 86px); line-height: 0.94; letter-spacing: -0.075em; margin-bottom: 22px; }
     .showreel-copy p { max-width: 520px; color: var(--muted); font-size: 17px; line-height: 1.6; }
     .reels-phone-stage { position: relative; display: grid; place-items: center; min-height: 630px; }
-    .reels-phone { width: min(350px, 78vw); aspect-ratio: 9 / 16; border: 2px solid rgba(255,255,255,0.18); border-radius: 46px; background: #050505; overflow: hidden; position: relative; box-shadow: 0 34px 120px rgba(0,0,0,0.72), 0 0 80px rgba(255,255,255,0.08); cursor: grab; user-select: none; touch-action: none; }
+    .reels-phone { width: min(350px, 78vw); aspect-ratio: 9/16; border: 2px solid rgba(255,255,255,0.18); border-radius: 46px; background: #050505; overflow: hidden; position: relative; box-shadow: 0 34px 120px rgba(0,0,0,0.72), 0 0 80px rgba(255,255,255,0.08); cursor: grab; user-select: none; touch-action: pan-y; }
     .reels-phone:active { cursor: grabbing; }
-    .phone-notch { position: absolute; top: 0; left: 50%; width: 42%; height: 30px; transform: translateX(-50%); border-radius: 0 0 19px 19px; background: #050505; z-index: 7; box-shadow: 0 6px 18px rgba(0,0,0,0.35); pointer-events: none; }
-    .reels-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; border-radius: 44px; }
-    .reels-track-vertical { width: 100%; height: 100%; will-change: transform; transition: transform .34s cubic-bezier(.22,.8,.22,1); }
-    .reel-slide { width: 100%; height: 100%; position: relative; background: #050505; overflow: hidden; }
-    .reels-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #050505; pointer-events: none; }
-    .sound-toggle { position: absolute; right: 16px; bottom: 126px; z-index: 8; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: rgba(0,0,0,0.46); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: transform .2s ease, background .2s ease; }
-    .sound-toggle:hover { transform: scale(1.04); background: rgba(255,255,255,0.12); }
-    .sound-toggle svg { width: 20px; height: 20px; display: block; }
-    .reels-caption { position: absolute; left: 18px; right: 18px; bottom: 54px; z-index: 6; pointer-events: none; }
-    .reels-counter { color: rgba(255,255,255,0.72); font-size: 12px; margin-bottom: 8px; text-shadow: 0 2px 16px rgba(0,0,0,0.78); }
-    .reels-caption h3 { color: #fff; font-size: 18px; line-height: 1.2; letter-spacing: -0.03em; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
-    .reel-arrow { position: absolute; left: 50%; z-index: 9; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.045); color: #fff; font-size: 23px; cursor: pointer; transform: translateX(-50%); transition: transform .2s ease, background .2s ease, border-color .2s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .reel-arrow:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.32); }
-    .reel-arrow-up { top: 16px; }
-    .reel-arrow-down { bottom: 16px; }
-    .reel-arrow-up:hover { transform: translateX(-50%) translateY(-2px); }
-    .reel-arrow-down:hover { transform: translateX(-50%) translateY(2px); }
+    .phone-notch { position: absolute; top: 0; left: 50%; width: 28%; height: 20px; transform: translateX(-50%); border-radius: 0 0 14px 14px; background: #050505; z-index: 7; box-shadow: 0 5px 14px rgba(0,0,0,0.34); pointer-events: none; }
+    .reels-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #050505; transition: opacity .22s ease, transform .22s ease; opacity: 1; transform: scale(1); }
+    .reels-video.is-fading { opacity: 0; transform: scale(1.015); }
+    .reels-gradient { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,0.28), transparent 22%), linear-gradient(0deg, rgba(0,0,0,0.78), transparent 42%); z-index: 2; }
+    .sound-toggle { position: absolute; right: 16px; bottom: 154px; z-index: 8; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: rgba(0,0,0,0.46); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: transform .2s ease, background .2s ease; }
+    .sound-toggle:hover { transform: scale(1.04); background: rgba(255,255,255,0.11); }
+    .reels-caption { position: absolute; left: 18px; right: 18px; bottom: 88px; z-index: 6; pointer-events: none; }
+    .reels-counter { color: rgba(255,255,255,0.62); font-size: 12px; margin-bottom: 8px; }
+    .reels-caption h3 { color: #fff; font-size: 18px; line-height: 1.2; letter-spacing: -0.03em; text-shadow: 0 2px 18px rgba(0,0,0,0.72); }
+    .reel-controls-rail {
+      position: absolute;
+      left: calc(50% + min(350px, 78vw) / 2 + 26px);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      color: rgba(255,255,255,0.44);
+    }
+
+    .reel-mini-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.035);
+      color: rgba(255,255,255,0.62);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .reel-mini-btn:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-1px);
+    }
+
+    .reel-rail-line {
+      width: 1px;
+      height: 34px;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.22), transparent);
+    }
+
+    .reel-rail-text {
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 10px;
+      color: rgba(255,255,255,0.34);
+    }
     .reel-hint { position: absolute; right: clamp(18px, 3vw, 44px); bottom: clamp(18px, 3vw, 44px); color: var(--muted-2); font-size: 13px; line-height: 1.45; max-width: 250px; }
 
-    .step-card { padding: 22px; }
-    .step-num { color: var(--muted-2); font-size: 13px; margin-bottom: 34px; }
-    .step-card h3 { margin-bottom: 10px; font-size: 18px; }
-    .step-card p { color: var(--muted); line-height: 1.5; font-size: 14px; }
-
-    .final-cta { width: 100%; text-align: center; border: 1px solid var(--card-border); border-radius: var(--radius-xl); padding: clamp(34px, 7vw, 80px); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%), rgba(255,255,255,0.035); margin-bottom: 80px; }
-    .final-cta h2 { font-size: clamp(34px, 5.5vw, 70px); line-height: 0.98; letter-spacing: -0.06em; max-width: 850px; margin: 0 auto; }
-    .final-cta p { color: var(--muted); max-width: 620px; margin: 20px auto 0; line-height: 1.6; }
-
-    footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 0; color: var(--muted-2); font-size: 13px; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    /* REVIEWS ROULETTE */
+    .reviews-section { padding: 96px 0; }
+    .reviews-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+    .reviews-title-wrap h2 { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
+    .reviews-rating { display: inline-flex; align-items: center; gap: 10px; color: var(--warm); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .reviews-rating .rating-star { width: 34px; height: 34px; border-radius: 999px; display: grid; place-items: center; border: 1px solid rgba(216,202,188,0.22); background: rgba(255,255,255,0.045); color: #fff; font-size: 16px; letter-spacing: 0; }
+    .reviews-controls { display: flex; gap: 12px; flex-shrink: 0; }
+    .review-nav-btn { width: 52px; height: 52px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .review-nav-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.28); }
+    .reviews-carousel { overflow: hidden; padding: 18px 0 26px; }
+    .reviews-track { min-height: 390px; display: flex; align-items: center; justify-content: center; gap: 16px; perspective: 1200px; }
+    .review-slide { width: min(520px, 72vw); min-height: 330px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 46%), rgba(255,255,255,0.045); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; opacity: 0.42; transform: scale(0.82); transition: transform .32s ease, opacity .32s ease, filter .32s ease; filter: blur(0.3px); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .review-slide.is-active { opacity: 1; transform: scale(1); filter: blur(0); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 50%), rgba(255,255,255,0.07); box-shadow: 0 30px 110px rgba(0,0,0,0.42); }
+    .review-slide.is-side { opacity: 0.62; transform: scale(0.88); }
+    .review-slide.is-outer { opacity: 0.22; transform: scale(0.76); }
+    .review-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .review-photo { width: 58px; height: 58px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); background: radial-gradient(circle at 50% 28%, rgba(255,255,255,0.18), transparent 44%), rgba(255,255,255,0.045); overflow: hidden; flex-shrink: 0; display: grid; place-items: center; color: var(--muted-2); font-size: 11px; }
+    .review-photo::after { content: 'фото'; }
+    .review-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
+    .review-photo img[src=''] { display: none; }
+    .review-meta h3 { font-size: 17px; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .review-meta p { color: var(--muted-2); font-size: 13px; }
+    .stars { color: #fff; letter-spacing: 0.08em; font-size: 14px; margin-bottom: 18px; }
+    .review-slide blockquote { color: var(--text); font-size: 17px; line-height: 1.55; font-weight: 600; letter-spacing: -0.01em; }
+    .review-slide footer { border: 0; padding: 0; color: var(--muted-2); font-size: 13px; margin-top: 22px; }
 
     @media (max-width: 920px) {
-      .page { padding: 0 20px; }
-      .nav-inner { padding: 0 20px; }
+      .page {
+        padding: 0 20px;
+      }
+
       .showreel-layout { grid-template-columns: 1fr; min-height: auto; text-align: center; }
       .showreel-copy p { margin: 0 auto; }
       .reels-phone-stage { min-height: 600px; }
       .reel-hint { position: static; margin: -10px auto 0; text-align: center; }
       .reviews-top { display: block; }
       .reviews-controls { margin-top: 18px; }
-      .reviews-carousel { height: 350px; }
+      .reviews-track { min-height: 430px; }
       .review-slide { width: min(560px, 82vw); }
-      .cases-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .section-head { display: block; }
-      .case-preview { min-height: 660px; padding: 34px 0; }
-      .phone-frame { width: min(72vw, 360px); }
+      .review-slide.is-outer { display: none; }
+
+
+      .nav-inner {
+        padding: 0 20px;
+      }
+
+      .cases-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .offer-card {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-note {
+        margin-top: 12px;
+      }
+
+      .case-preview {
+        min-height: 660px;
+        padding: 34px 0;
+      }
+
+      .phone-frame {
+        width: min(72vw, 360px);
+      }
     }
 
     @media (max-width: 640px) {
-      .page { padding: 0 14px; }
-      .nav { height: 66px; }
-      .nav-inner { padding: 0 18px; }
-      .brand { font-size: 13px; letter-spacing: 0.12em; }
-      .nav-links { display: none; }
-      .hero { padding-top: 22px; }
-      .hero-card { border-radius: 26px; padding: 32px 18px; }
-      .logo-eye-wrap { width: 100%; height: 170px; margin-bottom: 20px; }
-      .logo-eye-wrap::before { width: 360px; height: 130px; }
-      .logo-eye { width: 460px; height: 460px; }
-      h1 { font-size: 40px; }
-      .hero p { font-size: 16px; }
-      .btn, .contact-wrapper, .contact-wrapper .btn { width: 100%; }
-      section { padding: 58px 0; }
+      .page {
+        padding: 0 14px;
+      }
+
       .showreel-section, .reviews-section { padding: 58px 0; }
       .showreel-layout { padding: 28px 18px; border-radius: 26px; }
       .showreel-copy h2 { font-size: 44px; }
       .reels-phone-stage { min-height: 520px; }
       .reels-phone { width: min(80vw, 310px); border-radius: 38px; }
-      .reels-viewport { border-radius: 36px; }
       .phone-notch { height: 26px; }
-      .reel-arrow { width: 44px; height: 44px; font-size: 21px; }
-      .reels-caption { bottom: 48px; }
+      .reel-controls-rail { left: auto; right: 12px; }
+      .reel-mini-btn { width: 31px; height: 31px; font-size: 16px; }
+      .reel-rail-text { display: none; }
+      .reel-rail-line { height: 26px; }
       .reels-caption h3 { font-size: 16px; }
-      .sound-toggle { width: 40px; height: 40px; bottom: 112px; }
-      .reviews-panel { border-radius: 26px; }
-      .reviews-carousel { height: 340px; }
-      .review-slide { width: 84vw; min-height: 260px; padding: 20px; }
+      .sound-toggle { width: 40px; height: 40px; bottom: 104px; }
+      .reviews-track { min-height: 380px; }
+      .review-slide { width: 86vw; min-height: 315px; padding: 20px; }
+      .review-slide.is-side { display: none; }
       .review-slide blockquote { font-size: 15px; }
-      .case-preview { min-height: auto; padding: 28px 0; }
-      .phone-frame { width: min(82vw, 320px); }
-      .steps-grid { grid-template-columns: 1fr; }
+
+
+      .nav {
+        height: 66px;
+      }
+
+      .nav-inner {
+        padding: 0 18px;
+      }
+
+      .brand {
+        font-size: 13px;
+        letter-spacing: 0.12em;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 22px;
+      }
+
+      .hero-card {
+        border-radius: 26px;
+        padding: 32px 18px;
+      }
+
+      .logo-eye-wrap {
+        width: 100%;
+        height: 170px;
+        margin-bottom: 20px;
+      }
+
+      .logo-eye {
+        width: 460px;
+        height: 460px;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .case-preview {
+        min-height: auto;
+        padding: 28px 0;
+      }
+
+      .phone-frame {
+        width: min(82vw, 320px);
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -648,48 +781,48 @@
               <img class="logo-eye" src="logo.png" alt="Vnimanie logo">
             </div>
 
-            <h1>VNIMANIE</h1>
+            <h1>V N I M A N I E</h1>
 
-            <p>Оживляем говорящие головы и усиливаем подачу спикера через авторский монтаж.</p>
+            <p>
+              Оживляем говорящие головы и усиливаем подачу спикера через авторский монтаж.
+            </p>
 
             <div class="cta-row">
-              <a class="btn btn-primary btn-glow" href="#showreel">Showreel <span>→</span></a>
-
-              <a class="btn btn-secondary" href="#cases">Кейсы</a>
-
-              <div class="contact-wrapper">
-                <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
-                <div class="contact-popover" aria-label="Контакты">
-                  <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
-                  <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
-                </div>
-              </div>
+              <a class="btn btn-primary" href="https://t.me/USERNAME" target="_blank">
+                Связаться
+                <span>→</span>
+              </a>
+              <a class="btn btn-secondary" href="#cases">
+                Смотреть кейсы
+              </a>
             </div>
 
-            <div class="hero-proof"><div class="pill">Reels / Shorts / TikTok</div></div>
+            <div class="hero-proof">
+            </div>
+          </div>
+                Reels / Shorts / TikTok
+        </div>
+      </section>
+
+      <section class="offer-section" data-reveal>
+        <div class="offer-card">
+          <div>
+            <h2>Не просто нарезка. Режиссура внимания.</h2>
+            <p>
+              Мы не добавляем эффекты “чтобы было шумно”. Каждый акцент должен помогать зрителю:
+              быстрее понять мысль, почувствовать шутку, не выпасть из темпа и досмотреть ролик.
+            </p>
+          </div>
+
+          <div class="offer-list">
+            <div><strong>Ритм:</strong> убираем провисы и собираем речь в живой темп.</div>
+            <div><strong>SFX:</strong> усиливаем панчи, эмоции и смысловые повороты.</div>
+            <div><strong>Визуализация:</strong> превращаем идеи в понятные образы.</div>
+            <div><strong>Анализ:</strong> смотрим статистику серии и даём рекомендации.</div>
           </div>
         </div>
       </section>
 
-      <section id="reviews" class="reviews-section">
-        <div class="reviews-panel">
-          <div class="reviews-top" data-reveal>
-            <div class="reviews-title-wrap">
-              <div class="reviews-rating"><span class="rating-star">★</span> 5.0 / 5 по отзывам</div>
-              <h2>Отзывы</h2>
-            </div>
-
-            <div class="reviews-controls">
-              <button class="review-nav-btn" type="button" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
-              <button class="review-nav-btn" type="button" id="reviewNext" aria-label="Следующий отзыв">›</button>
-            </div>
-          </div>
-
-          <div class="reviews-carousel" id="reviewsCarousel" data-reveal>
-            <div class="reviews-track" id="reviewsTrack"></div>
-          </div>
-        </div>
-      </section>
 
       <section id="showreel" class="showreel-section" data-reveal>
         <div class="showreel-layout">
@@ -700,8 +833,6 @@
           </div>
 
           <div class="reels-phone-stage" id="reelsStage">
-            <button class="reel-arrow reel-arrow-up" type="button" id="reelPrev" aria-label="Предыдущий фрагмент">↑</button>
-
             <div class="reels-phone" id="reelsPhone">
               <div class="phone-notch"></div>
               <div class="reels-viewport"><div class="reels-track-vertical" id="reelsTrackVertical"></div></div>
@@ -712,78 +843,187 @@
               </div>
             </div>
 
-            <button class="reel-arrow reel-arrow-down" type="button" id="reelNext" aria-label="Следующий фрагмент">↓</button>
+            <div class="reel-controls-rail" aria-label="Управление showreel">
+              <button class="reel-mini-btn" type="button" id="reelPrev" aria-label="Предыдущий фрагмент">⌃</button>
+              <div class="reel-rail-line"></div>
+              <span class="reel-rail-text">drag</span>
+              <div class="reel-rail-line"></div>
+              <button class="reel-mini-btn" type="button" id="reelNext" aria-label="Следующий фрагмент">⌄</button>
+            </div>
           </div>
 
-          <div class="reel-hint">Листайте фрагменты стрелками или перетягивайте телефон вверх/вниз.</div>
+          <div class="reel-hint">Перетяните телефон вверх/вниз или листайте колесом мыши.</div>
         </div>
       </section>
 
       <section id="cases">
-        <div class="section-head" data-reveal><h2 class="section-title">Кейсы</h2></div>
+        <div class="section-head" data-reveal>
+          <h2 class="section-title">Кейсы</h2>
+        </div>
 
         <div class="grid cases-grid">
           <article class="case-card" data-reveal>
-            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sdvg.mp4" poster="sdvgcase.png" controls preload="metadata" playsinline></video></div></div>
+            <div class="case-preview">
+              <div class="phone-frame">
+                <video
+                  class="case-video"
+                  src="sdvg.mp4"
+                  poster="sdvgcase.png"
+                  controls
+                  preload="metadata"
+                  playsinline
+                ></video>
+              </div>
+            </div>
             <div class="case-body">
               <h3>СДВГ / личный бренд</h3>
-              <p>Оживление говорящей головы через быстрый темп, крупные акценты, графику, звуковые реакции и визуализацию смыслов спикера.</p>
-              <div class="tags"><span class="tag">личный бренд</span><span class="tag">юмор</span><span class="tag">моушн</span></div>
+              <p>
+                Оживление говорящей головы через быстрый темп, крупные акценты,
+                графику, звуковые реакции и визуализацию смыслов спикера.
+              </p>
+              <div class="tags">
+                <span class="tag">личный бренд</span>
+                <span class="tag">юмор</span>
+                <span class="tag">моушн</span>
+              </div>
             </div>
           </article>
 
           <article class="case-card" data-reveal>
-            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sketch.mp4" poster="sketchcase.png" controls preload="metadata" playsinline></video></div></div>
+            <div class="case-preview">
+              <div class="phone-frame">
+                <video
+                  class="case-video"
+                  src="sketch.mp4"
+                  poster="sketchcase.png"
+                  controls
+                  preload="metadata"
+                  playsinline
+                ></video>
+              </div>
+            </div>
             <div class="case-body">
               <h3>Скетч / динамичный формат</h3>
-              <p>Монтаж с упором на юмор, тайминг, визуальные панчи и звуковые акценты, чтобы сцена ощущалась живее и быстрее считывалась зрителем.</p>
-              <div class="tags"><span class="tag">скетч</span><span class="tag">панчи</span><span class="tag">визуализация</span></div>
+              <p>
+                Монтаж с упором на юмор, тайминг, визуальные панчи и звуковые акценты,
+                чтобы сцена ощущалась живее и быстрее считывалась зрителем.
+              </p>
+              <div class="tags">
+                <span class="tag">скетч</span>
+                <span class="tag">панчи</span>
+                <span class="tag">визуализация</span>
+              </div>
             </div>
           </article>
 
           <article class="case-card" data-reveal>
-            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="nauch.mp4" poster="nauchcase.png" controls preload="metadata" playsinline></video></div></div>
+            <div class="case-preview">
+              <div class="phone-frame">
+                <video
+                  class="case-video"
+                  src="nauch.mp4"
+                  poster="nauchcase.png"
+                  controls
+                  preload="metadata"
+                  playsinline
+                ></video>
+              </div>
+            </div>
             <div class="case-body">
               <h3>Научный / экспертный ролик</h3>
-              <p>Динамичный вертикальный монтаж для экспертной подачи: удержание внимания, визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.</p>
-              <div class="tags"><span class="tag">эксперт</span><span class="tag">ритм</span><span class="tag">SFX</span></div>
+              <p>
+                Динамичный вертикальный монтаж для экспертной подачи: удержание внимания,
+                визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.
+              </p>
+              <div class="tags">
+                <span class="tag">эксперт</span>
+                <span class="tag">ритм</span>
+                <span class="tag">SFX</span>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
+
+      <section id="reviews" class="reviews-section">
+        <div class="reviews-top" data-reveal>
+          <div class="reviews-title-wrap">
+            <div class="reviews-rating"><span class="rating-star">★</span> 5.0 / 5 по отзывам</div>
+            <h2>Отзывы</h2>
+          </div>
+          <div class="reviews-controls">
+            <button class="review-nav-btn" type="button" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
+            <button class="review-nav-btn" type="button" id="reviewNext" aria-label="Следующий отзыв">›</button>
+          </div>
+        </div>
+        <div class="reviews-carousel" data-reveal>
+          <div class="reviews-track" id="reviewsTrack"></div>
+        </div>
+      </section>
+
+
       <section id="process">
-        <div class="section-head" data-reveal><h2 class="section-title">Как работаем</h2></div>
+        <div class="section-head" data-reveal>
+          <h2 class="section-title">Как работаем</h2>
+        </div>
 
         <div class="grid steps-grid">
-          <div class="step-card" data-reveal><div class="step-num">01</div><h3>Бриф</h3><p>Понимаем формат, спикера, стиль, задачи и референсы.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Первый ролик</h3><p>Собираем стартовую версию и фиксируем монтажный язык.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Серия</h3><p>Делаем пакет роликов в едином стиле, без хаоса и микроменеджмента.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">04</div><h3>Анализ</h3><p>Смотрим удержание, реакции и даём рекомендации по улучшению формата.</p></div>
+          <div class="step-card" data-reveal>
+            <div class="step-num">01</div>
+            <h3>Бриф</h3>
+            <p>Понимаем формат, спикера, стиль, задачи и референсы.</p>
+          </div>
+
+          <div class="step-card" data-reveal>
+            <div class="step-num">02</div>
+            <h3>Первый ролик</h3>
+            <p>Собираем стартовую версию и фиксируем монтажный язык.</p>
+          </div>
+
+          <div class="step-card" data-reveal>
+            <div class="step-num">03</div>
+            <h3>Серия</h3>
+            <p>Делаем пакет роликов в едином стиле, без хаоса и микроменеджмента.</p>
+          </div>
+
+          <div class="step-card" data-reveal>
+            <div class="step-num">04</div>
+            <h3>Анализ</h3>
+            <p>Смотрим удержание, реакции и даём рекомендации по улучшению формата.</p>
+          </div>
         </div>
       </section>
 
       <section id="contact">
         <div class="final-cta" data-reveal>
           <h2>Есть повторяющийся формат? Давайте сделаем его живым.</h2>
-          <p>Подходит экспертам и личным брендам, которым нужен не шаблонный монтаж, а авторская сборка с ритмом, юмором, SFX и визуальными акцентами.</p>
+          <p>
+            Подходит экспертам и личным брендам, которым нужен не шаблонный монтаж,
+            а авторская сборка с ритмом, юмором, SFX и визуальными акцентами.
+          </p>
 
           <div class="cta-row">
-            <div class="contact-wrapper">
-              <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
-              <div class="contact-popover" aria-label="Контакты">
-                <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
-                <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
-              </div>
-            </div>
-            <a class="btn btn-secondary" href="#cases">Посмотреть кейсы</a>
+            <a class="btn btn-primary" href="https://t.me/USERNAME" target="_blank">
+              Написать в Telegram
+              <span>→</span>
+            </a>
+            <a class="btn btn-secondary" href="#cases">
+              Посмотреть кейсы
+            </a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer><div class="footer-inner"><div>© Vnimanie — video editing studio</div><div>Динамичный монтаж для экспертов</div></div></footer>
+    <footer>
+      <div class="footer-inner">
+        <div>© Vnimanie — video editing studio</div>
+        <div>Динамичный монтаж для экспертов</div>
+      </div>
+    </footer>
   </div>
+
 
   <script>
     const showreelItems = [
@@ -809,6 +1049,7 @@
     ];
 
     const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    const lerp = (a, b, t) => a + (b - a) * t;
 
     function pauseAllOtherVideos(activeVideo) {
       document.querySelectorAll("video").forEach((video) => {
@@ -1009,12 +1250,8 @@
 
       reviewsTrack.innerHTML = reviewOffsets.map((offset) => {
         const review = reviews[reviewIndex(offset)];
-        let className = "review-slide";
-        if (offset === 0) className += " is-active";
-        if (Math.abs(offset) === 1) className += " is-side";
-
         return `
-          <article class="${className}" data-offset="${offset}">
+          <article class="review-slide" data-offset="${offset}">
             <div>
               <div class="review-card-head">
                 <div class="review-photo">
@@ -1038,31 +1275,54 @@
       updateReviewsLayout(false, 0);
     }
 
+    function applyReviewVisual(card, virtualPosition, animate) {
+      const abs = Math.min(Math.abs(virtualPosition), 2);
+      let scale;
+      let opacity;
+
+      if (abs <= 1) {
+        scale = lerp(1.04, 0.88, abs);
+        opacity = lerp(1, 0.58, abs);
+      } else {
+        scale = lerp(0.88, 0.74, abs - 1);
+        opacity = lerp(0.58, 0.22, abs - 1);
+      }
+
+      const light = clamp(1 - abs, 0, 1);
+      const bgAlpha = 0.045 + light * 0.032;
+      const radialAlpha = 0.08 + light * 0.06;
+      const shadowAlpha = light * 0.42;
+
+      card.style.transition = animate
+        ? "transform .42s cubic-bezier(.22,.8,.22,1), opacity .34s ease, filter .34s ease, background .34s ease, box-shadow .34s ease"
+        : "none";
+
+      card.style.opacity = opacity;
+      card.style.filter = `blur(${abs > 1.35 ? 0.35 : 0}px)`;
+      card.style.background = `radial-gradient(circle at 50% 0%, rgba(255,255,255,${radialAlpha}), transparent 50%), rgba(255,255,255,${bgAlpha})`;
+      card.style.boxShadow = shadowAlpha > 0.02 ? `0 30px 110px rgba(0,0,0,${shadowAlpha})` : "none";
+      card.style.zIndex = String(Math.round(50 - abs * 10));
+
+      return scale;
+    }
+
     function updateReviewsLayout(animate = true, dragOffset = 0) {
       if (!reviewsTrack || !reviewsCarousel) return;
 
       reviewStep = getReviewStep();
+      const dragProgress = dragOffset / reviewStep;
 
       reviewsTrack.querySelectorAll(".review-slide").forEach((card) => {
         const offset = Number(card.dataset.offset);
-        const abs = Math.abs(offset);
+        const virtualPosition = offset + dragProgress;
         const x = (offset * reviewStep) + dragOffset;
-
-        const scale = abs === 0 ? 1 : abs === 1 ? 0.86 : 0.74;
-        const opacity = abs === 0 ? 1 : abs === 1 ? 0.62 : 0.26;
-        const z = abs === 0 ? 5 : abs === 1 ? 3 : 1;
-
-        card.style.transition = animate
-          ? "transform .38s cubic-bezier(.22,.8,.22,1), opacity .28s ease, filter .28s ease, background .28s ease, box-shadow .28s ease"
-          : "none";
+        const scale = applyReviewVisual(card, virtualPosition, animate);
 
         card.style.transform = `translate(-50%, -50%) translateX(${x}px) scale(${scale})`;
-        card.style.opacity = opacity;
-        card.style.zIndex = z;
       });
     }
 
-    function shiftReviews(direction) {
+    function animateReviewShift(direction) {
       if (reviewAnimating) return;
       reviewAnimating = true;
 
@@ -1072,11 +1332,11 @@
         currentReview = ((currentReview + direction) % reviews.length + reviews.length) % reviews.length;
         renderReviews();
         reviewAnimating = false;
-      }, 390);
+      }, 430);
     }
 
-    function nextReview() { shiftReviews(1); }
-    function prevReview() { shiftReviews(-1); }
+    function nextReview() { animateReviewShift(1); }
+    function prevReview() { animateReviewShift(-1); }
 
     document.getElementById("reviewNext")?.addEventListener("click", nextReview);
     document.getElementById("reviewPrev")?.addEventListener("click", prevReview);
@@ -1103,6 +1363,7 @@
       reviewsCarousel.classList.remove("is-dragging");
 
       let steps = Math.round(-reviewDragOffset / reviewStep);
+
       if (steps === 0 && Math.abs(reviewDragOffset) > 80) {
         steps = reviewDragOffset < 0 ? 1 : -1;
       }
@@ -1119,7 +1380,7 @@
           currentReview = ((currentReview + steps) % reviews.length + reviews.length) % reviews.length;
           renderReviews();
           reviewAnimating = false;
-        }, 390);
+        }, 430);
       }
 
       reviewDragOffset = 0;
@@ -1129,7 +1390,6 @@
     reviewsCarousel?.addEventListener("pointercancel", releaseReviewDrag);
     renderReviews();
 
-
     window.addEventListener("resize", () => { updateReelLayout(false, 0); updateReviewsLayout(false, 0); });
     document.querySelectorAll("video").forEach((video) => video.addEventListener("play", () => pauseAllOtherVideos(video)));
 
@@ -1137,6 +1397,22 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
     }, { threshold: 0.12 });
+    items.forEach((item) => observer.observe(item));
+  </script>
+
+  <script>
+    const items = document.querySelectorAll("[data-reveal]");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
     items.forEach((item) => observer.observe(item));
   </script>
 </body>
