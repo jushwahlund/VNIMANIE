@@ -22,15 +22,8 @@
       --max: 1320px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Inter, Arial, Helvetica, sans-serif;
@@ -57,10 +50,7 @@
       z-index: -1;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .page {
       width: 100%;
@@ -102,26 +92,11 @@
       transition: color .2s ease;
     }
 
-    .brand:hover {
-      color: #ffffff;
-    }
+    .brand:hover { color: #fff; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      color: rgba(216, 202, 188, 0.82);
-      font-size: 15px;
-      font-weight: 500;
-      transition: color .2s ease, opacity .2s ease;
-    }
-
-    .nav-links a:hover {
-      color: #ffffff;
-    }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { color: rgba(216, 202, 188, 0.82); font-size: 15px; font-weight: 500; transition: color .2s ease; }
+    .nav-links a:hover { color: #fff; }
 
     .hero {
       min-height: calc(100vh - 74px);
@@ -153,19 +128,29 @@
       pointer-events: none;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-content { position: relative; z-index: 1; }
 
     .logo-eye-wrap {
       width: min(620px, 88vw);
       height: 250px;
       margin: 0 auto 24px;
-      overflow: hidden;
+      overflow: visible;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+    }
+
+    .logo-eye-wrap::before {
+      content: "";
+      position: absolute;
+      width: min(520px, 80vw);
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.28), rgba(255,255,255,0.07) 42%, transparent 72%);
+      filter: blur(28px);
+      z-index: -1;
+      pointer-events: none;
     }
 
     .logo-eye {
@@ -174,9 +159,9 @@
       object-fit: cover;
       display: block;
       filter:
-        drop-shadow(0 0 10px rgba(255,255,255,0.35))
-        drop-shadow(0 0 32px rgba(255,255,255,0.14))
-        drop-shadow(0 0 70px rgba(255,255,255,0.08));
+        drop-shadow(0 0 10px rgba(255,255,255,0.38))
+        drop-shadow(0 0 38px rgba(255,255,255,0.18))
+        drop-shadow(0 0 90px rgba(255,255,255,0.11));
     }
 
     h1 {
@@ -184,7 +169,7 @@
       margin: 0 auto;
       font-size: clamp(42px, 6.5vw, 82px);
       line-height: 0.96;
-      letter-spacing: -0.075em;
+      letter-spacing: 0.12em;
       font-weight: 760;
     }
 
@@ -196,19 +181,7 @@
       line-height: 1.55;
     }
 
-    .hero p strong {
-      color: var(--text);
-      font-weight: 650;
-    }
-
-    .cta-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 34px;
-      flex-wrap: wrap;
-    }
+    .cta-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
 
     .btn {
       height: 52px;
@@ -222,134 +195,71 @@
       transition: transform .2s ease, background .2s ease, border-color .2s ease;
       cursor: pointer;
       border: 1px solid rgba(255,255,255,0.14);
+      font-family: inherit;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: #fff; color: #050505; border-color: #fff; font-weight: 700; }
+    .btn-secondary { background: rgba(255,255,255,0.04); color: var(--text); }
 
-    .btn-primary {
-      background: #fff;
-      color: #050505;
-      border-color: #fff;
-      font-weight: 700;
-    }
+    .contact-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+    .contact-trigger { font-family: inherit; }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-    }
-
-    .hero-proof {
-      margin-top: 34px;
+    .contact-popover {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translate(-50%, 8px) scale(0.96);
+      opacity: 0;
+      pointer-events: none;
       display: flex;
-      justify-content: center;
       gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      color: var(--muted);
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
+      padding: 9px;
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 999px;
-      padding: 9px 13px;
-      font-size: 13px;
+      background: rgba(10,10,10,0.74);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.42);
+      transition: opacity .22s ease, transform .22s ease;
+      z-index: 30;
     }
 
-    section {
-      padding: 82px 0;
-    }
+    .contact-wrapper.is-open .contact-popover { opacity: 1; pointer-events: auto; transform: translate(-50%, 0) scale(1); }
 
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 28px;
-    }
-
-    .section-title {
-      font-size: clamp(30px, 4.2vw, 54px);
-      line-height: 1;
-      letter-spacing: -0.05em;
-    }
-
-    .section-note {
-      max-width: 440px;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 15px;
-    }
-
-    .grid {
+    .contact-popover a {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
       display: grid;
-      gap: 16px;
-      width: 100%;
+      place-items: center;
+      color: #050505;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      transition: transform .2s ease, background .2s ease;
     }
 
-    .cases-grid,
-    .reviews-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+    .contact-popover a:hover { transform: translateY(-2px); background: var(--warm); }
 
-    .steps-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+    .hero-proof { margin-top: 34px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .pill { color: var(--muted); border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.03); border-radius: 999px; padding: 9px 13px; font-size: 13px; }
 
-    .case-card,
-    .review-card,
-    .step-card,
-    .offer-card {
+    section { padding: 82px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    .section-title { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
+    .grid { display: grid; gap: 16px; width: 100%; }
+    .cases-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .steps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .case-card, .step-card {
       width: 100%;
       border: 1px solid var(--card-border);
       background: var(--card);
       border-radius: var(--radius-lg);
       overflow: hidden;
       backdrop-filter: blur(16px);
-    }
-
-    .offer-section {
-      padding-top: 20px;
-    }
-
-    .offer-card {
-      padding: clamp(26px, 5vw, 48px);
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .offer-card h2 {
-      font-size: clamp(32px, 5vw, 62px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      margin-bottom: 18px;
-    }
-
-    .offer-card p {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    .offer-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .offer-list div {
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 16px;
-      padding: 14px 16px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.025);
-    }
-
-    .offer-list strong {
-      color: var(--text);
-      font-weight: 700;
     }
 
     .case-preview {
@@ -374,150 +284,79 @@
       box-shadow: 0 26px 90px rgba(0,0,0,0.58);
     }
 
-    .case-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 30px;
-      display: block;
-      background: #050505;
+    .case-video { width: 100%; height: 100%; object-fit: cover; border-radius: 30px; display: block; background: #050505; }
+    .case-body { padding: 24px; }
+    .case-body h3 { font-size: 20px; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .case-body p { color: var(--muted); line-height: 1.55; font-size: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag { font-size: 12px; color: var(--muted); padding: 7px 9px; border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; }
+
+    /* REVIEWS */
+    .reviews-section { padding: 72px 0 96px; }
+    .reviews-panel {
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 42%),
+        rgba(255,255,255,0.032);
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 48px) 0;
     }
 
-    .case-body {
+    .reviews-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; padding: 0 clamp(24px, 4vw, 46px); }
+    .reviews-title-wrap h2 { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
+    .reviews-rating { display: inline-flex; align-items: center; gap: 10px; color: var(--warm); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .reviews-rating .rating-star { width: 34px; height: 34px; border-radius: 999px; display: grid; place-items: center; border: 1px solid rgba(216,202,188,0.22); background: rgba(255,255,255,0.045); color: #fff; font-size: 16px; letter-spacing: 0; }
+    .reviews-controls { display: flex; gap: 12px; flex-shrink: 0; }
+    .review-nav-btn { width: 52px; height: 52px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .review-nav-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.28); }
+
+    .reviews-carousel { overflow: hidden; padding: 18px 0 26px; cursor: grab; user-select: none; touch-action: pan-y; }
+    .reviews-carousel.is-dragging { cursor: grabbing; }
+    .reviews-track { display: flex; align-items: center; gap: 18px; min-height: 310px; will-change: transform; transition: transform .36s cubic-bezier(.22,.8,.22,1); }
+    .review-slide {
+      width: min(560px, 74vw);
+      min-height: 240px;
+      flex: 0 0 auto;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 46%), rgba(255,255,255,0.045);
       padding: 24px;
-    }
-
-    .case-body h3 {
-      font-size: 20px;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-    }
-
-    .case-body p {
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 14px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .tag {
-      font-size: 12px;
-      color: var(--muted);
-      padding: 7px 9px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 999px;
-    }
-
-    .review-card {
-      padding: 24px;
-      min-height: 220px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      opacity: 0.48;
+      transform: scale(0.88);
+      transition: transform .32s ease, opacity .32s ease, filter .32s ease, background .32s ease;
+      filter: blur(0.2px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
+    .review-slide.is-active { opacity: 1; transform: scale(1.04); filter: blur(0); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 50%), rgba(255,255,255,0.072); box-shadow: 0 30px 110px rgba(0,0,0,0.42); }
+    .review-slide.is-side { opacity: 0.62; transform: scale(0.92); }
+    .review-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .review-photo { width: 58px; height: 58px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); background: radial-gradient(circle at 50% 28%, rgba(255,255,255,0.18), transparent 44%), rgba(255,255,255,0.045); overflow: hidden; flex-shrink: 0; display: grid; place-items: center; color: var(--muted-2); font-size: 11px; position: relative; }
+    .review-photo::after { content: "фото"; position: absolute; inset: 0; display: grid; place-items: center; z-index: 1; }
+    .review-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
+    .review-meta h3 { font-size: 17px; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .review-meta p { color: var(--muted-2); font-size: 13px; }
+    .stars { color: #fff; letter-spacing: 0.08em; font-size: 14px; margin-bottom: 16px; }
+    .review-slide blockquote { color: var(--text); font-size: 16px; line-height: 1.48; font-weight: 600; letter-spacing: -0.01em; }
+    .review-slide footer { border: 0; padding: 0; color: var(--muted-2); font-size: 13px; margin-top: 18px; }
 
-    .review-text {
-      color: var(--text);
-      line-height: 1.55;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .review-author {
-      margin-top: 24px;
-      color: var(--muted-2);
-      font-size: 13px;
-    }
-
-    .step-card {
-      padding: 22px;
-    }
-
-    .step-num {
-      color: var(--muted-2);
-      font-size: 13px;
-      margin-bottom: 34px;
-    }
-
-    .step-card h3 {
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
-
-    .step-card p {
-      color: var(--muted);
-      line-height: 1.5;
-      font-size: 14px;
-    }
-
-    .final-cta {
-      width: 100%;
-      text-align: center;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-xl);
-      padding: clamp(34px, 7vw, 80px);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%),
-        rgba(255,255,255,0.035);
-      margin-bottom: 80px;
-    }
-
-    .final-cta h2 {
-      font-size: clamp(34px, 5.5vw, 70px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .final-cta p {
-      color: var(--muted);
-      max-width: 620px;
-      margin: 20px auto 0;
-      line-height: 1.6;
-    }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 28px 0;
-      color: var(--muted-2);
-      font-size: 13px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    [data-reveal].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-    /* SHOWREEL PHONE */
+    /* SHOWREEL */
     .showreel-section { padding: 96px 0; }
     .showreel-layout {
       min-height: 720px;
       border: 1px solid var(--card-border);
       border-radius: var(--radius-xl);
       background: radial-gradient(circle at 68% 42%, rgba(255,255,255,0.13), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)), rgba(0,0,0,0.42);
-      position: relative; overflow: hidden;
-      display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: 32px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+      gap: 32px;
       padding: clamp(34px, 5vw, 70px);
     }
     .showreel-copy { position: relative; z-index: 2; }
@@ -526,18 +365,20 @@
     .showreel-copy h2 { max-width: 620px; font-size: clamp(42px, 6vw, 86px); line-height: 0.94; letter-spacing: -0.075em; margin-bottom: 22px; }
     .showreel-copy p { max-width: 520px; color: var(--muted); font-size: 17px; line-height: 1.6; }
     .reels-phone-stage { position: relative; display: grid; place-items: center; min-height: 630px; }
-    .reels-phone { width: min(350px, 78vw); aspect-ratio: 9/16; border: 2px solid rgba(255,255,255,0.18); border-radius: 46px; background: #050505; overflow: hidden; position: relative; box-shadow: 0 34px 120px rgba(0,0,0,0.72), 0 0 80px rgba(255,255,255,0.08); cursor: grab; user-select: none; touch-action: pan-y; }
+    .reels-phone { width: min(350px, 78vw); aspect-ratio: 9 / 16; border: 2px solid rgba(255,255,255,0.18); border-radius: 46px; background: #050505; overflow: hidden; position: relative; box-shadow: 0 34px 120px rgba(0,0,0,0.72), 0 0 80px rgba(255,255,255,0.08); cursor: grab; user-select: none; touch-action: none; }
     .reels-phone:active { cursor: grabbing; }
-    .phone-notch { position: absolute; top: 0; left: 50%; width: 42%; height: 30px; transform: translateX(-50%); border-radius: 0 0 19px 19px; background: #050505; z-index: 5; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
-    .reels-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #050505; transition: opacity .22s ease, transform .22s ease; opacity: 1; transform: scale(1); }
-    .reels-video.is-fading { opacity: 0; transform: scale(1.015); }
-    .reels-gradient { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,0.28), transparent 22%), linear-gradient(0deg, rgba(0,0,0,0.78), transparent 42%); z-index: 2; }
-    .sound-toggle { position: absolute; right: 14px; bottom: 112px; z-index: 6; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.42); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: transform .2s ease, background .2s ease; }
-    .sound-toggle:hover { transform: scale(1.04); background: rgba(255,255,255,0.11); }
-    .reels-caption { position: absolute; left: 18px; right: 18px; bottom: 22px; z-index: 4; }
-    .reels-counter { color: rgba(255,255,255,0.62); font-size: 12px; margin-bottom: 8px; }
-    .reels-caption h3 { color: #fff; font-size: 18px; line-height: 1.2; letter-spacing: -0.03em; text-shadow: 0 2px 18px rgba(0,0,0,0.72); }
-    .reel-arrow { position: absolute; left: 50%; z-index: 7; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.045); color: #fff; font-size: 23px; cursor: pointer; transform: translateX(-50%); transition: transform .2s ease, background .2s ease, border-color .2s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .phone-notch { position: absolute; top: 0; left: 50%; width: 42%; height: 30px; transform: translateX(-50%); border-radius: 0 0 19px 19px; background: #050505; z-index: 7; box-shadow: 0 6px 18px rgba(0,0,0,0.35); pointer-events: none; }
+    .reels-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; border-radius: 44px; }
+    .reels-track-vertical { width: 100%; height: 100%; will-change: transform; transition: transform .34s cubic-bezier(.22,.8,.22,1); }
+    .reel-slide { width: 100%; height: 100%; position: relative; background: #050505; overflow: hidden; }
+    .reels-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #050505; pointer-events: none; }
+    .sound-toggle { position: absolute; right: 16px; bottom: 126px; z-index: 8; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: rgba(0,0,0,0.46); color: #fff; display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: transform .2s ease, background .2s ease; }
+    .sound-toggle:hover { transform: scale(1.04); background: rgba(255,255,255,0.12); }
+    .sound-toggle svg { width: 20px; height: 20px; display: block; }
+    .reels-caption { position: absolute; left: 18px; right: 18px; bottom: 54px; z-index: 6; pointer-events: none; }
+    .reels-counter { color: rgba(255,255,255,0.72); font-size: 12px; margin-bottom: 8px; text-shadow: 0 2px 16px rgba(0,0,0,0.78); }
+    .reels-caption h3 { color: #fff; font-size: 18px; line-height: 1.2; letter-spacing: -0.03em; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .reel-arrow { position: absolute; left: 50%; z-index: 9; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.045); color: #fff; font-size: 23px; cursor: pointer; transform: translateX(-50%); transition: transform .2s ease, background .2s ease, border-color .2s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .reel-arrow:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.32); }
     .reel-arrow-up { top: 16px; }
     .reel-arrow-down { bottom: 16px; }
@@ -545,168 +386,72 @@
     .reel-arrow-down:hover { transform: translateX(-50%) translateY(2px); }
     .reel-hint { position: absolute; right: clamp(18px, 3vw, 44px); bottom: clamp(18px, 3vw, 44px); color: var(--muted-2); font-size: 13px; line-height: 1.45; max-width: 250px; }
 
-    /* REVIEWS ROULETTE */
-    .reviews-section { padding: 96px 0; }
-    .reviews-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
-    .reviews-title-wrap h2 { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
-    .reviews-rating { display: inline-flex; align-items: center; gap: 10px; color: var(--warm); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
-    .reviews-rating .rating-star { width: 34px; height: 34px; border-radius: 999px; display: grid; place-items: center; border: 1px solid rgba(216,202,188,0.22); background: rgba(255,255,255,0.045); color: #fff; font-size: 16px; letter-spacing: 0; }
-    .reviews-controls { display: flex; gap: 12px; flex-shrink: 0; }
-    .review-nav-btn { width: 52px; height: 52px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
-    .review-nav-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.28); }
-    .reviews-carousel { overflow: hidden; padding: 18px 0 26px; }
-    .reviews-track { min-height: 390px; display: flex; align-items: center; justify-content: center; gap: 16px; perspective: 1200px; }
-    .review-slide { width: min(520px, 72vw); min-height: 330px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 46%), rgba(255,255,255,0.045); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; opacity: 0.42; transform: scale(0.82); transition: transform .32s ease, opacity .32s ease, filter .32s ease; filter: blur(0.3px); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-    .review-slide.is-active { opacity: 1; transform: scale(1); filter: blur(0); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 50%), rgba(255,255,255,0.07); box-shadow: 0 30px 110px rgba(0,0,0,0.42); }
-    .review-slide.is-side { opacity: 0.62; transform: scale(0.88); }
-    .review-slide.is-outer { opacity: 0.22; transform: scale(0.76); }
-    .review-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-    .review-photo { width: 58px; height: 58px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); background: radial-gradient(circle at 50% 28%, rgba(255,255,255,0.18), transparent 44%), rgba(255,255,255,0.045); overflow: hidden; flex-shrink: 0; display: grid; place-items: center; color: var(--muted-2); font-size: 11px; }
-    .review-photo::after { content: 'фото'; }
-    .review-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
-    .review-photo img[src=''] { display: none; }
-    .review-meta h3 { font-size: 17px; letter-spacing: -0.02em; margin-bottom: 4px; }
-    .review-meta p { color: var(--muted-2); font-size: 13px; }
-    .stars { color: #fff; letter-spacing: 0.08em; font-size: 14px; margin-bottom: 18px; }
-    .review-slide blockquote { color: var(--text); font-size: 17px; line-height: 1.55; font-weight: 600; letter-spacing: -0.01em; }
-    .review-slide footer { border: 0; padding: 0; color: var(--muted-2); font-size: 13px; margin-top: 22px; }
+    .step-card { padding: 22px; }
+    .step-num { color: var(--muted-2); font-size: 13px; margin-bottom: 34px; }
+    .step-card h3 { margin-bottom: 10px; font-size: 18px; }
+    .step-card p { color: var(--muted); line-height: 1.5; font-size: 14px; }
+
+    .final-cta { width: 100%; text-align: center; border: 1px solid var(--card-border); border-radius: var(--radius-xl); padding: clamp(34px, 7vw, 80px); background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.13), transparent 42%), rgba(255,255,255,0.035); margin-bottom: 80px; }
+    .final-cta h2 { font-size: clamp(34px, 5.5vw, 70px); line-height: 0.98; letter-spacing: -0.06em; max-width: 850px; margin: 0 auto; }
+    .final-cta p { color: var(--muted); max-width: 620px; margin: 20px auto 0; line-height: 1.6; }
+
+    footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 0; color: var(--muted-2); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 920px) {
-      .page {
-        padding: 0 20px;
-      }
-
+      .page { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
       .showreel-layout { grid-template-columns: 1fr; min-height: auto; text-align: center; }
       .showreel-copy p { margin: 0 auto; }
       .reels-phone-stage { min-height: 600px; }
       .reel-hint { position: static; margin: -10px auto 0; text-align: center; }
       .reviews-top { display: block; }
       .reviews-controls { margin-top: 18px; }
-      .reviews-track { min-height: 430px; }
+      .reviews-track { min-height: 330px; }
       .review-slide { width: min(560px, 82vw); }
-      .review-slide.is-outer { display: none; }
-
-
-      .nav-inner {
-        padding: 0 20px;
-      }
-
-      .cases-grid,
-      .reviews-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .steps-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .offer-card {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .section-note {
-        margin-top: 12px;
-      }
-
-      .case-preview {
-        min-height: 660px;
-        padding: 34px 0;
-      }
-
-      .phone-frame {
-        width: min(72vw, 360px);
-      }
+      .cases-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-head { display: block; }
+      .case-preview { min-height: 660px; padding: 34px 0; }
+      .phone-frame { width: min(72vw, 360px); }
     }
 
     @media (max-width: 640px) {
-      .page {
-        padding: 0 14px;
-      }
-
+      .page { padding: 0 14px; }
+      .nav { height: 66px; }
+      .nav-inner { padding: 0 18px; }
+      .brand { font-size: 13px; letter-spacing: 0.12em; }
+      .nav-links { display: none; }
+      .hero { padding-top: 22px; }
+      .hero-card { border-radius: 26px; padding: 32px 18px; }
+      .logo-eye-wrap { width: 100%; height: 170px; margin-bottom: 20px; }
+      .logo-eye-wrap::before { width: 360px; height: 130px; }
+      .logo-eye { width: 460px; height: 460px; }
+      h1 { font-size: 40px; }
+      .hero p { font-size: 16px; }
+      .btn, .contact-wrapper, .contact-wrapper .btn { width: 100%; }
+      section { padding: 58px 0; }
       .showreel-section, .reviews-section { padding: 58px 0; }
       .showreel-layout { padding: 28px 18px; border-radius: 26px; }
       .showreel-copy h2 { font-size: 44px; }
       .reels-phone-stage { min-height: 520px; }
       .reels-phone { width: min(80vw, 310px); border-radius: 38px; }
+      .reels-viewport { border-radius: 36px; }
       .phone-notch { height: 26px; }
       .reel-arrow { width: 44px; height: 44px; font-size: 21px; }
+      .reels-caption { bottom: 48px; }
       .reels-caption h3 { font-size: 16px; }
-      .sound-toggle { width: 40px; height: 40px; bottom: 104px; }
-      .reviews-track { min-height: 380px; }
-      .review-slide { width: 86vw; min-height: 315px; padding: 20px; }
-      .review-slide.is-side { display: none; }
+      .sound-toggle { width: 40px; height: 40px; bottom: 112px; }
+      .reviews-panel { border-radius: 26px; }
+      .reviews-track { min-height: 330px; }
+      .review-slide { width: 84vw; min-height: 260px; padding: 20px; }
       .review-slide blockquote { font-size: 15px; }
-
-
-      .nav {
-        height: 66px;
-      }
-
-      .nav-inner {
-        padding: 0 18px;
-      }
-
-      .brand {
-        font-size: 13px;
-        letter-spacing: 0.12em;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 22px;
-      }
-
-      .hero-card {
-        border-radius: 26px;
-        padding: 32px 18px;
-      }
-
-      .logo-eye-wrap {
-        width: 100%;
-        height: 170px;
-        margin-bottom: 20px;
-      }
-
-      .logo-eye {
-        width: 460px;
-        height: 460px;
-      }
-
-      h1 {
-        font-size: 46px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      section {
-        padding: 58px 0;
-      }
-
-      .case-preview {
-        min-height: auto;
-        padding: 28px 0;
-      }
-
-      .phone-frame {
-        width: min(82vw, 320px);
-      }
-
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
+      .case-preview { min-height: auto; padding: 28px 0; }
+      .phone-frame { width: min(82vw, 320px); }
+      .steps-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -736,46 +481,44 @@
 
             <h1>V N I M A N I E</h1>
 
-            <p>
-              Оживляем говорящие головы и усиливаем подачу спикера через авторский монтаж.
-            </p>
+            <p>Оживляем говорящие головы и усиливаем подачу спикера через авторский монтаж.</p>
 
             <div class="cta-row">
-              <a class="btn btn-primary" href="https://t.me/USERNAME" target="_blank">
-                Связаться
-                <span>→</span>
-              </a>
-              <a class="btn btn-secondary" href="#cases">
-                Смотреть кейсы
-              </a>
+              <div class="contact-wrapper">
+                <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
+                <div class="contact-popover" aria-label="Контакты">
+                  <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
+                  <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
+                </div>
+              </div>
+
+              <a class="btn btn-secondary" href="#cases">Смотреть кейсы</a>
             </div>
 
-            <div class="hero-proof">
-            </div>
-          </div>
-                Reels / Shorts / TikTok
-        </div>
-      </section>
-
-      <section class="offer-section" data-reveal>
-        <div class="offer-card">
-          <div>
-            <h2>Не просто нарезка. Режиссура внимания.</h2>
-            <p>
-              Мы не добавляем эффекты “чтобы было шумно”. Каждый акцент должен помогать зрителю:
-              быстрее понять мысль, почувствовать шутку, не выпасть из темпа и досмотреть ролик.
-            </p>
-          </div>
-
-          <div class="offer-list">
-            <div><strong>Ритм:</strong> убираем провисы и собираем речь в живой темп.</div>
-            <div><strong>SFX:</strong> усиливаем панчи, эмоции и смысловые повороты.</div>
-            <div><strong>Визуализация:</strong> превращаем идеи в понятные образы.</div>
-            <div><strong>Анализ:</strong> смотрим статистику серии и даём рекомендации.</div>
+            <div class="hero-proof"><div class="pill">Reels / Shorts / TikTok</div></div>
           </div>
         </div>
       </section>
 
+      <section id="reviews" class="reviews-section">
+        <div class="reviews-panel">
+          <div class="reviews-top" data-reveal>
+            <div class="reviews-title-wrap">
+              <div class="reviews-rating"><span class="rating-star">★</span> 5.0 / 5 по отзывам</div>
+              <h2>Отзывы</h2>
+            </div>
+
+            <div class="reviews-controls">
+              <button class="review-nav-btn" type="button" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
+              <button class="review-nav-btn" type="button" id="reviewNext" aria-label="Следующий отзыв">›</button>
+            </div>
+          </div>
+
+          <div class="reviews-carousel" id="reviewsCarousel" data-reveal>
+            <div class="reviews-track" id="reviewsTrack"></div>
+          </div>
+        </div>
+      </section>
 
       <section id="showreel" class="showreel-section" data-reveal>
         <div class="showreel-layout">
@@ -784,192 +527,92 @@
             <h2>Фрагменты наших работ</h2>
             <p>Короткие отрывки монтажа: эстетика, юмор, SFX, моушн, VFX, экспертные ролики, влоги и промо-форматы.</p>
           </div>
+
           <div class="reels-phone-stage" id="reelsStage">
             <button class="reel-arrow reel-arrow-up" type="button" id="reelPrev" aria-label="Предыдущий фрагмент">↑</button>
+
             <div class="reels-phone" id="reelsPhone">
               <div class="phone-notch"></div>
-              <video id="reelsVideo" class="reels-video" src="showreel/01.mp4" playsinline preload="metadata" muted></video>
-              <div class="reels-gradient"></div>
-              <button class="sound-toggle" type="button" id="soundToggle" aria-label="Включить или выключить звук">🔇</button>
+              <div class="reels-viewport"><div class="reels-track-vertical" id="reelsTrackVertical"></div></div>
+              <button class="sound-toggle" type="button" id="soundToggle" aria-label="Включить или выключить звук"></button>
               <div class="reels-caption">
                 <div class="reels-counter" id="reelsCounter">01 / 11</div>
                 <h3 id="reelsCaption">Эстетичный формат — стиль, ритм, визуальная подача</h3>
               </div>
             </div>
+
             <button class="reel-arrow reel-arrow-down" type="button" id="reelNext" aria-label="Следующий фрагмент">↓</button>
           </div>
-          <div class="reel-hint">Листайте фрагменты стрелками или зажмите телефон и проведите вверх/вниз.</div>
+
+          <div class="reel-hint">Листайте фрагменты стрелками или перетягивайте телефон вверх/вниз.</div>
         </div>
       </section>
 
       <section id="cases">
-        <div class="section-head" data-reveal>
-          <h2 class="section-title">Кейсы</h2>
-        </div>
+        <div class="section-head" data-reveal><h2 class="section-title">Кейсы</h2></div>
 
         <div class="grid cases-grid">
           <article class="case-card" data-reveal>
-            <div class="case-preview">
-              <div class="phone-frame">
-                <video
-                  class="case-video"
-                  src="sdvg.mp4"
-                  poster="sdvgcase.png"
-                  controls
-                  preload="metadata"
-                  playsinline
-                ></video>
-              </div>
-            </div>
+            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sdvg.mp4" poster="sdvgcase.png" controls preload="metadata" playsinline></video></div></div>
             <div class="case-body">
               <h3>СДВГ / личный бренд</h3>
-              <p>
-                Оживление говорящей головы через быстрый темп, крупные акценты,
-                графику, звуковые реакции и визуализацию смыслов спикера.
-              </p>
-              <div class="tags">
-                <span class="tag">личный бренд</span>
-                <span class="tag">юмор</span>
-                <span class="tag">моушн</span>
-              </div>
+              <p>Оживление говорящей головы через быстрый темп, крупные акценты, графику, звуковые реакции и визуализацию смыслов спикера.</p>
+              <div class="tags"><span class="tag">личный бренд</span><span class="tag">юмор</span><span class="tag">моушн</span></div>
             </div>
           </article>
 
           <article class="case-card" data-reveal>
-            <div class="case-preview">
-              <div class="phone-frame">
-                <video
-                  class="case-video"
-                  src="sketch.mp4"
-                  poster="sketchcase.png"
-                  controls
-                  preload="metadata"
-                  playsinline
-                ></video>
-              </div>
-            </div>
+            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sketch.mp4" poster="sketchcase.png" controls preload="metadata" playsinline></video></div></div>
             <div class="case-body">
               <h3>Скетч / динамичный формат</h3>
-              <p>
-                Монтаж с упором на юмор, тайминг, визуальные панчи и звуковые акценты,
-                чтобы сцена ощущалась живее и быстрее считывалась зрителем.
-              </p>
-              <div class="tags">
-                <span class="tag">скетч</span>
-                <span class="tag">панчи</span>
-                <span class="tag">визуализация</span>
-              </div>
+              <p>Монтаж с упором на юмор, тайминг, визуальные панчи и звуковые акценты, чтобы сцена ощущалась живее и быстрее считывалась зрителем.</p>
+              <div class="tags"><span class="tag">скетч</span><span class="tag">панчи</span><span class="tag">визуализация</span></div>
             </div>
           </article>
 
           <article class="case-card" data-reveal>
-            <div class="case-preview">
-              <div class="phone-frame">
-                <video
-                  class="case-video"
-                  src="nauch.mp4"
-                  poster="nauchcase.png"
-                  controls
-                  preload="metadata"
-                  playsinline
-                ></video>
-              </div>
-            </div>
+            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="nauch.mp4" poster="nauchcase.png" controls preload="metadata" playsinline></video></div></div>
             <div class="case-body">
               <h3>Научный / экспертный ролик</h3>
-              <p>
-                Динамичный вертикальный монтаж для экспертной подачи: удержание внимания,
-                визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.
-              </p>
-              <div class="tags">
-                <span class="tag">эксперт</span>
-                <span class="tag">ритм</span>
-                <span class="tag">SFX</span>
-              </div>
+              <p>Динамичный вертикальный монтаж для экспертной подачи: удержание внимания, визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.</p>
+              <div class="tags"><span class="tag">эксперт</span><span class="tag">ритм</span><span class="tag">SFX</span></div>
             </div>
           </article>
         </div>
       </section>
 
-
-      <section id="reviews" class="reviews-section">
-        <div class="reviews-top" data-reveal>
-          <div class="reviews-title-wrap">
-            <div class="reviews-rating"><span class="rating-star">★</span> 5.0 / 5 по отзывам</div>
-            <h2>Отзывы</h2>
-          </div>
-          <div class="reviews-controls">
-            <button class="review-nav-btn" type="button" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
-            <button class="review-nav-btn" type="button" id="reviewNext" aria-label="Следующий отзыв">›</button>
-          </div>
-        </div>
-        <div class="reviews-carousel" data-reveal>
-          <div class="reviews-track" id="reviewsTrack"></div>
-        </div>
-      </section>
-
-
       <section id="process">
-        <div class="section-head" data-reveal>
-          <h2 class="section-title">Как работаем</h2>
-        </div>
+        <div class="section-head" data-reveal><h2 class="section-title">Как работаем</h2></div>
 
         <div class="grid steps-grid">
-          <div class="step-card" data-reveal>
-            <div class="step-num">01</div>
-            <h3>Бриф</h3>
-            <p>Понимаем формат, спикера, стиль, задачи и референсы.</p>
-          </div>
-
-          <div class="step-card" data-reveal>
-            <div class="step-num">02</div>
-            <h3>Первый ролик</h3>
-            <p>Собираем стартовую версию и фиксируем монтажный язык.</p>
-          </div>
-
-          <div class="step-card" data-reveal>
-            <div class="step-num">03</div>
-            <h3>Серия</h3>
-            <p>Делаем пакет роликов в едином стиле, без хаоса и микроменеджмента.</p>
-          </div>
-
-          <div class="step-card" data-reveal>
-            <div class="step-num">04</div>
-            <h3>Анализ</h3>
-            <p>Смотрим удержание, реакции и даём рекомендации по улучшению формата.</p>
-          </div>
+          <div class="step-card" data-reveal><div class="step-num">01</div><h3>Бриф</h3><p>Понимаем формат, спикера, стиль, задачи и референсы.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Первый ролик</h3><p>Собираем стартовую версию и фиксируем монтажный язык.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Серия</h3><p>Делаем пакет роликов в едином стиле, без хаоса и микроменеджмента.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">04</div><h3>Анализ</h3><p>Смотрим удержание, реакции и даём рекомендации по улучшению формата.</p></div>
         </div>
       </section>
 
       <section id="contact">
         <div class="final-cta" data-reveal>
           <h2>Есть повторяющийся формат? Давайте сделаем его живым.</h2>
-          <p>
-            Подходит экспертам и личным брендам, которым нужен не шаблонный монтаж,
-            а авторская сборка с ритмом, юмором, SFX и визуальными акцентами.
-          </p>
+          <p>Подходит экспертам и личным брендам, которым нужен не шаблонный монтаж, а авторская сборка с ритмом, юмором, SFX и визуальными акцентами.</p>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://t.me/USERNAME" target="_blank">
-              Написать в Telegram
-              <span>→</span>
-            </a>
-            <a class="btn btn-secondary" href="#cases">
-              Посмотреть кейсы
-            </a>
+            <div class="contact-wrapper">
+              <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
+              <div class="contact-popover" aria-label="Контакты">
+                <a href="https://t.me/USERNAME" target="_blank" rel="noopener">TG</a>
+                <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener">IG</a>
+              </div>
+            </div>
+            <a class="btn btn-secondary" href="#cases">Посмотреть кейсы</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <div class="footer-inner">
-        <div>© Vnimanie — video editing studio</div>
-        <div>Динамичный монтаж для экспертов</div>
-      </div>
-    </footer>
+    <footer><div class="footer-inner"><div>© Vnimanie — video editing studio</div><div>Динамичный монтаж для экспертов</div></div></footer>
   </div>
-
 
   <script>
     const showreelItems = [
@@ -986,99 +629,167 @@
       { src: "showreel/11.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" }
     ];
 
-    let currentReel = 0;
-    let reelVisible = false;
-    let soundEnabled = false;
-    let isChangingReel = false;
-    const reelsVideo = document.getElementById("reelsVideo");
-    const reelsCaption = document.getElementById("reelsCaption");
-    const reelsCounter = document.getElementById("reelsCounter");
-    const reelsPhone = document.getElementById("reelsPhone");
-    const reelsStage = document.getElementById("reelsStage");
-    const soundToggle = document.getElementById("soundToggle");
+    const reviews = [
+      { name: "Евгений", role: "Авитолог / личный бренд", photo: "reviews/review-01.jpg", text: "Монтаж оживил формат: шутки стали считываться быстрее, объявления понятнее, а ролики выглядят динамичнее." },
+      { name: "Клиент", role: "Экспертный контент", photo: "reviews/review-02.jpg", text: "Понравилось, что команда не просто выполняет ТЗ, а сама предлагает решения: где усилить, где ускорить, где добавить визуальную идею." },
+      { name: "Клиент", role: "Пакет роликов / 8–12 в месяц", photo: "reviews/review-03.jpg", text: "Сроки понятные, правки быстрые, стиль не шаблонный. Видно, что в ролик реально погружаются." },
+      { name: "Клиент", role: "Vertical content", photo: "reviews/review-04.jpg", text: "После монтажа ролик ощущается живее: больше ритма, акцентов и понятной подачи для зрителя." },
+      { name: "Клиент", role: "Личный бренд", photo: "reviews/review-05.jpg", text: "Удобно, что после серии роликов есть не только готовые файлы, но и мысли по улучшению формата." }
+    ];
+
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
     function pauseAllOtherVideos(activeVideo) {
       document.querySelectorAll("video").forEach((video) => {
-        if (video !== activeVideo) { video.pause(); video.volume = 0; }
+        if (video !== activeVideo) {
+          video.pause();
+          video.volume = 0;
+        }
       });
+    }
+
+    document.querySelectorAll(".contact-trigger").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const wrapper = button.closest(".contact-wrapper");
+        document.querySelectorAll(".contact-wrapper.is-open").forEach((item) => {
+          if (item !== wrapper) item.classList.remove("is-open");
+        });
+        wrapper.classList.toggle("is-open");
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".contact-wrapper")) {
+        document.querySelectorAll(".contact-wrapper.is-open").forEach((item) => item.classList.remove("is-open"));
+      }
+    });
+
+    let currentReel = 0;
+    let reelVisible = false;
+    let soundEnabled = false;
+    let reelDragStartY = 0;
+    let reelDragOffset = 0;
+    let reelDragging = false;
+    let reelHeight = 0;
+
+    const reelsPhone = document.getElementById("reelsPhone");
+    const reelsStage = document.getElementById("reelsStage");
+    const reelsTrackVertical = document.getElementById("reelsTrackVertical");
+    const reelsCaption = document.getElementById("reelsCaption");
+    const reelsCounter = document.getElementById("reelsCounter");
+    const soundToggle = document.getElementById("soundToggle");
+
+    const soundOnIcon = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 9C17 10 17.5 11 17.5 12C17.5 13 17 14 16 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.6 6.8C20.2 8.4 21 10.1 21 12C21 13.9 20.2 15.6 18.6 17.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+    const soundOffIcon = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17 9L21 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M21 9L17 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+
+    function activeReelVideo() {
+      return reelsTrackVertical?.querySelectorAll(".reels-video")[currentReel];
+    }
+
+    function updateSoundIcon() {
+      if (soundToggle) soundToggle.innerHTML = soundEnabled ? soundOnIcon : soundOffIcon;
+    }
+
+    function renderReels() {
+      if (!reelsTrackVertical) return;
+      reelsTrackVertical.innerHTML = showreelItems.map((item) => `
+        <div class="reel-slide"><video class="reels-video" src="${item.src}" playsinline preload="metadata" muted></video></div>
+      `).join("");
+      updateSoundIcon();
+      updateReelLayout(false);
+    }
+
+    function updateReelLayout(animate = true, offset = 0) {
+      if (!reelsTrackVertical || !reelsPhone) return;
+      reelHeight = reelsPhone.getBoundingClientRect().height || 1;
+      reelsTrackVertical.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
+      reelsTrackVertical.style.transform = `translateY(${(-currentReel * reelHeight) + offset}px)`;
+      const item = showreelItems[currentReel];
+      reelsCaption.textContent = item.caption;
+      reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
     }
 
     async function playCurrentReel() {
-      if (!reelVisible || !reelsVideo) return;
-      pauseAllOtherVideos(reelsVideo);
-      reelsVideo.muted = !soundEnabled;
-      reelsVideo.volume = soundEnabled ? 0.85 : 0;
-      try { await reelsVideo.play(); } catch (error) {}
+      const video = activeReelVideo();
+      if (!video || !reelVisible) return;
+      pauseAllOtherVideos(video);
+      video.muted = !soundEnabled;
+      video.volume = soundEnabled ? 0.85 : 0;
+      try { await video.play(); } catch (error) {}
     }
 
-    function fadeVolume(video, from, to, duration = 220) {
-      return new Promise((resolve) => {
-        const startTime = performance.now();
-        function step(now) {
-          const progress = Math.min((now - startTime) / duration, 1);
-          video.volume = Math.max(0, Math.min(1, from + (to - from) * progress));
-          if (progress < 1) requestAnimationFrame(step); else resolve();
+    function stopInactiveReels() {
+      reelsTrackVertical?.querySelectorAll(".reels-video").forEach((video, index) => {
+        if (index !== currentReel) {
+          video.pause();
+          video.currentTime = 0;
+          video.volume = 0;
+          video.muted = true;
         }
-        requestAnimationFrame(step);
       });
     }
 
-    async function setReel(index) {
-      if (isChangingReel || !reelsVideo) return;
-      isChangingReel = true;
-      const nextIndex = (index + showreelItems.length) % showreelItems.length;
-      const item = showreelItems[nextIndex];
-      reelsVideo.classList.add("is-fading");
-      if (soundEnabled && !reelsVideo.muted) await fadeVolume(reelsVideo, reelsVideo.volume || 0.85, 0, 180);
-      reelsVideo.pause();
-      reelsVideo.src = item.src;
-      reelsVideo.load();
-      currentReel = nextIndex;
-      reelsCaption.textContent = item.caption;
-      reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
-      setTimeout(async () => {
-        reelsVideo.classList.remove("is-fading");
-        if (reelVisible) {
-          reelsVideo.muted = !soundEnabled;
-          reelsVideo.volume = 0;
-          await playCurrentReel();
-          if (soundEnabled && !reelsVideo.muted) await fadeVolume(reelsVideo, 0, 0.85, 220);
-        }
-        isChangingReel = false;
-      }, 170);
+    function setReel(index, animate = true) {
+      currentReel = ((index % showreelItems.length) + showreelItems.length) % showreelItems.length;
+      updateReelLayout(animate, 0);
+      stopInactiveReels();
+      playCurrentReel();
     }
 
     function nextReel() { setReel(currentReel + 1); }
     function prevReel() { setReel(currentReel - 1); }
-    document.getElementById("reelNext").addEventListener("click", nextReel);
-    document.getElementById("reelPrev").addEventListener("click", prevReel);
 
-    soundToggle.addEventListener("click", async () => {
+    document.getElementById("reelNext")?.addEventListener("click", nextReel);
+    document.getElementById("reelPrev")?.addEventListener("click", prevReel);
+
+    soundToggle?.addEventListener("pointerdown", (event) => event.stopPropagation());
+    soundToggle?.addEventListener("click", async (event) => {
+      event.stopPropagation();
       soundEnabled = !soundEnabled;
-      soundToggle.textContent = soundEnabled ? "🔊" : "🔇";
-      reelsVideo.muted = !soundEnabled;
+      updateSoundIcon();
+      const video = activeReelVideo();
+      if (!video) return;
       if (soundEnabled) {
-        pauseAllOtherVideos(reelsVideo);
-        reelsVideo.volume = 0;
-        await playCurrentReel();
-        await fadeVolume(reelsVideo, 0, 0.85, 260);
+        pauseAllOtherVideos(video);
+        video.muted = false;
+        video.volume = 0.85;
+        try { await video.play(); } catch (error) {}
       } else {
-        await fadeVolume(reelsVideo, reelsVideo.volume || 0.85, 0, 180);
-        reelsVideo.muted = true;
+        video.volume = 0;
+        video.muted = true;
       }
     });
 
-    let dragStartY = null;
-    reelsPhone.addEventListener("pointerdown", (event) => { dragStartY = event.clientY; reelsPhone.setPointerCapture(event.pointerId); });
-    reelsPhone.addEventListener("pointerup", (event) => {
-      if (dragStartY === null) return;
-      const deltaY = event.clientY - dragStartY;
-      if (Math.abs(deltaY) > 42) deltaY < 0 ? nextReel() : prevReel();
-      dragStartY = null;
+    reelsPhone?.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("button")) return;
+      reelDragging = true;
+      reelDragStartY = event.clientY;
+      reelDragOffset = 0;
+      reelsPhone.setPointerCapture(event.pointerId);
+      updateReelLayout(false, 0);
     });
 
+    reelsPhone?.addEventListener("pointermove", (event) => {
+      if (!reelDragging) return;
+      reelDragOffset = event.clientY - reelDragStartY;
+      updateReelLayout(false, reelDragOffset);
+    });
+
+    function releaseReelDrag() {
+      if (!reelDragging) return;
+      reelDragging = false;
+      const steps = Math.round(-reelDragOffset / (reelHeight || 1));
+      if (steps === 0 && Math.abs(reelDragOffset) > 70) setReel(currentReel + (reelDragOffset < 0 ? 1 : -1), true);
+      else setReel(currentReel + steps, true);
+      reelDragOffset = 0;
+    }
+
+    reelsPhone?.addEventListener("pointerup", releaseReelDrag);
+    reelsPhone?.addEventListener("pointercancel", releaseReelDrag);
+
     let wheelLocked = false;
-    reelsPhone.addEventListener("wheel", (event) => {
+    reelsPhone?.addEventListener("wheel", (event) => {
       event.preventDefault();
       if (wheelLocked) return;
       event.deltaY > 0 ? nextReel() : prevReel();
@@ -1089,67 +800,118 @@
     const showreelObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         reelVisible = entry.isIntersecting;
-        if (reelVisible) playCurrentReel(); else { reelsVideo.pause(); reelsVideo.volume = 0; }
-      });
-    }, { threshold: 0.45 });
-    if (reelsStage) showreelObserver.observe(reelsStage);
-    reelsVideo.addEventListener("ended", nextReel);
-    document.querySelectorAll("video").forEach((video) => video.addEventListener("play", () => pauseAllOtherVideos(video)));
-
-    const reviews = [
-      { name: "Евгений", role: "Авитолог / личный бренд", photo: "reviews/review-01.jpg", text: "Монтаж оживил формат: шутки стали считываться быстрее, объявления понятнее, а ролики выглядят динамичнее." },
-      { name: "Клиент", role: "Экспертный контент", photo: "reviews/review-02.jpg", text: "Понравилось, что команда не просто выполняет ТЗ, а сама предлагает решения: где усилить, где ускорить, где добавить визуальную идею." },
-      { name: "Клиент", role: "Пакет роликов / 8–12 в месяц", photo: "reviews/review-03.jpg", text: "Сроки понятные, правки быстрые, стиль не шаблонный. Видно, что в ролик реально погружаются." },
-      { name: "Клиент", role: "Vertical content", photo: "reviews/review-04.jpg", text: "После монтажа ролик ощущается живее: больше ритма, акцентов и понятной подачи для зрителя." },
-      { name: "Клиент", role: "Личный бренд", photo: "reviews/review-05.jpg", text: "Удобно, что после серии роликов есть не только готовые файлы, но и мысли по улучшению формата." }
-    ];
-
-    let currentReview = 0;
-    const reviewsTrack = document.getElementById("reviewsTrack");
-    function renderReviews() {
-      if (!reviewsTrack) return;
-      const offsets = [-2, -1, 0, 1, 2];
-      reviewsTrack.innerHTML = offsets.map((offset) => {
-        const index = (currentReview + offset + reviews.length) % reviews.length;
-        const review = reviews[index];
-        let className = "review-slide";
-        if (offset === 0) className += " is-active";
-        if (Math.abs(offset) === 1) className += " is-side";
-        if (Math.abs(offset) === 2) className += " is-outer";
-        return `
-          <article class="${className}">
-            <div>
-              <div class="review-card-head">
-                <div class="review-photo"><img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';"></div>
-                <div class="review-meta"><h3>${review.name}</h3><p>${review.role}</p></div>
-              </div>
-              <div class="stars" aria-label="5 звёзд">★★★★★</div>
-              <blockquote>“${review.text}”</blockquote>
-            </div>
-            <footer>VNIMANIE / отзыв клиента</footer>
-          </article>`;
-      }).join("");
-    }
-    function nextReview() { currentReview = (currentReview + 1) % reviews.length; renderReviews(); }
-    function prevReview() { currentReview = (currentReview - 1 + reviews.length) % reviews.length; renderReviews(); }
-    document.getElementById("reviewNext").addEventListener("click", nextReview);
-    document.getElementById("reviewPrev").addEventListener("click", prevReview);
-    renderReviews();
-  </script>
-
-  <script>
-    const items = document.querySelectorAll("[data-reveal]");
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+        if (reelVisible) playCurrentReel();
+        else {
+          const video = activeReelVideo();
+          if (video) { video.pause(); video.volume = 0; }
         }
       });
-    }, {
-      threshold: 0.12
+    }, { threshold: 0.45 });
+
+    if (reelsStage) showreelObserver.observe(reelsStage);
+    reelsTrackVertical?.addEventListener("ended", nextReel, true);
+    renderReels();
+
+    let currentReview = 0;
+    let reviewDragging = false;
+    let reviewDragStartX = 0;
+    let reviewDragOffset = 0;
+    let reviewStep = 578;
+
+    const reviewsCarousel = document.getElementById("reviewsCarousel");
+    const reviewsTrack = document.getElementById("reviewsTrack");
+
+    function renderReviews() {
+      if (!reviewsTrack) return;
+      reviewsTrack.innerHTML = reviews.map((review, index) => `
+        <article class="review-slide" data-index="${index}">
+          <div>
+            <div class="review-card-head">
+              <div class="review-photo"><img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';"></div>
+              <div class="review-meta"><h3>${review.name}</h3><p>${review.role}</p></div>
+            </div>
+            <div class="stars" aria-label="5 звёзд">★★★★★</div>
+            <blockquote>“${review.text}”</blockquote>
+          </div>
+          <footer>VNIMANIE / отзыв клиента</footer>
+        </article>
+      `).join("");
+      updateReviewsLayout(false, 0);
+    }
+
+    function updateReviewClasses() {
+      reviewsTrack?.querySelectorAll(".review-slide").forEach((card, index) => {
+        card.classList.toggle("is-active", index === currentReview);
+        card.classList.toggle("is-side", Math.abs(index - currentReview) === 1);
+      });
+    }
+
+    function getReviewStep() {
+      const firstCard = reviewsTrack?.querySelector(".review-slide");
+      if (!firstCard || !reviewsTrack) return 578;
+      const gap = parseFloat(getComputedStyle(reviewsTrack).gap || "18");
+      return firstCard.getBoundingClientRect().width + gap;
+    }
+
+    function updateReviewsLayout(animate = true, offset = 0) {
+      if (!reviewsTrack || !reviewsCarousel) return;
+      reviewStep = getReviewStep();
+      const carouselWidth = reviewsCarousel.getBoundingClientRect().width;
+      const cardWidth = reviewsTrack.querySelector(".review-slide")?.getBoundingClientRect().width || 560;
+      const base = (carouselWidth / 2) - (cardWidth / 2) - (currentReview * reviewStep);
+      reviewsTrack.style.transition = animate ? "transform .38s cubic-bezier(.22,.8,.22,1)" : "none";
+      reviewsTrack.style.transform = `translateX(${base + offset}px)`;
+      updateReviewClasses();
+    }
+
+    function setReview(index, animate = true) {
+      currentReview = clamp(index, 0, reviews.length - 1);
+      updateReviewsLayout(animate, 0);
+    }
+
+    function nextReview() { setReview(currentReview >= reviews.length - 1 ? 0 : currentReview + 1); }
+    function prevReview() { setReview(currentReview <= 0 ? reviews.length - 1 : currentReview - 1); }
+
+    document.getElementById("reviewNext")?.addEventListener("click", nextReview);
+    document.getElementById("reviewPrev")?.addEventListener("click", prevReview);
+
+    reviewsCarousel?.addEventListener("pointerdown", (event) => {
+      reviewDragging = true;
+      reviewDragStartX = event.clientX;
+      reviewDragOffset = 0;
+      reviewsCarousel.classList.add("is-dragging");
+      reviewsCarousel.setPointerCapture(event.pointerId);
+      updateReviewsLayout(false, 0);
     });
 
+    reviewsCarousel?.addEventListener("pointermove", (event) => {
+      if (!reviewDragging) return;
+      reviewDragOffset = event.clientX - reviewDragStartX;
+      if ((currentReview === 0 && reviewDragOffset > 0) || (currentReview === reviews.length - 1 && reviewDragOffset < 0)) reviewDragOffset *= 0.34;
+      updateReviewsLayout(false, reviewDragOffset);
+    });
+
+    function releaseReviewDrag() {
+      if (!reviewDragging) return;
+      reviewDragging = false;
+      reviewsCarousel.classList.remove("is-dragging");
+      const steps = Math.round(-reviewDragOffset / reviewStep);
+      if (steps === 0 && Math.abs(reviewDragOffset) > 80) setReview(currentReview + (reviewDragOffset < 0 ? 1 : -1), true);
+      else setReview(currentReview + steps, true);
+      reviewDragOffset = 0;
+    }
+
+    reviewsCarousel?.addEventListener("pointerup", releaseReviewDrag);
+    reviewsCarousel?.addEventListener("pointercancel", releaseReviewDrag);
+    renderReviews();
+
+    window.addEventListener("resize", () => { updateReelLayout(false, 0); updateReviewsLayout(false, 0); });
+    document.querySelectorAll("video").forEach((video) => video.addEventListener("play", () => pauseAllOtherVideos(video)));
+
+    const items = document.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+    }, { threshold: 0.12 });
     items.forEach((item) => observer.observe(item));
   </script>
 </body>
