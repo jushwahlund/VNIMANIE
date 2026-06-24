@@ -1036,6 +1036,226 @@
       }
     }
 
+
+    /* VNIMANIE mobile layout cleanup v1
+       Desktop remains untouched. These overrides only fix tablet/mobile layout. */
+    :root {
+      --bp-mobile: 640px;
+      --bp-tablet: 920px;
+    }
+
+    section[id] {
+      scroll-margin-top: 92px;
+    }
+
+    @media (max-width: 920px) {
+      .page {
+        padding: 0 18px;
+      }
+
+      .showreel-layout {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 34px;
+        align-items: start;
+      }
+
+      .showreel-copy {
+        max-width: 100%;
+      }
+
+      .reels-phone-stage {
+        width: 100%;
+        min-height: auto;
+      }
+
+      .reel-side-controls {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 14px;
+        opacity: 0.86;
+      }
+
+      .reel-swipe-hint {
+        writing-mode: initial;
+        transform: none;
+        max-width: none;
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .case-preview {
+        min-height: auto;
+        padding: 26px 0;
+      }
+
+      .phone-frame {
+        width: min(72vw, 330px);
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .page {
+        padding: 0 18px;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      section[id] {
+        scroll-margin-top: 82px;
+      }
+
+      .section-head {
+        margin-bottom: 20px;
+      }
+
+      .section-title,
+      .reviews-title-wrap h2 {
+        font-size: 38px;
+        letter-spacing: -0.055em;
+      }
+
+      .showreel-section {
+        padding: 48px 0 56px;
+      }
+
+      .showreel-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 28px 22px 30px;
+        border-radius: 26px;
+        min-height: auto;
+        overflow: hidden;
+      }
+
+      .showreel-copy h2 {
+        font-size: clamp(38px, 11vw, 50px);
+        line-height: .96;
+        letter-spacing: -0.07em;
+        max-width: 100%;
+      }
+
+      .showreel-copy p {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 1.55;
+      }
+
+      .showreel-cta {
+        justify-content: stretch;
+      }
+
+      .showreel-cta .contact-wrapper,
+      .showreel-cta .btn {
+        width: 100%;
+      }
+
+      .reels-phone-stage {
+        min-height: auto;
+        padding-top: 4px;
+      }
+
+      .reels-phone {
+        width: min(76vw, 300px);
+        max-width: 100%;
+        border-radius: 38px;
+      }
+
+      .reel-side-controls {
+        left: auto;
+        top: auto;
+        position: static;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 14px;
+      }
+
+      #cases {
+        padding-top: 58px;
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .case-card {
+        border-radius: 24px;
+      }
+
+      .case-preview {
+        min-height: auto;
+        padding: 24px 0;
+      }
+
+      .phone-frame {
+        width: min(74vw, 300px);
+        border-radius: 28px;
+      }
+
+      .case-video {
+        border-radius: 28px;
+      }
+
+      .case-body {
+        padding: 22px;
+      }
+
+      .case-body h3 {
+        font-size: 22px;
+        line-height: 1.08;
+      }
+
+      .case-body p {
+        font-size: 15px;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .step-card {
+        min-height: auto;
+        padding: 28px 24px;
+        border-radius: 24px;
+      }
+
+      .reviews-controls {
+        display: none;
+      }
+
+      .reviews-top {
+        align-items: flex-start;
+      }
+
+      .reviews-carousel {
+        height: 360px;
+      }
+
+      .review-slide {
+        width: min(86vw, 360px);
+      }
+    }
+
   </style>
 </head>
 
