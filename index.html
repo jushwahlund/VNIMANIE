@@ -2732,6 +2732,211 @@
       }
     }
 
+
+    /* VNIMANIE v16 — seamless TOYOSU card + real profile fade */
+    /*
+      The TOYOSU case now uses ONE background on the whole article.
+      Copy and reel columns are transparent, so there is no hard visual seam
+      at the grid boundary.
+    */
+    .featured-case--secondary {
+      position: relative;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 83% 45%, rgba(255,255,255,.09), transparent 36%),
+        radial-gradient(circle at 61% 28%, rgba(255,255,255,.035), transparent 34%),
+        linear-gradient(90deg,
+          rgba(14,14,14,.98) 0%,
+          rgba(14,14,14,.965) 36%,
+          rgba(15,15,15,.94) 52%,
+          rgba(17,17,17,.90) 66%,
+          rgba(18,18,18,.86) 82%,
+          rgba(14,14,14,.93) 100%);
+    }
+
+    .featured-case--secondary > .featured-case-copy,
+    .featured-case--secondary > .featured-visual--toyosu {
+      background: transparent !important;
+      border-left: 0 !important;
+      border-right: 0 !important;
+      box-shadow: none;
+    }
+
+    .featured-case--secondary > .featured-case-copy {
+      z-index: 2;
+    }
+
+    .featured-case--secondary > .featured-visual--toyosu {
+      z-index: 1;
+    }
+
+    /*
+      A very wide, low-contrast light field sits behind the reel instead of
+      starting exactly where the second grid column begins.
+    */
+    .featured-case--secondary::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: -18%;
+      right: -12%;
+      width: 67%;
+      height: 136%;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse at 58% 50%,
+        rgba(255,255,255,.055) 0%,
+        rgba(255,255,255,.028) 35%,
+        rgba(255,255,255,.010) 58%,
+        transparent 78%
+      );
+      filter: blur(18px);
+    }
+
+    .featured-visual--toyosu::after,
+    .featured-visual--toyosu::before {
+      display: none !important;
+    }
+
+    .toyosu-media-wrap {
+      position: relative;
+      z-index: 3;
+    }
+
+    /*
+      TOYOSU profile: remove the card-like rectangular shadow and use a
+      stronger radial alpha mask, matching the soft proof treatment on Diana.
+    */
+    .toyosu-profile-wrap {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .toyosu-profile-wrap .case-profile-shot--toyosu {
+      border: 0 !important;
+      box-shadow: none !important;
+      border-radius: 18px;
+      opacity: .64;
+      filter: saturate(.90) brightness(.84) contrast(1.03);
+      -webkit-mask-image: radial-gradient(
+        ellipse 76% 84% at 50% 31%,
+        #000 0%,
+        #000 47%,
+        rgba(0,0,0,.86) 60%,
+        rgba(0,0,0,.56) 72%,
+        rgba(0,0,0,.24) 84%,
+        rgba(0,0,0,.06) 92%,
+        transparent 100%
+      ) !important;
+      mask-image: radial-gradient(
+        ellipse 76% 84% at 50% 31%,
+        #000 0%,
+        #000 47%,
+        rgba(0,0,0,.86) 60%,
+        rgba(0,0,0,.56) 72%,
+        rgba(0,0,0,.24) 84%,
+        rgba(0,0,0,.06) 92%,
+        transparent 100%
+      ) !important;
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+    }
+
+    /*
+      Extra bottom dissolve. It is intentionally subtle in the center and
+      stronger at the bottom, so the screenshot disappears into the case
+      instead of ending above the fact cards.
+    */
+    .toyosu-profile-wrap::after {
+      content: "";
+      position: absolute;
+      z-index: 4;
+      pointer-events: none;
+      left: -10%;
+      right: -10%;
+      bottom: -8%;
+      height: 48%;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(14,14,14,.08) 26%,
+        rgba(14,14,14,.42) 60%,
+        rgba(14,14,14,.82) 84%,
+        rgba(14,14,14,.98) 100%
+      );
+      filter: blur(3px);
+    }
+
+    @media (min-width: 921px) {
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        transform: translateY(-12px) rotate(7.5deg);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .featured-case--secondary {
+        background:
+          radial-gradient(circle at 50% 74%, rgba(255,255,255,.075), transparent 36%),
+          linear-gradient(180deg,
+            rgba(14,14,14,.98) 0%,
+            rgba(14,14,14,.96) 48%,
+            rgba(16,16,16,.90) 70%,
+            rgba(15,15,15,.92) 100%);
+      }
+
+      .featured-case--secondary::after {
+        top: 45%;
+        right: -18%;
+        width: 136%;
+        height: 72%;
+        background: radial-gradient(
+          ellipse at 50% 50%,
+          rgba(255,255,255,.045) 0%,
+          rgba(255,255,255,.018) 42%,
+          transparent 76%
+        );
+      }
+
+      .featured-case--secondary > .featured-visual--toyosu {
+        border-top: 0 !important;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        opacity: .48;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        opacity: .34;
+        -webkit-mask-image: radial-gradient(
+          ellipse 79% 84% at 50% 31%,
+          #000 0%,
+          #000 44%,
+          rgba(0,0,0,.80) 60%,
+          rgba(0,0,0,.46) 74%,
+          rgba(0,0,0,.16) 87%,
+          transparent 100%
+        ) !important;
+        mask-image: radial-gradient(
+          ellipse 79% 84% at 50% 31%,
+          #000 0%,
+          #000 44%,
+          rgba(0,0,0,.80) 60%,
+          rgba(0,0,0,.46) 74%,
+          rgba(0,0,0,.16) 87%,
+          transparent 100%
+        ) !important;
+      }
+
+      .toyosu-profile-wrap::after {
+        height: 42%;
+        bottom: -4%;
+      }
+    }
+
   </style>
 </head>
 
