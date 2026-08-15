@@ -2937,6 +2937,172 @@
       }
     }
 
+  
+    /* VNIMANIE v17 — clean TOYOSU background + screenshot-only fade */
+    /*
+      1) The case now has one calm continuous background.
+         No horizontal/vertical overlay is painted over the copy area.
+      2) The TOYOSU screenshot fades by its own alpha mask only.
+         The fade ends before the fact cards, so the background itself stays untouched.
+    */
+    .featured-case--secondary {
+      background:
+        radial-gradient(
+          ellipse 54% 88% at 84% 48%,
+          rgba(255,255,255,.085) 0%,
+          rgba(255,255,255,.045) 32%,
+          rgba(255,255,255,.016) 55%,
+          transparent 76%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.038) 0%,
+          rgba(255,255,255,.020) 58%,
+          rgba(255,255,255,.014) 100%
+        ),
+        #0d0d0d !important;
+    }
+
+    /* Remove the wide background fade that was creating the uneven dark/light transition. */
+    .featured-case--secondary::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    .featured-case--secondary > .featured-case-copy,
+    .featured-case--secondary > .featured-visual--toyosu {
+      background: transparent !important;
+      border-left: 0 !important;
+      border-right: 0 !important;
+      box-shadow: none !important;
+    }
+
+    .featured-visual--toyosu::before,
+    .featured-visual--toyosu::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    /* The wrapper itself is transparent: no dark gradient is painted over the case. */
+    .toyosu-profile-wrap {
+      position: relative;
+      isolation: isolate;
+      background: transparent !important;
+    }
+
+    .toyosu-profile-wrap::before,
+    .toyosu-profile-wrap::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    /* Fade only the screenshot pixels. */
+    .toyosu-profile-wrap .case-profile-shot--toyosu {
+      border: 0 !important;
+      box-shadow: none !important;
+      opacity: .64;
+      filter: saturate(.90) brightness(.84) contrast(1.03);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 52%,
+        rgba(0,0,0,.94) 59%,
+        rgba(0,0,0,.72) 66%,
+        rgba(0,0,0,.38) 72%,
+        rgba(0,0,0,.12) 77%,
+        transparent 82%
+      ) !important;
+      mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 52%,
+        rgba(0,0,0,.94) 59%,
+        rgba(0,0,0,.72) 66%,
+        rgba(0,0,0,.38) 72%,
+        rgba(0,0,0,.12) 77%,
+        transparent 82%
+      ) !important;
+      -webkit-mask-size: 100% 100% !important;
+      mask-size: 100% 100% !important;
+      -webkit-mask-repeat: no-repeat !important;
+      mask-repeat: no-repeat !important;
+    }
+
+    @media (min-width: 921px) {
+      .toyosu-profile-wrap {
+        height: 318px;
+        margin-top: -34px;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        width: min(100%, 300px);
+        height: 452px;
+        transform: translateY(-12px) rotate(7.5deg);
+        transform-origin: 55% 18%;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 920px) {
+      .featured-case--secondary {
+        background:
+          radial-gradient(
+            ellipse 72% 48% at 50% 79%,
+            rgba(255,255,255,.055) 0%,
+            rgba(255,255,255,.022) 46%,
+            transparent 78%
+          ),
+          linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.014)),
+          #0d0d0d !important;
+      }
+
+      .toyosu-profile-wrap {
+        height: 280px;
+        margin-top: -22px;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        width: min(100%, 242px);
+        height: 384px;
+        transform: translateY(-8px) rotate(6deg);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .featured-case--secondary {
+        background:
+          radial-gradient(
+            ellipse 90% 34% at 50% 82%,
+            rgba(255,255,255,.045) 0%,
+            rgba(255,255,255,.016) 48%,
+            transparent 80%
+          ),
+          linear-gradient(180deg, rgba(255,255,255,.030), rgba(255,255,255,.012)),
+          #0d0d0d !important;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        opacity: .34;
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          #000 0%,
+          #000 48%,
+          rgba(0,0,0,.86) 58%,
+          rgba(0,0,0,.54) 68%,
+          rgba(0,0,0,.20) 76%,
+          transparent 84%
+        ) !important;
+        mask-image: linear-gradient(
+          to bottom,
+          #000 0%,
+          #000 48%,
+          rgba(0,0,0,.86) 58%,
+          rgba(0,0,0,.54) 68%,
+          rgba(0,0,0,.20) 76%,
+          transparent 84%
+        ) !important;
+      }
+    }
+
   </style>
 </head>
 
