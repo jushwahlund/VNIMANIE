@@ -257,7 +257,7 @@
     .section-title { font-size: clamp(30px, 4.2vw, 54px); line-height: 1; letter-spacing: -0.05em; }
     .grid { display: grid; gap: 16px; width: 100%; }
     .cases-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .steps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .steps-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     .case-card, .step-card {
       width: 100%;
@@ -1455,9 +1455,9 @@
     }
 
     .featured-case--secondary .featured-visual {
-      border-left: 0;
-      border-right: 1px solid rgba(255,255,255,.08);
-      order: -1;
+      border-left: 1px solid rgba(255,255,255,.08);
+      border-right: 0;
+      order: 0;
     }
 
     .series-grid {
@@ -1886,7 +1886,7 @@
       }
 
       .diana-media-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         max-width: 650px;
       }
 
@@ -2002,7 +2002,7 @@
               <a class="btn btn-secondary" href="#cases">Кейсы</a>
 
               <div class="contact-wrapper">
-                <button class="btn btn-secondary contact-trigger" type="button">Обсудить серию</button>
+                <button class="btn btn-secondary contact-trigger" type="button">Обсудить задачу</button>
                 <div class="contact-popover" aria-label="Контакты">
                   <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
                   <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
@@ -2034,7 +2034,7 @@
           </div>
           <div class="proof-item">
             <div class="proof-number">TOYOSU · 27k</div>
-            <div class="proof-copy">яркий коммерческий Reels для ресторана</div>
+            <div class="proof-copy">яркий Reels для ресторана</div>
           </div>
         </div>
       </section>
@@ -2092,7 +2092,7 @@
             <div class="featured-case-copy">
               <div class="section-kicker"><span class="star-icon">01</span> флагманский кейс</div>
               <h3>10 Reels для Дианы — личный бренд с аудиторией 272k</h3>
-              <p>Серия динамичных вертикальных роликов в едином стиле: ритм, субтитры, b-roll, графика, смысловые акценты и SFX без ощущения шаблонного монтажа.</p>
+              <p>Серия динамичных вертикальных роликов в едином стиле без ощущения шаблонного монтажа.</p>
 
               <div class="case-facts">
                 <div class="case-fact"><strong>10</strong><span>роликов в одной серии</span></div>
@@ -2100,7 +2100,6 @@
                 <div class="case-fact"><strong>1 стиль</strong><span>зафиксирован на всю серию</span></div>
               </div>
 
-              <div class="case-result">Серия завершена, клиент доволен результатом. Это кейс про глубину работы: не разовая монтажная задача, а системная упаковка контента серией.</div>
 
               <div class="tags">
                 <span class="tag">личный бренд</span>
@@ -2110,9 +2109,9 @@
               </div>
             </div>
 
-            <div class="featured-visual featured-visual--diana" aria-label="Четыре ролика из серии для Дианы">
+            <div class="featured-visual featured-visual--diana" aria-label="Три ролика из серии для Дианы">
               <div class="featured-media-head">
-                <div>4 ролика из серии</div>
+                <div>3 ролика из серии</div>
                 <span>вертикальный формат 9:16</span>
               </div>
 
@@ -2128,10 +2127,6 @@
                 <div class="featured-reel-card">
                   <span class="featured-reel-label">03</span>
                   <video class="featured-reel-video" src="diana3.mp4" poster="diana3cover.png" controls preload="none" playsinline></video>
-                </div>
-                <div class="featured-reel-card">
-                  <span class="featured-reel-label">04</span>
-                  <video class="featured-reel-video" src="diana4.mp4" poster="diana4cover.png" controls preload="none" playsinline></video>
                 </div>
               </div>
 
@@ -2249,12 +2244,11 @@
 
       <section id="contact">
         <div class="final-cta" data-reveal>
-          <h2>Есть материал на серию роликов? Соберём для него визуальную систему.</h2>
-          <p>Можно начать с первого ролика, зафиксировать стиль и затем масштабировать его на весь контент-пакет.</p>
+          <h2>Есть повторяющийся формат? Давайте сделаем его живым.</h2>
 
           <div class="cta-row">
             <div class="contact-wrapper">
-              <button class="btn btn-primary contact-trigger" type="button">Обсудить серию <span>→</span></button>
+              <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
               <div class="contact-popover" aria-label="Контакты">
                 <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
                 <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
@@ -2262,7 +2256,6 @@
             </div>
             <a class="btn btn-secondary" href="#cases">Посмотреть кейсы</a>
           </div>
-          <div class="trust-note">Reels / Shorts / TikTok · эксперты · личные бренды · бизнес</div>
         </div>
       </section>
     </main>
