@@ -2535,6 +2535,203 @@
       background-color: #080808;
     }
 
+  
+    /* VNIMANIE v15 — smoother TOYOSU split + balanced 3-reel Diana showcase */
+    @media (min-width: 921px) {
+      /* TOYOSU: remove the visible split and blend copy into the reel area. */
+      .featured-case--secondary {
+        gap: 0;
+      }
+
+      .featured-case--secondary .featured-visual--toyosu {
+        border-left: 0 !important;
+        background:
+          radial-gradient(circle at 62% 44%, rgba(255,255,255,.105), transparent 37%),
+          linear-gradient(90deg,
+            rgba(10,10,10,.98) 0%,
+            rgba(10,10,10,.84) 8%,
+            rgba(10,10,10,.46) 20%,
+            rgba(10,10,10,.14) 36%,
+            rgba(255,255,255,.018) 58%,
+            rgba(255,255,255,.035) 100%),
+          linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
+      }
+
+      /* Make the profile proof slightly larger, higher and softly dissolved like Diana. */
+      .toyosu-profile-wrap {
+        height: 330px;
+        margin-top: -34px;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        width: min(100%, 300px);
+        height: 452px;
+        opacity: .60;
+        transform: translateY(-10px) rotate(7.5deg);
+        transform-origin: 55% 18%;
+        border-radius: 22px;
+        -webkit-mask-image: radial-gradient(
+          ellipse 98% 93% at 50% 21%,
+          #000 0%,
+          #000 54%,
+          rgba(0,0,0,.86) 66%,
+          rgba(0,0,0,.48) 79%,
+          rgba(0,0,0,.16) 90%,
+          transparent 100%
+        );
+        mask-image: radial-gradient(
+          ellipse 98% 93% at 50% 21%,
+          #000 0%,
+          #000 54%,
+          rgba(0,0,0,.86) 66%,
+          rgba(0,0,0,.48) 79%,
+          rgba(0,0,0,.16) 90%,
+          transparent 100%
+        );
+      }
+
+      /* Diana: three reels should read as a deliberate trio, not a four-column grid with a missing card. */
+      .featured-visual--diana {
+        padding: 28px 34px 44px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(255,255,255,.085), transparent 43%),
+          linear-gradient(180deg, rgba(255,255,255,.036), rgba(255,255,255,.012));
+      }
+
+      .featured-visual--diana .featured-media-head,
+      .featured-visual--diana .diana-media-grid {
+        max-width: 900px;
+      }
+
+      .featured-visual--diana .diana-media-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .featured-visual--diana .featured-media-head {
+        margin-bottom: 20px;
+      }
+
+      .featured-visual--diana .featured-media-head > div:first-child {
+        color: rgba(255,255,255,.96);
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: -.015em;
+      }
+
+      .featured-visual--diana .featured-media-head > span {
+        color: rgba(255,255,255,.46);
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 920px) {
+      .featured-case--secondary {
+        gap: 0;
+      }
+
+      .featured-case--secondary .featured-visual--toyosu {
+        border-top: 0 !important;
+        background:
+          linear-gradient(180deg,
+            rgba(10,10,10,.96) 0%,
+            rgba(10,10,10,.58) 10%,
+            rgba(10,10,10,.15) 24%,
+            rgba(255,255,255,.02) 44%,
+            rgba(255,255,255,.032) 100%);
+      }
+
+      .toyosu-profile-wrap {
+        height: 292px;
+        margin-top: -22px;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        width: min(100%, 242px);
+        height: 384px;
+        transform: translateY(-8px) rotate(6deg);
+        -webkit-mask-image: radial-gradient(
+          ellipse 98% 93% at 50% 21%,
+          #000 0%,
+          #000 53%,
+          rgba(0,0,0,.82) 67%,
+          rgba(0,0,0,.40) 81%,
+          rgba(0,0,0,.12) 91%,
+          transparent 100%
+        );
+        mask-image: radial-gradient(
+          ellipse 98% 93% at 50% 21%,
+          #000 0%,
+          #000 53%,
+          rgba(0,0,0,.82) 67%,
+          rgba(0,0,0,.40) 81%,
+          rgba(0,0,0,.12) 91%,
+          transparent 100%
+        );
+      }
+
+      .featured-visual--diana .featured-media-head,
+      .featured-visual--diana .diana-media-grid {
+        max-width: 650px;
+      }
+
+      .featured-visual--diana .featured-media-head > div:first-child {
+        color: rgba(255,255,255,.95);
+        font-size: 14px;
+        font-weight: 800;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .featured-case--secondary {
+        gap: 0;
+      }
+
+      .featured-case--secondary .featured-visual--toyosu {
+        border-top: 0 !important;
+        background:
+          linear-gradient(180deg,
+            rgba(10,10,10,.98) 0%,
+            rgba(10,10,10,.64) 9%,
+            rgba(10,10,10,.18) 23%,
+            rgba(255,255,255,.018) 42%,
+            rgba(255,255,255,.028) 100%);
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        width: min(71vw, 262px);
+        height: 315px;
+        transform: translateY(-6px) rotate(3deg);
+        -webkit-mask-image: radial-gradient(
+          ellipse 98% 94% at 50% 21%,
+          #000 0%,
+          #000 52%,
+          rgba(0,0,0,.78) 67%,
+          rgba(0,0,0,.35) 82%,
+          rgba(0,0,0,.10) 92%,
+          transparent 100%
+        );
+        mask-image: radial-gradient(
+          ellipse 98% 94% at 50% 21%,
+          #000 0%,
+          #000 52%,
+          rgba(0,0,0,.78) 67%,
+          rgba(0,0,0,.35) 82%,
+          rgba(0,0,0,.10) 92%,
+          transparent 100%
+        );
+      }
+
+      .featured-visual--diana .featured-media-head > div:first-child {
+        color: rgba(255,255,255,.95);
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .featured-visual--diana .featured-media-head > span {
+        color: rgba(255,255,255,.42);
+      }
+    }
+
   </style>
 </head>
 
@@ -2754,7 +2951,7 @@
           <div>
             <div class="section-kicker"><span class="star-icon">✦</span> портфолио</div>
             <h2 class="section-title" id="portfolio-title">Ещё немного работ</h2>
-            <p class="portfolio-head-copy">Остальные форматы оставляем как портфолио: здесь важнее быстро увидеть диапазон визуальных решений, а не превращать каждый ролик в отдельный «кейс».</p>
+            <p class="portfolio-head-copy">Остальные форматы оставляем как портфолио: разные решения под разные задачи.</p>
           </div>
         </div>
 
