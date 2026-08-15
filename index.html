@@ -2450,6 +2450,91 @@
         opacity: .30;
       }
     }
+
+    /* VNIMANIE v14 — TOYOSU composition + loading polish */
+    @media (min-width: 921px) {
+      /* Give the case copy more horizontal room; keep the reel as a clean, separate proof. */
+      .featured-case--secondary {
+        grid-template-columns: 1.28fr .72fr;
+      }
+
+      .featured-case--secondary .featured-case-copy {
+        padding: clamp(34px, 3.7vw, 52px);
+      }
+
+      .featured-case--secondary .toyosu-copy-lead h3 {
+        max-width: 690px;
+      }
+
+      .toyosu-copy-lower {
+        grid-template-columns: minmax(0, 1fr) minmax(250px, 300px);
+        gap: 12px;
+        align-items: start;
+        margin-top: 6px;
+      }
+
+      .toyosu-copy-lower > p {
+        max-width: 390px;
+      }
+
+      /* Large profile screenshot lives inside the text side and leans to the right. */
+      .toyosu-profile-wrap {
+        height: 320px;
+        margin-top: -24px;
+        margin-right: -6px;
+        padding-top: 0;
+        overflow: visible;
+        align-items: flex-start;
+        justify-content: flex-end;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        width: min(100%, 285px);
+        height: 430px;
+        border: 0;
+        border-radius: 22px;
+        opacity: .62;
+        transform: translateY(-2px) rotate(7deg);
+        transform-origin: 55% 18%;
+        object-fit: cover;
+        object-position: center top;
+        filter: saturate(.92) brightness(.9) contrast(1.04);
+        box-shadow: 0 28px 80px rgba(0,0,0,.30);
+        -webkit-mask-image: radial-gradient(ellipse 95% 92% at 50% 24%, #000 0%, #000 58%, rgba(0,0,0,.82) 70%, rgba(0,0,0,.34) 86%, transparent 100%);
+        mask-image: radial-gradient(ellipse 95% 92% at 50% 24%, #000 0%, #000 58%, rgba(0,0,0,.82) 70%, rgba(0,0,0,.34) 86%, transparent 100%);
+      }
+
+      .featured-case--secondary .case-facts {
+        margin-top: 14px;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 920px) {
+      .toyosu-copy-lower {
+        grid-template-columns: minmax(0, 1fr) minmax(205px, 245px);
+        gap: 12px;
+      }
+
+      .toyosu-profile-wrap {
+        height: 280px;
+        margin-top: -14px;
+        overflow: visible;
+      }
+
+      .toyosu-profile-wrap .case-profile-shot--toyosu {
+        width: min(100%, 230px);
+        height: 365px;
+        opacity: .48;
+        transform: rotate(5.5deg);
+      }
+    }
+
+    /* Native case players are intentionally demand-loaded. Posters appear immediately; MP4 data waits for interaction. */
+    .featured-reel-video,
+    .case-video {
+      background-color: #080808;
+    }
+
   </style>
 </head>
 
@@ -2573,7 +2658,7 @@
         <div class="featured-stack">
           <article class="featured-case featured-case--diana" data-reveal>
             <div class="featured-case-copy">
-              <img class="case-profile-shot case-profile-shot--diana" src="diana-profile.png" alt="" aria-hidden="true">
+              <img class="case-profile-shot case-profile-shot--diana" src="diana-profile.png" alt="" aria-hidden="true" loading="lazy" decoding="async" fetchpriority="low">
               <div class="section-kicker"><span class="star-icon">01</span> флагманский кейс</div>
               <h3>10 Reels для Дианы — личный бренд с аудиторией 272k</h3>
               <p>Серия динамичных вертикальных роликов в едином стиле без ощущения шаблонного монтажа.</p>
@@ -2602,15 +2687,15 @@
               <div class="diana-media-grid">
                 <div class="featured-reel-card">
                   <span class="featured-reel-label">01</span>
-                  <video class="featured-reel-video" src="diana1.mp4" poster="diana1cover.png" controls preload="none" playsinline></video>
+                  <video class="featured-reel-video" src="diana1.mp4" poster="diana1.png" controls preload="none" playsinline></video>
                 </div>
                 <div class="featured-reel-card">
                   <span class="featured-reel-label">02</span>
-                  <video class="featured-reel-video" src="diana2.mp4" poster="diana2cover.png" controls preload="none" playsinline></video>
+                  <video class="featured-reel-video" src="diana2.mp4" poster="diana2.png" controls preload="none" playsinline></video>
                 </div>
                 <div class="featured-reel-card">
                   <span class="featured-reel-label">03</span>
-                  <video class="featured-reel-video" src="diana3.mp4" poster="diana3cover.png" controls preload="none" playsinline></video>
+                  <video class="featured-reel-video" src="diana3.mp4" poster="diana3.png" controls preload="none" playsinline></video>
                 </div>
               </div>
 
@@ -2625,9 +2710,9 @@
                   <div class="section-kicker"><span class="star-icon">02</span> коммерческий формат</div>
                   <h3>TOYOSU — яркий Reels для ресторана</h3>
                   <div class="toyosu-copy-lower">
-                    <p>Отдельный визуальный язык под бизнес-задачу: современный темп, приятная динамика, акценты и sound design. Кейс показывает, что VNIMANIE работает не только с talking heads.</p>
+                    <p>Отдельный визуальный язык под бизнес-задачу: современный темп, приятная динамика, акценты и sound design.</p>
                     <div class="toyosu-profile-wrap" aria-hidden="true">
-                      <img class="case-profile-shot case-profile-shot--toyosu" src="toyosu-profile.png" alt="">
+                      <img class="case-profile-shot case-profile-shot--toyosu" src="toyosu-profile.png" alt="" loading="lazy" decoding="async" fetchpriority="low">
                     </div>
                   </div>
                 </div>
@@ -2656,7 +2741,7 @@
 
                 <div class="featured-reel-card featured-reel-card--single">
                   <span class="featured-reel-label">PLAY</span>
-                  <video class="featured-reel-video" src="toyosu1.mp4" poster="toyosu1cover.png" controls preload="none" playsinline></video>
+                  <video class="featured-reel-video" src="toyosu1.mp4" poster="toyosu.png" controls preload="none" playsinline></video>
                 </div>
               </div>
             </div>
@@ -2667,14 +2752,15 @@
       <section class="portfolio-section" aria-labelledby="portfolio-title">
         <div class="section-head" data-reveal>
           <div>
-            <h2 class="section-title" id="portfolio-title">Другие работы</h2>
+            <div class="section-kicker"><span class="star-icon">✦</span> портфолио</div>
+            <h2 class="section-title" id="portfolio-title">Ещё немного работ</h2>
             <p class="portfolio-head-copy">Остальные форматы оставляем как портфолио: здесь важнее быстро увидеть диапазон визуальных решений, а не превращать каждый ролик в отдельный «кейс».</p>
           </div>
         </div>
 
         <div class="grid cases-grid">
           <article class="case-card" data-reveal>
-            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sdvg.mp4" poster="sdvgcase.png" controls preload="metadata" playsinline></video></div></div>
+            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sdvg.mp4" poster="sdvgcase.png" controls preload="none" playsinline></video></div></div>
             <div class="case-body">
               <h3>СДВГ / личный бренд</h3>
               <p>Оживление говорящей головы через быстрый темп, крупные акценты, графику, звуковые реакции и визуализацию смыслов спикера.</p>
@@ -2683,7 +2769,7 @@
           </article>
 
           <article class="case-card" data-reveal>
-            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sketch.mp4" poster="sketchcase.png" controls preload="metadata" playsinline></video></div></div>
+            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sketch.mp4" poster="sketchcase.png" controls preload="none" playsinline></video></div></div>
             <div class="case-body">
               <h3>Sketchbook / эстетичный формат</h3>
               <p>Короткий экспертный формат с упаковкой мысли в визуальную систему Sketchbook.</p>
@@ -2692,7 +2778,7 @@
           </article>
 
           <article class="case-card" data-reveal>
-            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="nauch.mp4" poster="nauchcase.png" controls preload="metadata" playsinline></video></div></div>
+            <div class="case-preview"><div class="phone-frame"><video class="case-video" src="nauch.mp4" poster="nauchcase.png" controls preload="none" playsinline></video></div></div>
             <div class="case-body">
               <h3>Научный / экспертный ролик</h3>
               <p>Динамичный монтаж для экспертной подачи: удержание внимания, визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.</p>
@@ -2836,7 +2922,7 @@
     function renderReels() {
       if (!reelsTrackVertical) return;
       reelsTrackVertical.innerHTML = showreelItems.map((item, index) => `
-        <div class="reel-slide" data-index="${index}"><video class="reels-video" src="${item.src}" playsinline preload="metadata" muted></video></div>
+        <div class="reel-slide" data-index="${index}"><video class="reels-video" src="${item.src}" playsinline preload="none" muted></video></div>
       `).join("");
       updateSoundIcon();
       updateReelLayout(false);
@@ -2995,7 +3081,7 @@
             <div>
               <div class="review-card-head">
                 <div class="review-photo">
-                  ${review.photo ? `<img src="${review.photo}" alt="${review.name}" onerror="this.style.display='none';">` : ""}
+                  ${review.photo ? `<img src="${review.photo}" alt="${review.name}" loading="lazy" decoding="async" onerror="this.style.display='none';">` : ""}
                 </div>
                 <div class="review-meta">
                   <h3>${review.name}</h3>
