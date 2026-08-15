@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>VNIMANIE — Динамичный видеомонтаж</title>
-  <meta name="description" content="Динамичный монтаж вертикальных роликов для экспертов и личных брендов. Оживляем говорящие головы, усиливаем смыслы, юмор и удержание через монтаж, SFX и визуальные метафоры." />
+  <title>VNIMANIE — Видеомонтаж серий для экспертов и брендов</title>
+  <meta name="description" content="Видеомонтаж серий Reels, Shorts и TikTok для экспертов, личных брендов и бизнеса. Выстраиваем визуальную систему, динамику и подачу роликов в едином стиле." />
 
   <style>
     :root {
@@ -1256,6 +1256,717 @@
       }
     }
 
+  
+
+    /* VNIMANIE case-led redesign v10 */
+    .hero {
+      min-height: calc(92vh - 74px);
+      padding-bottom: 42px;
+    }
+
+    .hero-card {
+      padding-top: clamp(32px, 4vw, 54px);
+      padding-bottom: clamp(34px, 4vw, 58px);
+    }
+
+    .hero p {
+      max-width: 760px;
+    }
+
+    .hero-proof {
+      margin-top: 28px;
+    }
+
+    .proof-section {
+      padding: 10px 0 72px;
+    }
+
+    .proof-strip {
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.07), transparent 46%),
+        rgba(255,255,255,0.032);
+      display: grid;
+      grid-template-columns: 1.35fr repeat(3, minmax(0, .72fr));
+      overflow: hidden;
+    }
+
+    .proof-intro,
+    .proof-item {
+      min-height: 124px;
+      padding: 24px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .proof-item {
+      border-left: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .proof-label {
+      color: var(--warm);
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .proof-intro strong {
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -.03em;
+      max-width: 390px;
+    }
+
+    .proof-number {
+      font-size: 32px;
+      line-height: .95;
+      letter-spacing: -.05em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .proof-copy {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .featured-cases-section {
+      padding-top: 92px;
+    }
+
+    .featured-intro {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    .featured-stack {
+      display: grid;
+      gap: 22px;
+      margin-top: 32px;
+    }
+
+    .featured-case {
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 75% 20%, rgba(255,255,255,.09), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
+        rgba(0,0,0,.42);
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 36px;
+      align-items: stretch;
+      overflow: hidden;
+      min-height: 560px;
+    }
+
+    .featured-case--secondary {
+      min-height: 460px;
+      grid-template-columns: .9fr 1.1fr;
+    }
+
+    .featured-case-copy {
+      padding: clamp(34px, 5vw, 62px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-case-copy h3 {
+      font-size: clamp(36px, 5vw, 66px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      max-width: 720px;
+      margin-bottom: 18px;
+    }
+
+    .featured-case--secondary .featured-case-copy h3 {
+      font-size: clamp(34px, 4.2vw, 54px);
+    }
+
+    .featured-case-copy > p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 620px;
+    }
+
+    .case-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .case-fact {
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      background: rgba(255,255,255,.028);
+      padding: 16px;
+      min-height: 92px;
+    }
+
+    .case-fact strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: -.04em;
+      margin-bottom: 8px;
+    }
+
+    .case-fact span {
+      color: var(--muted-2);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .case-result {
+      margin-top: 24px;
+      border-left: 2px solid rgba(255,255,255,.72);
+      padding-left: 16px;
+      color: rgba(244,244,244,.88);
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 590px;
+    }
+
+    .featured-visual {
+      position: relative;
+      min-height: 100%;
+      padding: 34px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255,255,255,.13), transparent 36%),
+        linear-gradient(135deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+      border-left: 1px solid rgba(255,255,255,.08);
+    }
+
+    .featured-case--secondary .featured-visual {
+      border-left: 0;
+      border-right: 1px solid rgba(255,255,255,.08);
+      order: -1;
+    }
+
+    .series-grid {
+      width: min(100%, 520px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      transform: rotate(-2deg);
+    }
+
+    .series-tile {
+      aspect-ratio: 9 / 13;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.13);
+      background:
+        radial-gradient(circle at 50% 16%, rgba(255,255,255,.15), transparent 28%),
+        linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.016)),
+        #101010;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 26px 70px rgba(0,0,0,.35);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .series-tile:nth-child(2),
+    .series-tile:nth-child(3) {
+      transform: translateY(24px);
+    }
+
+    .series-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.44));
+      pointer-events: none;
+    }
+
+    .series-tile small,
+    .series-tile strong {
+      position: relative;
+      z-index: 1;
+    }
+
+    .series-tile small {
+      color: rgba(255,255,255,.48);
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .series-tile strong {
+      font-size: clamp(20px, 2.4vw, 32px);
+      line-height: .92;
+      letter-spacing: -.06em;
+    }
+
+    .restaurant-card {
+      width: min(100%, 520px);
+      min-height: 360px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015)),
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.13), transparent 28%),
+        #0c0c0c;
+      box-shadow: 0 30px 90px rgba(0,0,0,.48);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .restaurant-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -36% 25%;
+      height: 78%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.11), transparent 67%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .restaurant-card-top {
+      color: var(--warm);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .restaurant-card h4 {
+      font-size: clamp(44px, 5.6vw, 78px);
+      line-height: .88;
+      letter-spacing: -.075em;
+      max-width: 380px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .restaurant-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      max-width: 350px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .portfolio-section {
+      padding-top: 78px;
+    }
+
+    .portfolio-head-copy {
+      max-width: 630px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      margin-top: 12px;
+    }
+
+    .reviews-context {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 420px;
+      margin-top: 12px;
+    }
+
+    .reviews-section {
+      padding-top: 88px;
+    }
+
+    #process .section-head {
+      margin-bottom: 22px;
+    }
+
+    .process-intro {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 680px;
+      margin-bottom: 26px;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      max-width: 670px;
+      margin: 20px auto 0;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .trust-note {
+      margin-top: 18px;
+      color: var(--muted-2);
+      font-size: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .proof-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .proof-intro,
+      .proof-item {
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      .proof-item {
+        border-left: 0;
+      }
+
+      .proof-item:nth-child(even) {
+        border-left: 1px solid rgba(255,255,255,.08);
+      }
+
+      .featured-case,
+      .featured-case--secondary {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .featured-case--secondary .featured-visual {
+        order: 0;
+      }
+
+      .featured-visual,
+      .featured-case--secondary .featured-visual {
+        border-left: 0;
+        border-right: 0;
+        border-top: 1px solid rgba(255,255,255,.08);
+        min-height: 460px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: auto;
+        padding-bottom: 32px;
+      }
+
+      .proof-section {
+        padding: 0 0 54px;
+      }
+
+      .proof-strip {
+        grid-template-columns: 1fr;
+        border-radius: 22px;
+      }
+
+      .proof-intro,
+      .proof-item {
+        min-height: auto;
+        padding: 20px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      .proof-item,
+      .proof-item:nth-child(even) {
+        border-left: 0;
+      }
+
+      .proof-strip > :last-child {
+        border-bottom: 0;
+      }
+
+      .featured-cases-section {
+        padding-top: 62px;
+      }
+
+      .featured-case-copy {
+        padding: 28px 22px;
+      }
+
+      .featured-case-copy h3,
+      .featured-case--secondary .featured-case-copy h3 {
+        font-size: 38px;
+      }
+
+      .case-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .case-fact {
+        min-height: auto;
+      }
+
+      .featured-visual,
+      .featured-case--secondary .featured-visual {
+        min-height: 390px;
+        padding: 22px;
+      }
+
+      .series-grid {
+        gap: 9px;
+      }
+
+      .series-tile {
+        border-radius: 18px;
+        padding: 14px;
+      }
+
+      .series-tile:nth-child(2),
+      .series-tile:nth-child(3) {
+        transform: translateY(16px);
+      }
+
+      .restaurant-card {
+        min-height: 330px;
+        border-radius: 22px;
+        padding: 22px;
+      }
+
+      .restaurant-card h4 {
+        font-size: 54px;
+      }
+
+      .portfolio-section {
+        padding-top: 56px;
+      }
+
+      .reviews-section {
+        padding-top: 62px;
+      }
+    }
+
+
+    /* VNIMANIE real case media v11 */
+    .featured-case--diana {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .featured-case--diana .featured-case-copy {
+      padding-bottom: 34px;
+    }
+
+    .featured-visual--diana {
+      min-height: 0;
+      display: block;
+      padding: 30px 34px 38px;
+      border-left: 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .featured-media-head {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: rgba(255,255,255,.88);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .featured-media-head span {
+      color: var(--muted-2);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .featured-media-head--center {
+      max-width: 360px;
+    }
+
+    .diana-media-grid {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .featured-reel-card {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      background: #080808;
+      box-shadow: 0 24px 70px rgba(0,0,0,.46);
+      isolation: isolate;
+    }
+
+    .featured-reel-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+      z-index: 3;
+    }
+
+    .featured-reel-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 4;
+      min-width: 32px;
+      height: 28px;
+      padding: 0 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(5,5,5,.68);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.9);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      pointer-events: none;
+    }
+
+    .featured-reel-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background: #080808;
+    }
+
+    .featured-visual--toyosu {
+      min-height: 620px;
+      padding: 32px;
+    }
+
+    .toyosu-media-wrap {
+      width: min(100%, 380px);
+      margin: 0 auto;
+    }
+
+    .featured-reel-card--single {
+      width: min(100%, 350px);
+      margin: 0 auto;
+      border-radius: 34px;
+    }
+
+    .mobile-media-hint {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .featured-case--diana {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-visual--diana {
+        min-height: 0;
+        border-top: 1px solid rgba(255,255,255,.08);
+      }
+
+      .diana-media-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 650px;
+      }
+
+      .featured-visual--toyosu {
+        min-height: 560px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .featured-case--diana .featured-case-copy {
+        padding-bottom: 26px;
+      }
+
+      .featured-visual--diana {
+        padding: 22px 0 24px;
+        overflow: hidden;
+      }
+
+      .featured-media-head {
+        padding: 0 22px;
+        margin-bottom: 14px;
+        align-items: flex-start;
+      }
+
+      .featured-media-head span {
+        text-align: right;
+        max-width: 120px;
+      }
+
+      .diana-media-grid {
+        display: flex;
+        gap: 12px;
+        max-width: none;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 22px 8px;
+        scrollbar-width: none;
+      }
+
+      .diana-media-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .diana-media-grid .featured-reel-card {
+        flex: 0 0 min(72vw, 280px);
+        width: min(72vw, 280px);
+        scroll-snap-align: center;
+        border-radius: 24px;
+      }
+
+      .mobile-media-hint {
+        display: block;
+        padding: 10px 22px 0;
+        color: var(--muted-2);
+        font-size: 11px;
+        letter-spacing: .06em;
+        text-align: center;
+      }
+
+      .featured-visual--toyosu {
+        min-height: 0 !important;
+        padding: 24px 22px 30px;
+      }
+
+      .toyosu-media-wrap {
+        width: min(100%, 310px);
+      }
+
+      .featured-media-head--center {
+        padding: 0;
+      }
+
+      .featured-reel-card--single {
+        width: min(76vw, 300px);
+        border-radius: 28px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1279,20 +1990,19 @@
         <div class="hero-card" data-reveal>
           <div class="hero-content">
             <div class="logo-eye-wrap">
-              <img class="logo-eye" src="logo.png" alt="Vnimanie logo">
+              <img class="logo-eye" src="logo.png" alt="VNIMANIE logo">
             </div>
 
             <h1>VNIMANIE</h1>
 
-            <p>Оживляем говорящие головы и усиливаем подачу спикера через авторский монтаж.</p>
+            <p>Собираем серии Reels, Shorts и TikTok для экспертов, личных брендов и бизнеса — с единым визуальным языком, динамикой и подачей.</p>
 
             <div class="cta-row">
               <a class="btn btn-primary btn-glow" href="#showreel">Showreel <span>→</span></a>
-
               <a class="btn btn-secondary" href="#cases">Кейсы</a>
 
               <div class="contact-wrapper">
-                <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
+                <button class="btn btn-secondary contact-trigger" type="button">Обсудить серию</button>
                 <div class="contact-popover" aria-label="Контакты">
                   <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
                   <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
@@ -1300,27 +2010,31 @@
               </div>
             </div>
 
-            <div class="hero-proof"><div class="pill">Reels / Shorts / TikTok</div></div>
+            <div class="hero-proof">
+              <div class="pill">Reels / Shorts / TikTok</div>
+              <div class="pill">Серии, а не разовые ролики</div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="reviews" class="reviews-section">
-        <div class="reviews-panel">
-          <div class="reviews-top" data-reveal>
-            <div class="reviews-title-wrap">
-              <div class="reviews-rating"><span class="rating-star">★</span> Наши клиенты</div>
-              <h2>Отзывы</h2>
-            </div>
-
-            <div class="reviews-controls">
-              <button class="review-nav-btn" type="button" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
-              <button class="review-nav-btn" type="button" id="reviewNext" aria-label="Следующий отзыв">›</button>
-            </div>
+      <section class="proof-section" aria-label="Социальное доказательство">
+        <div class="proof-strip" data-reveal>
+          <div class="proof-intro">
+            <div class="proof-label">Работа в масштабе</div>
+            <strong>Уже собираем серии для заметных экспертов и брендов.</strong>
           </div>
-
-          <div class="reviews-carousel" id="reviewsCarousel" data-reveal>
-            <div class="reviews-track" id="reviewsTrack"></div>
+          <div class="proof-item">
+            <div class="proof-number">10 Reels</div>
+            <div class="proof-copy">серия для личного бренда</div>
+          </div>
+          <div class="proof-item">
+            <div class="proof-number">Диана · 272k</div>
+            <div class="proof-copy">аудитория клиента в Instagram</div>
+          </div>
+          <div class="proof-item">
+            <div class="proof-number">TOYOSU · 27k</div>
+            <div class="proof-copy">яркий коммерческий Reels для ресторана</div>
           </div>
         </div>
       </section>
@@ -1330,9 +2044,10 @@
           <div class="showreel-copy">
             <div class="section-kicker"><span class="star-icon">✦</span> showreel</div>
             <h2>Фрагменты наших работ</h2>
-            <p>Короткие отрывки монтажа: эстетика, экспертные ролики, юмор и промо-форматы.</p>
+            <p>Разные задачи и визуальные языки: экспертные ролики, эстетика, юмор, промо, SFX и динамичная работа с подачей спикера.</p>
 
             <div class="showreel-cta">
+              <a class="btn btn-secondary" href="#cases">Смотреть кейсы</a>
               <div class="contact-wrapper">
                 <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
                 <div class="contact-popover" aria-label="Контакты">
@@ -1363,8 +2078,111 @@
         </div>
       </section>
 
-      <section id="cases">
-        <div class="section-head" data-reveal><h2 class="section-title">Кейсы</h2></div>
+      <section id="cases" class="featured-cases-section">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="section-kicker"><span class="star-icon">✦</span> избранные кейсы</div>
+            <h2 class="section-title">Не один удачный ролик. Система для серии.</h2>
+            <p class="featured-intro">Показываем не только монтаж, но и масштаб задачи: для кого работали, какой объём собрали и какую визуальную систему зафиксировали.</p>
+          </div>
+        </div>
+
+        <div class="featured-stack">
+          <article class="featured-case featured-case--diana" data-reveal>
+            <div class="featured-case-copy">
+              <div class="section-kicker"><span class="star-icon">01</span> флагманский кейс</div>
+              <h3>10 Reels для Дианы — личный бренд с аудиторией 272k</h3>
+              <p>Серия динамичных вертикальных роликов в едином стиле: ритм, субтитры, b-roll, графика, смысловые акценты и SFX без ощущения шаблонного монтажа.</p>
+
+              <div class="case-facts">
+                <div class="case-fact"><strong>10</strong><span>роликов в одной серии</span></div>
+                <div class="case-fact"><strong>272k</strong><span>аудитория клиента</span></div>
+                <div class="case-fact"><strong>1 стиль</strong><span>зафиксирован на всю серию</span></div>
+              </div>
+
+              <div class="case-result">Серия завершена, клиент доволен результатом. Это кейс про глубину работы: не разовая монтажная задача, а системная упаковка контента серией.</div>
+
+              <div class="tags">
+                <span class="tag">личный бренд</span>
+                <span class="tag">серия Reels</span>
+                <span class="tag">динамичный монтаж</span>
+                <span class="tag">SFX</span>
+              </div>
+            </div>
+
+            <div class="featured-visual featured-visual--diana" aria-label="Четыре ролика из серии для Дианы">
+              <div class="featured-media-head">
+                <div>4 ролика из серии</div>
+                <span>вертикальный формат 9:16</span>
+              </div>
+
+              <div class="diana-media-grid">
+                <div class="featured-reel-card">
+                  <span class="featured-reel-label">01</span>
+                  <video class="featured-reel-video" src="diana1.mp4" poster="diana1cover.png" controls preload="none" playsinline></video>
+                </div>
+                <div class="featured-reel-card">
+                  <span class="featured-reel-label">02</span>
+                  <video class="featured-reel-video" src="diana2.mp4" poster="diana2cover.png" controls preload="none" playsinline></video>
+                </div>
+                <div class="featured-reel-card">
+                  <span class="featured-reel-label">03</span>
+                  <video class="featured-reel-video" src="diana3.mp4" poster="diana3cover.png" controls preload="none" playsinline></video>
+                </div>
+                <div class="featured-reel-card">
+                  <span class="featured-reel-label">04</span>
+                  <video class="featured-reel-video" src="diana4.mp4" poster="diana4cover.png" controls preload="none" playsinline></video>
+                </div>
+              </div>
+
+              <div class="mobile-media-hint" aria-hidden="true">← листай ролики →</div>
+            </div>
+          </article>
+
+          <article class="featured-case featured-case--secondary" data-reveal>
+            <div class="featured-case-copy">
+              <div class="section-kicker"><span class="star-icon">02</span> коммерческий формат</div>
+              <h3>TOYOSU — яркий Reels для ресторана</h3>
+              <p>Отдельный визуальный язык под бизнес-задачу: современный темп, приятная динамика, акценты и sound design. Кейс показывает, что VNIMANIE работает не только с talking heads.</p>
+
+              <div class="case-facts">
+                <div class="case-fact"><strong>27k</strong><span>аудитория ресторана</span></div>
+                <div class="case-fact"><strong>Reels</strong><span>коммерческий вертикальный формат</span></div>
+                <div class="case-fact"><strong>SFX</strong><span>звук как часть динамики</span></div>
+              </div>
+
+              <div class="tags">
+                <span class="tag">ресторан</span>
+                <span class="tag">коммерческий Reels</span>
+                <span class="tag">динамика</span>
+                <span class="tag">sound design</span>
+              </div>
+            </div>
+
+            <div class="featured-visual featured-visual--toyosu" aria-label="Ролик ресторана TOYOSU">
+              <div class="toyosu-media-wrap">
+                <div class="featured-media-head featured-media-head--center">
+                  <div>TOYOSU / commercial reel</div>
+                  <span>вертикальный формат 9:16</span>
+                </div>
+
+                <div class="featured-reel-card featured-reel-card--single">
+                  <span class="featured-reel-label">PLAY</span>
+                  <video class="featured-reel-video" src="toyosu1.mp4" poster="toyosu1cover.png" controls preload="none" playsinline></video>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="portfolio-section" aria-labelledby="portfolio-title">
+        <div class="section-head" data-reveal>
+          <div>
+            <h2 class="section-title" id="portfolio-title">Другие работы</h2>
+            <p class="portfolio-head-copy">Остальные форматы оставляем как портфолио: здесь важнее быстро увидеть диапазон визуальных решений, а не превращать каждый ролик в отдельный «кейс».</p>
+          </div>
+        </div>
 
         <div class="grid cases-grid">
           <article class="case-card" data-reveal>
@@ -1379,9 +2197,9 @@
           <article class="case-card" data-reveal>
             <div class="case-preview"><div class="phone-frame"><video class="case-video" src="sketch.mp4" poster="sketchcase.png" controls preload="metadata" playsinline></video></div></div>
             <div class="case-body">
-              <h3>Sketchbook / Эстетичный формат</h3>
-              <p>Короткий экспертный формат с упаковкой мысли в стиле Sketchbook.</p>
-              <div class="tags"><span class="tag">скетчбук</span><span class="tag"></span><span class="tag">визуализация</span></div>
+              <h3>Sketchbook / эстетичный формат</h3>
+              <p>Короткий экспертный формат с упаковкой мысли в визуальную систему Sketchbook.</p>
+              <div class="tags"><span class="tag">скетчбук</span><span class="tag">визуализация</span><span class="tag">эстетика</span></div>
             </div>
           </article>
 
@@ -1389,31 +2207,54 @@
             <div class="case-preview"><div class="phone-frame"><video class="case-video" src="nauch.mp4" poster="nauchcase.png" controls preload="metadata" playsinline></video></div></div>
             <div class="case-body">
               <h3>Научный / экспертный ролик</h3>
-              <p>Динамичный вертикальный монтаж для экспертной подачи: удержание внимания, визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.</p>
+              <p>Динамичный монтаж для экспертной подачи: удержание внимания, визуальные акценты, SFX и понятная сборка мысли без ощущения сухой лекции.</p>
               <div class="tags"><span class="tag">эксперт</span><span class="tag">ритм</span><span class="tag">SFX</span></div>
             </div>
           </article>
         </div>
       </section>
 
+      <section id="reviews" class="reviews-section">
+        <div class="reviews-panel">
+          <div class="reviews-top" data-reveal>
+            <div class="reviews-title-wrap">
+              <div class="reviews-rating"><span class="rating-star">★</span> говорят клиенты</div>
+              <h2>Отзывы</h2>
+              <p class="reviews-context">Реальные отзывы о процессе, скорости и результате работы — без обезличенных маркетинговых формулировок.</p>
+            </div>
+
+            <div class="reviews-controls">
+              <button class="review-nav-btn" type="button" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
+              <button class="review-nav-btn" type="button" id="reviewNext" aria-label="Следующий отзыв">›</button>
+            </div>
+          </div>
+
+          <div class="reviews-carousel" id="reviewsCarousel" data-reveal>
+            <div class="reviews-track" id="reviewsTrack"></div>
+          </div>
+        </div>
+      </section>
+
       <section id="process">
         <div class="section-head" data-reveal><h2 class="section-title">Процесс</h2></div>
+        <p class="process-intro" data-reveal>Сначала фиксируем визуальную систему на первом ролике, затем масштабируем её на серию — так каждый следующий ролик не приходится собирать заново с нуля.</p>
 
         <div class="grid steps-grid">
-          <div class="step-card" data-reveal><div class="step-num">01</div><h3>Бриф</h3><p>Обсуждаем формат, стиль, задачу и референсы.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Первый ролик</h3><p>Собираем первую версию и фиксируем стиль серии.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Серия</h3><p>Делаем пакет роликов в едином стиле, без крупных правок формата.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">04</div><h3>Анализ</h3><p>Смотрим удержание, реакции и даём рекомендации по улучшению формата.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">01</div><h3>Бриф</h3><p>Обсуждаем формат, задачу, аудиторию и референсы.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Первый ролик</h3><p>Собираем первую версию и фиксируем визуальный язык серии.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Серия</h3><p>Масштабируем утверждённую систему на пакет роликов в едином стиле.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">04</div><h3>Анализ</h3><p>Смотрим реакцию аудитории и предлагаем, что усилить в следующих выпусках.</p></div>
         </div>
       </section>
 
       <section id="contact">
         <div class="final-cta" data-reveal>
-          <h2>Есть повторяющийся формат? Давайте сделаем его живым.</h2>
+          <h2>Есть материал на серию роликов? Соберём для него визуальную систему.</h2>
+          <p>Можно начать с первого ролика, зафиксировать стиль и затем масштабировать его на весь контент-пакет.</p>
 
           <div class="cta-row">
             <div class="contact-wrapper">
-              <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
+              <button class="btn btn-primary contact-trigger" type="button">Обсудить серию <span>→</span></button>
               <div class="contact-popover" aria-label="Контакты">
                 <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
                 <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
@@ -1421,11 +2262,12 @@
             </div>
             <a class="btn btn-secondary" href="#cases">Посмотреть кейсы</a>
           </div>
+          <div class="trust-note">Reels / Shorts / TikTok · эксперты · личные бренды · бизнес</div>
         </div>
       </section>
     </main>
 
-    <footer><div class="footer-inner"><div>© Vnimanie — video editing studio</div><div>Динамичный монтаж для экспертов</div></div></footer>
+    <footer><div class="footer-inner"><div>© VNIMANIE — video editing studio</div><div>Серийный вертикальный монтаж для экспертов и брендов</div></div></footer>
   </div>
 
   <script>
