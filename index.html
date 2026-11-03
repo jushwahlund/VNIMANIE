@@ -4815,6 +4815,21 @@
   .hero-card--reference .hero-bg-stage::after { background: radial-gradient(ellipse 48% 19% at 67% 56%,rgba(10,9,14,.4),transparent 100%); }
 }
 
+
+/* Keep the feed viewport stable and never reveal an undecoded video. */
+#reelsPhone .reel-slide { background: radial-gradient(ellipse at 65% 25%,#30273c,#151319 55%,#0c0b10); }
+#reelsPhone .reels-video { opacity: 0; }
+#reelsPhone .reel-slide.is-ready .reels-video { opacity: 1; }
+#reelsPhone .reel-load-status {
+  position: absolute; z-index: 8; left: 20px; right: 20px; top: 46%;
+  padding: 12px 14px; border: 1px solid rgba(255,255,255,.14); border-radius: 14px;
+  background: rgba(21,18,28,.88); color: #eeeaf2; font-size: 13px; line-height: 1.5;
+  text-align: center; backdrop-filter: blur(12px); cursor: default;
+}
+#reelsPhone .reel-load-status[hidden], #reelsPhone .reel-load-status button[hidden] { display: none; }
+#reelsPhone .reel-load-status button { display: block; margin: 10px auto 0; min-height: 44px; padding: 8px 16px; border: 1px solid #77717e; border-radius: 99px; background: #eeeaf2; color: #17131c; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { #reelsPhone .reel-slide { transition: none !important; } }
+
 </style>
 </head>
 
@@ -4959,7 +4974,7 @@
               <div class="reels-viewport"><div class="reels-track-vertical" id="reelsTrackVertical"></div></div>
               <button class="sound-toggle" type="button" id="soundToggle" aria-label="Включить или выключить звук"></button>
               <div class="reels-caption">
-                <div class="reels-counter" id="reelsCounter">01 / 11</div>
+                <div class="reels-counter" id="reelsCounter">01 / 12</div>
                 <h3 id="reelsCaption">Эстетичный формат — стиль, ритм, визуальная подача</h3>
               </div>
             </div>
@@ -5169,17 +5184,18 @@
 
   <script>
     const showreelItems = [
-      { src: "showreel/01.mp4", caption: "Эстетичный формат — стиль, ритм, визуальная подача" },
-      { src: "showreel/02.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" },
-      { src: "showreel/03.mp4", caption: "Промо с нуля — сценарий, озвучка, рекламный темп" },
-      { src: "showreel/04.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
-      { src: "showreel/05.mp4", caption: "Моушн с нуля — визуализируем аудиодорожку" },
-      { src: "showreel/06.mp4", caption: "VFX / имидж — динамика, переходы, статус" },
-      { src: "showreel/07.mp4", caption: "Влог — живой вертикальный монтаж" },
-      { src: "showreel/08.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
-      { src: "showreel/09.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
+      { src: "showreel/1.mp4", caption: "Эстетичный формат — стиль, ритм, визуальная подача" },
+      { src: "showreel/2.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" },
+      { src: "showreel/3.mp4", caption: "Промо с нуля — сценарий, озвучка, рекламный темп" },
+      { src: "showreel/4.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
+      { src: "showreel/5.mp4", caption: "Моушн с нуля — визуализируем аудиодорожку" },
+      { src: "showreel/6.mp4", caption: "VFX / имидж — динамика, переходы, статус" },
+      { src: "showreel/7.mp4", caption: "Влог — живой вертикальный монтаж" },
+      { src: "showreel/8.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
+      { src: "showreel/9.mp4", caption: "Экспертный ролик — оживляем говорящую голову" },
       { src: "showreel/10.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" },
-      { src: "showreel/11.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" }
+      { src: "showreel/11.mp4", caption: "Юмор и SFX — усиливаем панчи и динамику" },
+      { src: "showreel/12.mp4", caption: "Фрагмент монтажа" }
     ];
 
     const reviews = [
@@ -5225,151 +5241,258 @@
     let reelDragOffset = 0;
     let reelDragging = false;
     let reelHeight = 0;
-
+    let reelTransitioning = false;
+    let reelRequest = 0;
+    let pendingReel = null;
+    let retryReel = 0;
+    let reelNear = false;
+    const reelLoads = new Map();
     const reelsPhone = document.getElementById("reelsPhone");
     const reelsStage = document.getElementById("reelsStage");
     const reelsTrackVertical = document.getElementById("reelsTrackVertical");
     const reelsCaption = document.getElementById("reelsCaption");
     const reelsCounter = document.getElementById("reelsCounter");
     const soundToggle = document.getElementById("soundToggle");
-
-    const soundOnIcon = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 9C17 10 17.5 11 17.5 12C17.5 13 17 14 16 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.6 6.8C20.2 8.4 21 10.1 21 12C21 13.9 20.2 15.6 18.6 17.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
-    const soundOffIcon = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17 9L21 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M21 9L17 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
-
-    function activeReelVideo() {
-      return reelsTrackVertical?.querySelectorAll(".reels-video")[currentReel];
-    }
-
+    const reelStatus = document.createElement("div");
+    reelStatus.className = "reel-load-status";
+    reelStatus.hidden = true;
+    const reelStatusText = document.createElement("span");
+    reelStatusText.setAttribute("role", "status");
+    reelStatusText.setAttribute("aria-live", "polite");
+    const reelRetry = document.createElement("button");
+    reelRetry.type = "button";
+    reelRetry.textContent = "Повторить";
+    reelRetry.hidden = true;
+    reelStatus.append(reelStatusText, reelRetry);
+    reelsPhone?.append(reelStatus);
+    const soundOnIcon = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.8"/><path d="M16 8C19 10 19 14 16 16M19 5C24 9 24 15 19 19" stroke="currentColor" stroke-width="1.8"/></svg>`;
+    const soundOffIcon = `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.8"/><path d="M17 9L21 15M21 9L17 15" stroke="currentColor" stroke-width="1.8"/></svg>`;
+    const wrapReel = index => (index % showreelItems.length + showreelItems.length) % showreelItems.length;
+    const reelVideos = () => [...(reelsTrackVertical?.querySelectorAll(".reels-video") || [])];
+    function activeReelVideo() { return reelVideos()[currentReel]; }
     function updateSoundIcon() {
-      if (soundToggle) soundToggle.innerHTML = soundEnabled ? soundOnIcon : soundOffIcon;
+      if (!soundToggle) return;
+      soundToggle.innerHTML = soundEnabled ? soundOnIcon : soundOffIcon;
+      soundToggle.setAttribute("aria-pressed", String(soundEnabled));
+      soundToggle.setAttribute("aria-label", soundEnabled ? "Выключить звук" : "Включить звук");
     }
-
-    function renderReels() {
-      if (!reelsTrackVertical) return;
-      reelsTrackVertical.innerHTML = showreelItems.map((item, index) => `
-        <div class="reel-slide" data-index="${index}"><video class="reels-video" src="${item.src}" playsinline preload="none" muted></video></div>
-      `).join("");
-      updateSoundIcon();
-      updateReelLayout(false);
+    function showReelStatus(text = "", retry = false) {
+      reelStatus.hidden = !text;
+      reelStatusText.textContent = text;
+      reelRetry.hidden = !retry;
     }
-
-    function updateReelLayout(animate = true, offset = 0) {
-      if (!reelsTrackVertical || !reelsPhone) return;
-      reelHeight = reelsPhone.getBoundingClientRect().height || 1;
-
-      reelsTrackVertical.querySelectorAll(".reel-slide").forEach((slide) => {
-        const index = Number(slide.dataset.index);
-        const relative = index - currentReel;
-        slide.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
-        slide.style.transform = `translateY(calc(${relative * 100}% + ${offset}px))`;
+    function hasReelFrame(video) { return video && !video.error && !video.seeking && video.readyState >= 2; }
+    function attachReel(index) {
+      const video = reelVideos()[index];
+      if (!video) return;
+      video.preload = "auto";
+      if (!video.getAttribute("src")) {
+        video.src = showreelItems[index].src;
+        video.load();
+      }
+      return video;
+    }
+    function ensureReel(index) {
+      const video = attachReel(index);
+      if (!video) return Promise.reject(new Error("missing"));
+      if (hasReelFrame(video)) return Promise.resolve(video);
+      if (reelLoads.has(index)) return reelLoads.get(index);
+      const promise = new Promise((resolve, reject) => {
+        let timer, poll;
+        const events = ["loadeddata", "canplay", "seeked", "progress"];
+        const cleanup = () => {
+          clearTimeout(timer); clearInterval(poll);
+          events.forEach(name => video.removeEventListener(name, check));
+          video.removeEventListener("error", fail);
+        };
+        const fail = () => { cleanup(); reject(new Error("media")); };
+        const check = () => { if (hasReelFrame(video)) { cleanup(); resolve(video); } };
+        events.forEach(name => video.addEventListener(name, check));
+        video.addEventListener("error", fail);
+        timer = setTimeout(() => { cleanup(); reject(new Error("timeout")); }, 25000);
+        poll = setInterval(check, 150);
+        if (video.error) fail(); else check();
       });
-
-      const item = showreelItems[currentReel];
-      reelsCaption.textContent = item.caption;
-      reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
+      reelLoads.set(index, promise);
+      const cleanup = () => { if (reelLoads.get(index) === promise) reelLoads.delete(index); };
+      promise.then(cleanup, cleanup);
+      return promise;
     }
-
-    async function playCurrentReel() {
-      const video = activeReelVideo();
-      if (!video || !reelVisible) return;
-      pauseAllOtherVideos(video);
-      video.muted = !soundEnabled;
-      video.volume = soundEnabled ? 0.85 : 0;
-      try { await video.play(); } catch (error) {}
-    }
-
-    function stopInactiveReels() {
-      reelsTrackVertical?.querySelectorAll(".reels-video").forEach((video, index) => {
-        if (index !== currentReel) {
-          video.pause();
-          video.currentTime = 0;
-          video.volume = 0;
-          video.muted = true;
+    function warmReels() {
+      if (!reelNear) return;
+      const keep = new Set([currentReel, wrapReel(currentReel + 1), wrapReel(currentReel - 1)]);
+      if (pendingReel !== null) keep.add(pendingReel);
+      // Bound decoder memory and competing downloads to the local neighbourhood.
+      reelVideos().forEach((video, index) => {
+        if (!keep.has(index) && video.hasAttribute("src") && !reelLoads.has(index)) {
+          video.pause(); video.removeAttribute("src"); video.load();
+          video.closest(".reel-slide").classList.remove("is-ready");
         }
       });
+      ensureReel(currentReel).then(() => {
+        if (!reelNear) return;
+        [wrapReel(currentReel + 1), wrapReel(currentReel - 1)].forEach(index => ensureReel(index).catch(() => {}));
+      }).catch(() => {});
     }
-
-    function setReel(index, animate = true) {
-      currentReel = ((index % showreelItems.length) + showreelItems.length) % showreelItems.length;
-      updateReelLayout(animate, 0);
-      stopInactiveReels();
-      playCurrentReel();
+    function updateReelLayout(animate = true, offset = 0) {
+      if (!reelsTrackVertical || !reelsPhone || reelTransitioning) return;
+      reelHeight = reelsPhone.clientHeight || 1;
+      reelsTrackVertical.querySelectorAll(".reel-slide").forEach((slide, index) => {
+        let relative = wrapReel(index - currentReel);
+        if (relative > showreelItems.length / 2) relative -= showreelItems.length;
+        slide.style.visibility = Math.abs(relative) <= 1 ? "visible" : "hidden";
+        slide.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
+        slide.style.transform = `translate3d(0,calc(${relative * 100}% + ${offset}px),0)`;
+      });
+      reelsCaption.textContent = showreelItems[currentReel].caption;
+      reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
     }
-
+    async function playCurrentReel() {
+      const video = activeReelVideo();
+      if (!video || !reelVisible || document.hidden) return;
+      video.muted = !soundEnabled;
+      video.volume = soundEnabled ? .85 : 0;
+      pauseAllOtherVideos(video);
+      try { await video.play(); }
+      catch (error) {
+        if (video !== activeReelVideo() || !reelVisible || document.hidden || error.name === "AbortError") return;
+        if (soundEnabled) {
+          soundEnabled = false; updateSoundIcon(); video.muted = true; video.volume = 0;
+          try { await video.play(); return; } catch (_) {}
+        }
+        retryReel = currentReel;
+        showReelStatus("Нажмите, чтобы запустить видео", true);
+      }
+    }
+    function stopInactiveReels() {
+      reelVideos().forEach((video, index) => {
+        if (index !== currentReel) { video.pause(); video.muted = true; video.volume = 0; }
+      });
+    }
+    async function setReel(index, animate = true) {
+      if (reelTransitioning) return;
+      const target = wrapReel(index);
+      const request = ++reelRequest;
+      pendingReel = target;
+      retryReel = target;
+      // Snap an incomplete drag back while waiting; never expose an empty slide.
+      updateReelLayout(true, 0);
+      showReelStatus();
+      const indicator = setTimeout(() => { if (request === reelRequest) showReelStatus("Подготавливаем видео…"); }, 180);
+      const video = attachReel(target);
+      if (target !== currentReel && video && video.readyState >= 1 && video.currentTime > .05) video.currentTime = 0;
+      try {
+        await ensureReel(target);
+        if (request !== reelRequest) return;
+        clearTimeout(indicator); showReelStatus();
+        const previous = currentReel;
+        const direction = index < previous ? -1 : 1;
+        if (target !== previous && animate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          const slides = [...reelsTrackVertical.children];
+          slides.forEach((slide, i) => { slide.style.transition = "none"; slide.style.visibility = i === previous || i === target ? "visible" : "hidden"; });
+          slides[previous].style.transform = "translate3d(0,0,0)";
+          slides[target].style.transform = `translate3d(0,${direction * 100}%,0)`;
+          void reelsTrackVertical.offsetHeight;
+          reelTransitioning = true;
+          currentReel = target;
+          reelsCaption.textContent = showreelItems[target].caption;
+          reelsCounter.textContent = String(target + 1).padStart(2, "0") + " / 12";
+          [previous, target].forEach(i => { slides[i].style.transition = "transform .34s cubic-bezier(.22,.8,.22,1)"; });
+          slides[previous].style.transform = `translate3d(0,${-direction * 100}%,0)`;
+          slides[target].style.transform = "translate3d(0,0,0)";
+          setTimeout(() => { reelTransitioning = false; updateReelLayout(false, 0); warmReels(); }, 360);
+        } else { currentReel = target; updateReelLayout(false, 0); }
+        pendingReel = null;
+        stopInactiveReels();
+        playCurrentReel();
+        warmReels();
+      } catch (error) {
+        if (request !== reelRequest) return;
+        pendingReel = null;
+        const filename = showreelItems[target].src;
+        showReelStatus(error.message === "timeout" ? "Медленное соединение. Попробуйте ещё раз." : `Не удалось загрузить ${filename}`, true);
+        updateReelLayout(true, 0);
+      } finally { clearTimeout(indicator); }
+    }
     function nextReel() { setReel(currentReel + 1); }
     function prevReel() { setReel(currentReel - 1); }
-
+    function renderReels() {
+      if (!reelsTrackVertical) return;
+      reelsTrackVertical.innerHTML = showreelItems.map((item, index) => `<div class="reel-slide" data-index="${index}"><video class="reels-video" playsinline webkit-playsinline preload="none" muted disablepictureinpicture></video></div>`).join("");
+      reelVideos().forEach((video, index) => {
+        const ready = () => {
+          if (hasReelFrame(video)) video.closest(".reel-slide").classList.add("is-ready");
+          if (index === currentReel && pendingReel === null && !video.paused) showReelStatus();
+        };
+        ["loadeddata", "canplay", "seeked", "playing"].forEach(name => video.addEventListener(name, ready));
+        video.addEventListener("waiting", () => { if (index === currentReel && reelVisible && pendingReel === null) showReelStatus("Буферизация…"); });
+        video.addEventListener("ended", () => { if (index === currentReel && reelVisible) nextReel(); });
+        video.addEventListener("error", () => {
+          if (index === currentReel && reelVisible && pendingReel === null) { retryReel = index; showReelStatus(`Не удалось загрузить ${showreelItems[index].src}`, true); }
+        });
+      });
+      updateSoundIcon(); updateReelLayout(false);
+      setReel(0, false);
+    }
     document.getElementById("reelNext")?.addEventListener("click", nextReel);
     document.getElementById("reelPrev")?.addEventListener("click", prevReel);
-
-    soundToggle?.addEventListener("pointerdown", (event) => event.stopPropagation());
-    soundToggle?.addEventListener("click", async (event) => {
-      event.stopPropagation();
-      soundEnabled = !soundEnabled;
-      updateSoundIcon();
-      const video = activeReelVideo();
-      if (!video) return;
-      if (soundEnabled) {
-        pauseAllOtherVideos(video);
-        video.muted = false;
-        video.volume = 0.85;
-        try { await video.play(); } catch (error) {}
-      } else {
-        video.volume = 0;
-        video.muted = true;
-      }
+    reelStatus.addEventListener("pointerdown", event => event.stopPropagation());
+    reelRetry.addEventListener("click", () => {
+      const video = reelVideos()[retryReel];
+      if (video?.error) { video.removeAttribute("src"); video.load(); }
+      if (retryReel === currentReel && hasReelFrame(video)) { showReelStatus(); playCurrentReel(); }
+      else setReel(retryReel, retryReel !== currentReel);
     });
-
-    reelsPhone?.addEventListener("pointerdown", (event) => {
-      if (event.target.closest("button")) return;
-      reelDragging = true;
-      reelDragStartY = event.clientY;
-      reelDragOffset = 0;
+    soundToggle?.addEventListener("pointerdown", event => event.stopPropagation());
+    soundToggle?.addEventListener("click", event => { event.stopPropagation(); soundEnabled = !soundEnabled; updateSoundIcon(); playCurrentReel(); });
+    reelsPhone?.addEventListener("pointerdown", event => {
+      if (event.target.closest("button") || reelTransitioning || pendingReel !== null || (event.pointerType === "mouse" && event.button !== 0)) return;
+      reelDragging = true; reelDragStartY = event.clientY; reelDragOffset = 0;
       reelsPhone.setPointerCapture(event.pointerId);
       updateReelLayout(false, 0);
     });
-
-    reelsPhone?.addEventListener("pointermove", (event) => {
+    reelsPhone?.addEventListener("pointermove", event => {
       if (!reelDragging) return;
       reelDragOffset = event.clientY - reelDragStartY;
-      updateReelLayout(false, reelDragOffset);
+      const adjacent = wrapReel(currentReel + (reelDragOffset < 0 ? 1 : -1));
+      ensureReel(adjacent).catch(() => {});
+      const preview = hasReelFrame(reelVideos()[adjacent]) ? clamp(reelDragOffset, -reelHeight, reelHeight) : 0;
+      updateReelLayout(false, preview);
     });
-
-    function releaseReelDrag() {
+    function releaseReelDrag(event) {
       if (!reelDragging) return;
       reelDragging = false;
-      const steps = Math.round(-reelDragOffset / (reelHeight || 1));
-      if (steps === 0 && Math.abs(reelDragOffset) > 70) setReel(currentReel + (reelDragOffset < 0 ? 1 : -1), true);
-      else setReel(currentReel + steps, true);
+      if (event?.type !== "pointercancel" && Math.abs(reelDragOffset) > Math.min(70, reelHeight * .14)) setReel(currentReel + (reelDragOffset < 0 ? 1 : -1));
+      else updateReelLayout(true, 0);
       reelDragOffset = 0;
     }
-
     reelsPhone?.addEventListener("pointerup", releaseReelDrag);
     reelsPhone?.addEventListener("pointercancel", releaseReelDrag);
-
+    reelsPhone?.addEventListener("lostpointercapture", releaseReelDrag);
     let wheelLocked = false;
-    reelsPhone?.addEventListener("wheel", (event) => {
+    reelsPhone?.addEventListener("wheel", event => {
       event.preventDefault();
-      if (wheelLocked) return;
+      if (wheelLocked || reelTransitioning || pendingReel !== null || Math.abs(event.deltaY) < 3) return;
       event.deltaY > 0 ? nextReel() : prevReel();
-      wheelLocked = true;
-      setTimeout(() => wheelLocked = false, 520);
+      wheelLocked = true; setTimeout(() => { wheelLocked = false; }, 520);
     }, { passive: false });
-
-    const showreelObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const showreelObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         reelVisible = entry.isIntersecting;
-        if (reelVisible) playCurrentReel();
-        else {
-          const video = activeReelVideo();
-          if (video) { video.pause(); video.volume = 0; }
-        }
+        if (reelVisible) { reelNear = true; warmReels(); if (hasReelFrame(activeReelVideo())) playCurrentReel(); }
+        else reelVideos().forEach(video => video.pause());
       });
-    }, { threshold: 0.45 });
-
-    if (reelsStage) showreelObserver.observe(reelsStage);
-    reelsTrackVertical?.addEventListener("ended", nextReel, true);
+    }, { threshold: .15 });
+    const reelWarmObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { reelNear = entry.isIntersecting; if (reelNear) warmReels(); });
+    }, { rootMargin: "700px 0px" });
+    if (reelsStage) { showreelObserver.observe(reelsStage); reelWarmObserver.observe(reelsStage); }
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) reelVideos().forEach(video => video.pause());
+      else if (reelVisible) playCurrentReel();
+    });
     renderReels();
+
 
     let currentReview = 0;
     let reviewDragging = false;
