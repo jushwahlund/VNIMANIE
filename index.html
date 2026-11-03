@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>VNIMANIE — Видеомонтаж для экспертов и брендов</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="description" content="Видеомонтаж серий Reels, Shorts и TikTok для экспертов, личных брендов и бизнеса. Выстраиваем визуальную систему, динамику и подачу роликов в едином стиле." />
 
   <style>
@@ -4182,7 +4183,344 @@
       }
     }
 
-  </style>
+  
+/* =========================================================
+   VNIMANIE v21 — match reference
+   clear reel edges + violet atmospheric haze
+   ========================================================= */
+
+.hero-card.hero-card--reference {
+  background:
+    radial-gradient(
+      ellipse 85% 75% at 52% 42%,
+      rgba(93, 75, 125, .13) 0%,
+      rgba(69, 58, 91, .07) 38%,
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.018)
+    ),
+    #0d0d10 !important;
+}
+
+
+/* Главное отличие от прошлой версии:
+   vignette не должен съедать карточки */
+.hero-card.hero-card--reference::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 32% 48% at 50% 53%,
+      rgba(6,6,8,.78) 0%,
+      rgba(6,6,8,.64) 35%,
+      rgba(6,6,8,.32) 62%,
+      rgba(6,6,8,.08) 82%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 72%,
+      rgba(7,7,9,.22) 90%,
+      rgba(7,7,9,.42) 100%
+    ) !important;
+}
+
+
+/* Фиолетовая дымка как на рефе */
+.hero-card.hero-card--reference::after {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  z-index: 5;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 38% 45% at 31% 26%,
+      rgba(116, 88, 155, .13),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 44% 56% at 80% 40%,
+      rgba(122, 94, 160, .16),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 48% 48% at 50% 56%,
+      rgba(88, 70, 116, .08),
+      transparent 76%
+    );
+
+  filter: blur(32px);
+  opacity: .95;
+  mix-blend-mode: screen;
+}
+
+
+/* Дополнительный haze ЗА карточками */
+.hero-bg-stage::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      ellipse 30% 54% at 14% 54%,
+      rgba(107, 82, 143, .09),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 36% 58% at 88% 43%,
+      rgba(118, 90, 155, .13),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 25% 40% at 40% 19%,
+      rgba(110, 84, 146, .10),
+      transparent 72%
+    );
+
+  filter: blur(28px);
+}
+
+
+/* ВАЖНО:
+   никаких сильных масок — карточки должны быть видны */
+.hero-bg-shot {
+  border-radius: 30px;
+
+  border:
+    1px solid rgba(255,255,255,.11) !important;
+
+  box-shadow:
+    0 26px 70px rgba(0,0,0,.34),
+    0 0 55px rgba(110,87,148,.07) !important;
+
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+
+/* Сами картинки гораздо ближе к референсу */
+.hero-bg-shot img {
+  filter:
+    saturate(.86)
+    brightness(.82)
+    contrast(1.035) !important;
+}
+
+
+/* Лёгкое затемнение внутри,
+   но НЕ превращаем кадр в силуэт */
+.hero-bg-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7,7,10,.035) 0%,
+      transparent 42%,
+      rgba(7,7,10,.08) 72%,
+      rgba(7,7,10,.22) 100%
+    ),
+
+    radial-gradient(
+      ellipse 100% 100% at 50% 50%,
+      transparent 58%,
+      rgba(8,8,10,.12) 100%
+    ) !important;
+}
+
+
+/* =========================
+   ЛЕВЫЙ REEL
+   ========================= */
+
+.hero-bg-shot--left {
+  width:
+    clamp(220px, 19.5vw, 275px) !important;
+
+  left:
+    clamp(-52px, -2.5vw, -24px) !important;
+
+  top:
+    29% !important;
+
+  opacity:
+    .64 !important;
+
+  transform:
+    rotate(-5deg) !important;
+
+  filter:
+    none !important;
+}
+
+
+/* =========================
+   ЦЕНТРАЛЬНЫЙ REEL
+   ========================= */
+
+.hero-bg-shot--center {
+  width:
+    clamp(190px, 17vw, 235px) !important;
+
+  left:
+    30.5% !important;
+
+  top:
+    1% !important;
+
+  opacity:
+    .43 !important;
+
+  transform:
+    rotate(5deg) !important;
+
+  filter:
+    blur(.15px) !important;
+}
+
+
+/* =========================
+   ПРАВЫЙ REEL
+   ========================= */
+
+.hero-bg-shot--right {
+  width:
+    clamp(315px, 29vw, 405px) !important;
+
+  right:
+    clamp(-52px, -2vw, -24px) !important;
+
+  top:
+    7% !important;
+
+  opacity:
+    .78 !important;
+
+  transform:
+    rotate(5deg) !important;
+
+  filter:
+    none !important;
+}
+
+
+/* Контент поверх атмосферы */
+.hero-card--reference .hero-content {
+  z-index: 10;
+  width: min(790px, 70%);
+}
+
+
+/* Чуть меньше чёрной тени у текста */
+.hero-card--reference h1 {
+  text-shadow:
+    0 4px 24px rgba(0,0,0,.46);
+}
+
+.hero-card--reference .hero-content > p {
+  text-shadow:
+    0 3px 22px rgba(0,0,0,.58);
+}
+
+
+/* REELS UI чуть заметнее */
+.hero-reel-ui {
+  color:
+    rgba(255,255,255,.67);
+
+  opacity:
+    .88;
+}
+
+.hero-reel-progress {
+  background:
+    rgba(255,255,255,.18);
+}
+
+.hero-reel-progress::before {
+  background:
+    rgba(255,255,255,.66);
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 920px) {
+
+  .hero-bg-shot--left {
+    width: 205px !important;
+    left: -82px !important;
+    opacity: .46 !important;
+  }
+
+  .hero-bg-shot--center {
+    width: 175px !important;
+    left: 28% !important;
+    opacity: .28 !important;
+  }
+
+  .hero-bg-shot--right {
+    width: 270px !important;
+    right: -92px !important;
+    opacity: .58 !important;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 640px) {
+
+  .hero-bg-shot img {
+    filter:
+      saturate(.78)
+      brightness(.70)
+      contrast(1.03) !important;
+  }
+
+  .hero-bg-shot--left {
+    width: 170px !important;
+    left: -108px !important;
+    opacity: .34 !important;
+  }
+
+  .hero-bg-shot--center {
+    display: none !important;
+  }
+
+  .hero-bg-shot--right {
+    width: 220px !important;
+    right: -122px !important;
+    opacity: .40 !important;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
