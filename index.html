@@ -3529,6 +3529,216 @@
       }
     }
 
+
+    /* =========================================================
+       VNIMANIE v19 — hero calibration to match visual reference
+       Keeps the same HTML/assets from v18; only visual balance changes.
+       ========================================================= */
+
+    .hero-card.hero-card--reference {
+      background:
+        radial-gradient(ellipse 70% 62% at 50% 42%, rgba(88,78,112,.085), transparent 62%),
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,.055), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.048), rgba(255,255,255,.018)),
+        #101014;
+    }
+
+    /* The previous version darkened too much of the case frames.
+       Make the central readability field smaller and softer. */
+    .hero-card.hero-card--reference::before {
+      background:
+        radial-gradient(
+          ellipse 33% 53% at 50% 52%,
+          rgba(7,7,9,.88) 0%,
+          rgba(7,7,9,.80) 28%,
+          rgba(7,7,9,.58) 47%,
+          rgba(7,7,9,.24) 63%,
+          rgba(7,7,9,.055) 76%,
+          transparent 88%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(8,8,10,.035) 0%,
+          transparent 20%,
+          transparent 72%,
+          rgba(8,8,10,.16) 86%,
+          rgba(8,8,10,.45) 100%
+        );
+    }
+
+    .hero-card.hero-card--reference::after {
+      background:
+        radial-gradient(circle at 34% 34%, rgba(112,92,148,.055), transparent 27%),
+        radial-gradient(circle at 78% 42%, rgba(112,92,148,.075), transparent 30%),
+        radial-gradient(circle at 50% 55%, rgba(90,75,120,.035), transparent 28%);
+      opacity: 1;
+    }
+
+    .hero-bg-shot {
+      border-color: rgba(255,255,255,.14);
+      box-shadow:
+        0 34px 100px rgba(0,0,0,.42),
+        0 0 72px rgba(116,94,151,.055);
+    }
+
+    /* Let the uploaded stills read as actual portfolio work, not silhouettes. */
+    .hero-bg-shot img {
+      filter:
+        saturate(.90)
+        brightness(.86)
+        contrast(1.035);
+    }
+
+    .hero-bg-shot::after {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(7,7,9,.015) 0%,
+          transparent 36%,
+          rgba(7,7,9,.035) 65%,
+          rgba(7,7,9,.20) 100%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(7,7,9,.07) 0%,
+          transparent 44%,
+          rgba(7,7,9,.055) 100%
+        );
+    }
+
+    /* Left card: same low placement as reference, but a little more present. */
+    .hero-bg-shot--left {
+      width: clamp(235px, 22vw, 310px);
+      left: clamp(-64px, -2.7vw, -28px);
+      top: 27%;
+      opacity: .77;
+      transform: rotate(-6.5deg);
+    }
+
+    /* Center card: lower and much more visible, like the purple frame in the reference. */
+    .hero-bg-shot--center {
+      width: clamp(205px, 18vw, 250px);
+      left: 31.5%;
+      top: 2.2%;
+      opacity: .48;
+      transform: rotate(6deg);
+      filter: none;
+      -webkit-mask-image: radial-gradient(
+        ellipse 84% 94% at 50% 39%,
+        #000 0%,
+        #000 61%,
+        rgba(0,0,0,.77) 75%,
+        rgba(0,0,0,.28) 90%,
+        transparent 100%
+      );
+      mask-image: radial-gradient(
+        ellipse 84% 94% at 50% 39%,
+        #000 0%,
+        #000 61%,
+        rgba(0,0,0,.77) 75%,
+        rgba(0,0,0,.28) 90%,
+        transparent 100%
+      );
+    }
+
+    /* Right card is the main visual proof in the reference: larger, brighter,
+       and moved inward so it frames the copy rather than hugging the edge. */
+    .hero-bg-shot--right {
+      width: clamp(325px, 31vw, 425px);
+      right: clamp(-48px, -1.6vw, -18px);
+      top: 7.5%;
+      opacity: .86;
+      transform: rotate(5.8deg);
+    }
+
+    /* The copy itself should float over the frames, not sit inside a huge black hole. */
+    .hero-card--reference .hero-content {
+      width: min(790px, 70%);
+    }
+
+    .hero-card--reference .logo-eye-wrap {
+      width: 190px;
+      height: 104px;
+      margin-bottom: 12px;
+    }
+
+    .hero-card--reference .logo-eye-wrap::before {
+      opacity: .58;
+    }
+
+    .hero-card--reference .hero-content > p {
+      color: rgba(226,226,231,.76);
+    }
+
+    @media (max-width: 920px) {
+      .hero-card.hero-card--reference::before {
+        background:
+          radial-gradient(
+            ellipse 49% 59% at 50% 52%,
+            rgba(7,7,9,.91) 0%,
+            rgba(7,7,9,.82) 37%,
+            rgba(7,7,9,.50) 58%,
+            rgba(7,7,9,.14) 76%,
+            transparent 91%
+          ),
+          linear-gradient(180deg, rgba(8,8,10,.035), transparent 69%, rgba(8,8,10,.48) 100%);
+      }
+
+      .hero-bg-shot--left {
+        width: 230px;
+        left: -82px;
+        top: 35%;
+        opacity: .58;
+      }
+
+      .hero-bg-shot--center {
+        width: 190px;
+        left: 28%;
+        top: 2%;
+        opacity: .34;
+      }
+
+      .hero-bg-shot--right {
+        width: 295px;
+        right: -84px;
+        top: 10%;
+        opacity: .68;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card.hero-card--reference::before {
+        background:
+          radial-gradient(
+            ellipse 76% 68% at 50% 52%,
+            rgba(7,7,9,.96) 0%,
+            rgba(7,7,9,.88) 47%,
+            rgba(7,7,9,.58) 69%,
+            rgba(7,7,9,.16) 86%,
+            transparent 100%
+          ),
+          linear-gradient(180deg, rgba(8,8,10,.08), transparent 60%, rgba(8,8,10,.68) 100%);
+      }
+
+      .hero-bg-shot img {
+        filter: saturate(.88) brightness(.80) contrast(1.035);
+      }
+
+      .hero-bg-shot--left {
+        width: 182px;
+        left: -112px;
+        top: 43%;
+        opacity: .40;
+      }
+
+      .hero-bg-shot--right {
+        width: 228px;
+        right: -118px;
+        top: 11%;
+        opacity: .48;
+      }
+    }
+
   </style>
 </head>
 
