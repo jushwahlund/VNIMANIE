@@ -4520,6 +4520,166 @@
 
 }
 
+
+/* VNIMANIE v22 — reference composition; scoped to the existing hero. */
+.hero-card.hero-card--reference {
+  container-type: inline-size;
+  aspect-ratio: 1.47;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border-radius: 3.6cqw;
+  border: 1px solid rgba(225,218,240,.24);
+  background: radial-gradient(ellipse at 75% 23%,rgba(92,77,112,.13),transparent 48%),#111114 !important;
+}
+.hero-card.hero-card--reference::before {
+  inset: 0;
+  z-index: 4;
+  background:
+    radial-gradient(ellipse 28% 30% at 49% 53%,rgba(9,9,12,.68),rgba(9,9,12,.28) 62%,transparent 100%),
+    linear-gradient(0deg,rgba(8,8,11,.38),transparent 24%,transparent 84%,rgba(8,8,11,.08)) !important;
+}
+.hero-card.hero-card--reference::after {
+  inset: -6%;
+  z-index: 5;
+  background:
+    radial-gradient(ellipse 13% 28% at 34% 27%,rgba(135,110,165,.20),transparent 74%),
+    radial-gradient(ellipse 18% 34% at 68% 23%,rgba(137,117,160,.23),transparent 76%),
+    radial-gradient(ellipse 30% 14% at 77% 82%,rgba(134,112,161,.25),transparent 78%),
+    radial-gradient(ellipse 23% 17% at 25% 79%,rgba(118,102,140,.16),transparent 76%),
+    radial-gradient(ellipse 15% 28% at 93% 52%,rgba(119,99,150,.15),transparent 75%);
+  filter: blur(22px);
+  opacity: 1;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.hero-card--reference .hero-bg-stage::before {
+  inset: 0;
+  background:
+    radial-gradient(ellipse 30% 40% at 38% 19%,rgba(100,77,130,.17),transparent 76%),
+    radial-gradient(ellipse 40% 26% at 72% 84%,rgba(108,88,132,.18),transparent 78%);
+  filter: blur(20px);
+}
+.hero-card--reference .hero-bg-shot {
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
+  border-radius: 2.5cqw !important;
+  border: 1px solid rgba(228,216,247,.22) !important;
+  box-shadow: 0 18px 55px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.08) !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  transform-origin: center center;
+}
+.hero-card--reference .hero-bg-shot img {
+  filter: saturate(.58) brightness(.78) contrast(.92) !important;
+}
+.hero-card--reference .hero-bg-shot::after {
+  background:
+    linear-gradient(0deg,rgba(22,19,29,.34),transparent 43%,rgba(33,27,43,.12)),
+    linear-gradient(110deg,rgba(88,72,111,.15),rgba(35,31,44,.05)) !important;
+}
+.hero-card--reference .hero-bg-shot--left {
+  display: block !important;
+  width: 19% !important;
+  left: 4.5% !important;
+  right: auto !important;
+  top: 26% !important;
+  bottom: auto !important;
+  transform: rotate(-7deg) !important;
+  opacity: .72 !important;
+  filter: none !important;
+}
+.hero-card--reference .hero-bg-shot--center {
+  display: block !important;
+  width: 20% !important;
+  left: 26% !important;
+  right: auto !important;
+  top: 4% !important;
+  bottom: auto !important;
+  transform: rotate(10deg) !important;
+  opacity: .48 !important;
+  filter: none !important;
+}
+.hero-card--reference .hero-bg-shot--right {
+  display: block !important;
+  width: 29% !important;
+  right: 3.5% !important;
+  left: auto !important;
+  top: 9% !important;
+  bottom: auto !important;
+  transform: rotate(8deg) !important;
+  opacity: .83 !important;
+  filter: none !important;
+}
+.hero-card--reference .hero-content {
+  position: absolute;
+  inset: 29% 0 auto;
+  width: 100% !important;
+  padding: 0 12% !important;
+  transform: none !important;
+  z-index: 10;
+}
+.hero-card--reference .logo-eye-wrap {
+  width: 12cqw;
+  height: 6cqw;
+  margin: 0 auto 2.4cqw;
+  flex-shrink: 0;
+}
+.hero-card--reference .logo-eye { width: 23cqw; height: 23cqw; }
+.hero-card--reference h1 {
+  font-size: 6.4cqw !important;
+  line-height: 1;
+  letter-spacing: .015em;
+  font-weight: 780;
+  text-shadow: 0 4px 24px rgba(0,0,0,.38);
+}
+.hero-card--reference .hero-content > p {
+  width: 100%;
+  max-width: 62cqw;
+  margin-top: 1.7cqw;
+  font-size: 1.68cqw;
+  line-height: 1.4;
+  color: rgba(235,232,239,.78);
+  text-shadow: 0 2px 16px rgba(0,0,0,.55);
+}
+.hero-card--reference .cta-row { margin-top: 2.8cqw; gap: 1.2cqw; }
+.hero-card--reference .cta-row .btn {
+  height: auto;
+  min-height: 4.1cqw;
+  padding: 1.15cqw 1.9cqw;
+  font-size: 1.3cqw;
+  border-radius: 999px;
+}
+.hero-card--reference .hero-proof { margin-top: 2cqw; }
+.hero-card--reference .pill { font-size: 1.14cqw; padding: .65cqw 1.3cqw; }
+.hero-card--reference .hero-reel-ui { color: rgba(245,239,255,.84); opacity: .96; }
+.hero-card--reference .hero-reel-time { top: 1.6cqw; left: 1.6cqw; font-size: 1.15cqw; }
+.hero-card--reference .hero-reel-icons { top: 1.4cqw; right: 1.4cqw; gap: .8cqw; color: inherit; }
+.hero-card--reference .hero-reel-icons svg { width: 1.4cqw; height: 1.4cqw; }
+.hero-card--reference .hero-reel-dots { font-size: 1.65cqw; }
+.hero-card--reference .hero-reel-progress { left: 8%; right: 8%; bottom: 2.4cqw; background: rgba(236,226,251,.20); }
+.hero-card--reference .hero-reel-progress::before { background: rgba(244,235,255,.72); }
+@media (max-width: 640px) {
+  .hero-card.hero-card--reference { aspect-ratio: auto; min-height: 660px !important; border-radius: 26px; }
+  .hero-card--reference .hero-bg-shot { border-radius: 20px !important; }
+  .hero-card--reference .hero-bg-shot--left { width: 31% !important; left: 4% !important; top: 42% !important; opacity: .4 !important; }
+  .hero-card--reference .hero-bg-shot--center { width: 31% !important; left: 24% !important; top: 5% !important; opacity: .32 !important; }
+  .hero-card--reference .hero-bg-shot--right { width: 43% !important; right: 5% !important; top: 23% !important; opacity: .51 !important; }
+  .hero-card--reference .hero-content { inset: 25% 0 auto; padding: 0 20px !important; }
+  .hero-card--reference .logo-eye-wrap { width: 110px; height: 65px; margin-bottom: 24px; }
+  .hero-card--reference .logo-eye { width: 230px; height: 230px; }
+  .hero-card--reference h1 { font-size: clamp(34px,10cqw,62px) !important; }
+  .hero-card--reference .hero-content > p { max-width: 100%; margin-top: 20px; font-size: 15px; line-height: 1.5; }
+  .hero-card--reference .cta-row { margin-top: 25px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .hero-card--reference .cta-row .btn { min-height: 44px; padding: 12px 16px; font-size: 13px; }
+  .hero-card--reference .hero-proof { margin-top: 22px; }
+  .hero-card--reference .pill { font-size: 12px; padding: 7px 13px; }
+  .hero-card--reference .hero-reel-time { font-size: 9px; top: 12px; left: 10px; }
+  .hero-card--reference .hero-reel-icons { top: 10px; right: 10px; gap: 4px; }
+  .hero-card--reference .hero-reel-icons svg { width: 11px; height: 11px; }
+  .hero-card--reference .hero-reel-dots { font-size: 13px; }
+  .hero-card--reference .hero-reel-progress { bottom: 16px; }
+}
+
 </style>
 </head>
 
