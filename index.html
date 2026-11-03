@@ -3739,6 +3739,449 @@
       }
     }
 
+
+    /* =========================================================
+       VNIMANIE v20 — atmospheric hero reels, reference-accurate
+       Overrides v18/v19 without touching the rest of the site.
+       Required files next to HTML:
+         hero-left.png
+         hero-center.png
+         hero-right.png
+       ========================================================= */
+
+    /* Calm premium hero field */
+    .hero-card.hero-card--reference {
+      min-height: clamp(650px, 72vh, 760px);
+      background:
+        radial-gradient(ellipse 74% 68% at 50% 44%, rgba(86,72,112,.060), transparent 64%),
+        radial-gradient(circle at 50% 8%, rgba(255,255,255,.045), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.038), rgba(255,255,255,.012)),
+        #0c0c0f !important;
+    }
+
+    /* Global central negative-space vignette.
+       This sits ABOVE the three reels but BELOW hero-content. */
+    .hero-card.hero-card--reference::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse 43% 61% at 50% 52%,
+          rgba(6,6,8,.965) 0%,
+          rgba(6,6,8,.935) 26%,
+          rgba(6,6,8,.86) 43%,
+          rgba(6,6,8,.62) 57%,
+          rgba(6,6,8,.31) 69%,
+          rgba(6,6,8,.09) 80%,
+          transparent 92%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(6,6,8,.035) 0%,
+          transparent 18%,
+          transparent 67%,
+          rgba(6,6,8,.22) 84%,
+          rgba(6,6,8,.62) 100%
+        ) !important;
+    }
+
+    /* Violet / charcoal atmospheric haze tying the reels to the background */
+    .hero-card.hero-card--reference::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 30% 38% at 14% 50%, rgba(103,82,137,.055), transparent 72%),
+        radial-gradient(ellipse 34% 44% at 84% 42%, rgba(111,87,148,.070), transparent 72%),
+        radial-gradient(ellipse 30% 28% at 43% 22%, rgba(99,78,132,.040), transparent 72%);
+      filter: blur(10px);
+      opacity: .88;
+      mix-blend-mode: screen;
+    }
+
+    .hero-bg-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: inherit;
+      pointer-events: none;
+      isolation: isolate;
+    }
+
+    /* Very soft light fields BEHIND the images */
+    .hero-bg-stage::before {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 28% 52% at 12% 55%, rgba(107,86,138,.050), transparent 74%),
+        radial-gradient(ellipse 34% 55% at 88% 42%, rgba(115,91,148,.060), transparent 74%),
+        radial-gradient(ellipse 22% 36% at 41% 20%, rgba(99,82,126,.042), transparent 76%);
+      filter: blur(24px);
+    }
+
+    /* Base reel = atmospheric object, never a foreground portfolio card */
+    .hero-bg-shot {
+      z-index: 1;
+      position: absolute;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border-radius: 28px;
+      background: rgba(9,9,11,.64);
+      border: 1px solid rgba(255,255,255,.055) !important;
+      box-shadow:
+        0 28px 70px rgba(0,0,0,.24),
+        0 0 42px rgba(104,83,136,.025) !important;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    /* Uploaded screenshots are intentionally restrained */
+    .hero-bg-shot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      filter:
+        saturate(.72)
+        brightness(.64)
+        contrast(1.035) !important;
+    }
+
+    /* Glass / charcoal treatment over each screenshot */
+    .hero-bg-shot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(7,7,9,.09) 0%,
+          transparent 28%,
+          rgba(7,7,9,.06) 56%,
+          rgba(7,7,9,.31) 100%
+        ),
+        radial-gradient(
+          ellipse 100% 100% at 50% 46%,
+          transparent 46%,
+          rgba(7,7,9,.08) 70%,
+          rgba(7,7,9,.24) 100%
+        ) !important;
+    }
+
+    /* LEFT:
+       smaller/lower, and its RIGHT edge (toward headline) dissolves first. */
+    .hero-bg-shot--left {
+      width: clamp(190px, 18.5vw, 252px) !important;
+      left: clamp(-72px, -4vw, -36px) !important;
+      top: 31% !important;
+      opacity: .52 !important;
+      transform: rotate(-5deg) !important;
+
+      -webkit-mask-image: radial-gradient(
+        ellipse 86% 88% at 34% 35%,
+        #000 0%,
+        #000 50%,
+        rgba(0,0,0,.88) 61%,
+        rgba(0,0,0,.56) 72%,
+        rgba(0,0,0,.22) 82%,
+        rgba(0,0,0,.06) 89%,
+        transparent 100%
+      ) !important;
+
+      mask-image: radial-gradient(
+        ellipse 86% 88% at 34% 35%,
+        #000 0%,
+        #000 50%,
+        rgba(0,0,0,.88) 61%,
+        rgba(0,0,0,.56) 72%,
+        rgba(0,0,0,.22) 82%,
+        rgba(0,0,0,.06) 89%,
+        transparent 100%
+      ) !important;
+    }
+
+    /* CENTER:
+       furthest layer, ghost-like and slightly blurred. */
+    .hero-bg-shot--center {
+      width: clamp(170px, 16vw, 218px) !important;
+      left: 31.5% !important;
+      top: -4% !important;
+      opacity: .255 !important;
+      transform: rotate(4.5deg) !important;
+      filter: blur(.65px) !important;
+
+      -webkit-mask-image: radial-gradient(
+        ellipse 78% 90% at 50% 34%,
+        #000 0%,
+        #000 49%,
+        rgba(0,0,0,.80) 63%,
+        rgba(0,0,0,.42) 76%,
+        rgba(0,0,0,.12) 88%,
+        transparent 100%
+      ) !important;
+
+      mask-image: radial-gradient(
+        ellipse 78% 90% at 50% 34%,
+        #000 0%,
+        #000 49%,
+        rgba(0,0,0,.80) 63%,
+        rgba(0,0,0,.42) 76%,
+        rgba(0,0,0,.12) 88%,
+        transparent 100%
+      ) !important;
+    }
+
+    /* RIGHT:
+       main proof frame; its LEFT edge (toward headline) dissolves first. */
+    .hero-bg-shot--right {
+      width: clamp(270px, 26vw, 355px) !important;
+      right: clamp(-82px, -3.7vw, -42px) !important;
+      top: 8% !important;
+      opacity: .62 !important;
+      transform: rotate(4.5deg) !important;
+
+      -webkit-mask-image: radial-gradient(
+        ellipse 88% 91% at 66% 34%,
+        #000 0%,
+        #000 51%,
+        rgba(0,0,0,.90) 62%,
+        rgba(0,0,0,.58) 73%,
+        rgba(0,0,0,.24) 83%,
+        rgba(0,0,0,.06) 90%,
+        transparent 100%
+      ) !important;
+
+      mask-image: radial-gradient(
+        ellipse 88% 91% at 66% 34%,
+        #000 0%,
+        #000 51%,
+        rgba(0,0,0,.90) 62%,
+        rgba(0,0,0,.58) 73%,
+        rgba(0,0,0,.24) 83%,
+        rgba(0,0,0,.06) 90%,
+        transparent 100%
+      ) !important;
+    }
+
+    /* ---------- Minimal Reels UI ---------- */
+
+    .hero-reel-ui {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      color: rgba(255,255,255,.56);
+      font-size: 10px;
+      line-height: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,.72);
+      pointer-events: none;
+    }
+
+    .hero-reel-time {
+      position: absolute;
+      top: 17px;
+      left: 17px;
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: .015em;
+    }
+
+    .hero-reel-icons {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: rgba(255,255,255,.48);
+    }
+
+    .hero-reel-icons svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .hero-reel-dots {
+      font-size: 15px;
+      line-height: 1;
+      transform: translateY(-1px);
+    }
+
+    .hero-reel-progress {
+      position: absolute;
+      left: 15%;
+      right: 15%;
+      bottom: 24px;
+      height: 2px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,.16);
+    }
+
+    .hero-reel-progress::before {
+      content: "";
+      display: block;
+      width: 31%;
+      height: 100%;
+      border-radius: inherit;
+      background: rgba(255,255,255,.54);
+    }
+
+    /* Content always wins the visual hierarchy */
+    .hero-card--reference .hero-content {
+      position: relative;
+      z-index: 10;
+      width: min(790px, 70%);
+      transform: translateY(5px);
+    }
+
+    .hero-card--reference .logo-eye-wrap {
+      width: 184px;
+      height: 102px;
+      margin: 0 auto 12px;
+    }
+
+    .hero-card--reference .logo-eye-wrap::before {
+      width: 188px;
+      height: 82px;
+      opacity: .56;
+      filter: blur(22px);
+    }
+
+    .hero-card--reference .logo-eye {
+      width: 292px;
+      height: 292px;
+    }
+
+    .hero-card--reference h1 {
+      text-shadow:
+        0 4px 24px rgba(0,0,0,.72),
+        0 0 1px rgba(255,255,255,.08);
+    }
+
+    .hero-card--reference .hero-content > p {
+      color: rgba(225,225,230,.73);
+      text-shadow: 0 3px 24px rgba(0,0,0,.90);
+    }
+
+    .hero-card--reference .btn-secondary,
+    .hero-card--reference .pill {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* ---------- Tablet ---------- */
+    @media (max-width: 920px) {
+      .hero-card.hero-card--reference::before {
+        background:
+          radial-gradient(
+            ellipse 56% 64% at 50% 52%,
+            rgba(6,6,8,.975) 0%,
+            rgba(6,6,8,.93) 39%,
+            rgba(6,6,8,.69) 57%,
+            rgba(6,6,8,.34) 70%,
+            rgba(6,6,8,.08) 83%,
+            transparent 96%
+          ),
+          linear-gradient(180deg, rgba(6,6,8,.05), transparent 66%, rgba(6,6,8,.67) 100%) !important;
+      }
+
+      .hero-bg-shot--left {
+        width: 205px !important;
+        left: -92px !important;
+        top: 37% !important;
+        opacity: .40 !important;
+      }
+
+      .hero-bg-shot--center {
+        width: 174px !important;
+        left: 27% !important;
+        top: -2% !important;
+        opacity: .18 !important;
+      }
+
+      .hero-bg-shot--right {
+        width: 260px !important;
+        right: -108px !important;
+        top: 10% !important;
+        opacity: .47 !important;
+      }
+
+      .hero-card--reference .hero-content {
+        width: min(700px, 80%);
+      }
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 640px) {
+      .hero-card.hero-card--reference {
+        min-height: 610px;
+      }
+
+      .hero-card.hero-card--reference::before {
+        background:
+          radial-gradient(
+            ellipse 86% 71% at 50% 51%,
+            rgba(6,6,8,.99) 0%,
+            rgba(6,6,8,.965) 48%,
+            rgba(6,6,8,.79) 66%,
+            rgba(6,6,8,.43) 80%,
+            rgba(6,6,8,.11) 91%,
+            transparent 100%
+          ),
+          linear-gradient(180deg, rgba(6,6,8,.10), transparent 58%, rgba(6,6,8,.80) 100%) !important;
+      }
+
+      .hero-bg-shot img {
+        filter:
+          saturate(.68)
+          brightness(.58)
+          contrast(1.035) !important;
+      }
+
+      .hero-bg-shot--left {
+        width: 172px !important;
+        left: -116px !important;
+        top: 44% !important;
+        opacity: .27 !important;
+      }
+
+      .hero-bg-shot--center {
+        display: none !important;
+      }
+
+      .hero-bg-shot--right {
+        width: 216px !important;
+        right: -130px !important;
+        top: 11% !important;
+        opacity: .31 !important;
+      }
+
+      .hero-card--reference .hero-content {
+        width: 100%;
+        padding: 0 18px;
+        transform: none;
+      }
+
+      .hero-reel-ui {
+        opacity: .72;
+      }
+    }
+
   </style>
 </head>
 
@@ -3770,6 +4213,17 @@
                 fetchpriority="high"
                 onerror="this.closest('.hero-bg-shot').style.display='none';"
               >
+              <div class="hero-reel-ui">
+                <span class="hero-reel-time">0:17</span>
+                <span class="hero-reel-icons">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                    <path d="M17 9L21 15M21 9L17 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                  <span class="hero-reel-dots">⋮</span>
+                </span>
+                <span class="hero-reel-progress"></span>
+              </div>
             </div>
 
             <div class="hero-bg-shot hero-bg-shot--center">
@@ -3781,6 +4235,17 @@
                 fetchpriority="high"
                 onerror="this.closest('.hero-bg-shot').style.display='none';"
               >
+              <div class="hero-reel-ui">
+                <span class="hero-reel-time">0:15</span>
+                <span class="hero-reel-icons">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                    <path d="M17 9L21 15M21 9L17 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                  <span class="hero-reel-dots">⋮</span>
+                </span>
+                <span class="hero-reel-progress"></span>
+              </div>
             </div>
 
             <div class="hero-bg-shot hero-bg-shot--right">
@@ -3792,6 +4257,17 @@
                 fetchpriority="high"
                 onerror="this.closest('.hero-bg-shot').style.display='none';"
               >
+              <div class="hero-reel-ui">
+                <span class="hero-reel-time">0:23</span>
+                <span class="hero-reel-icons">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 9.5V14.5H8L13 19V5L8 9.5H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                    <path d="M17 9L21 15M21 9L17 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                  <span class="hero-reel-dots">⋮</span>
+                </span>
+                <span class="hero-reel-progress"></span>
+              </div>
             </div>
           </div>
 
