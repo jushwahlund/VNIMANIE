@@ -4830,6 +4830,14 @@
 #reelsPhone .reel-load-status button { display: block; margin: 10px auto 0; min-height: 44px; padding: 8px 16px; border: 1px solid #77717e; border-radius: 99px; background: #eeeaf2; color: #17131c; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) { #reelsPhone .reel-slide { transition: none !important; } }
 
+
+/* Showreel: controls at the bottom, with no copy covering the image. */
+#reelsPhone .reels-caption { inset: auto auto 10px 16px; padding: 0; background: none; pointer-events: none; width: auto; }
+#reelsPhone .reels-counter { margin: 0; padding: 5px 9px; border-radius: 999px; background: rgba(10,9,14,.58); color: #fff; font-size: 12px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+#reelsPhone .sound-toggle { inset: auto 12px 8px auto; width: 44px; height: 44px; transform: none; }
+#reelsPhone.reel-is-loading::after { content: ""; position: absolute; z-index: 8; right: 18px; top: 23px; width: 13px; height: 13px; border: 2px solid rgba(255,255,255,.26); border-top-color: #fff; border-radius: 50%; animation: reel-loading-spin .8s linear infinite; pointer-events: none; }
+@keyframes reel-loading-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { #reelsPhone.reel-is-loading::after { animation: none; } }
 </style>
 </head>
 
@@ -4974,8 +4982,8 @@
               <div class="reels-viewport"><div class="reels-track-vertical" id="reelsTrackVertical"></div></div>
               <button class="sound-toggle" type="button" id="soundToggle" aria-label="Включить или выключить звук"></button>
               <div class="reels-caption">
-                <div class="reels-counter" id="reelsCounter">01 / 12</div>
-                <h3 id="reelsCaption">Эстетичный формат — стиль, ритм, визуальная подача</h3>
+                <div class="reels-counter" id="reelsCounter">1/12</div>
+                
               </div>
             </div>
 
@@ -5250,7 +5258,6 @@
     const reelsPhone = document.getElementById("reelsPhone");
     const reelsStage = document.getElementById("reelsStage");
     const reelsTrackVertical = document.getElementById("reelsTrackVertical");
-    const reelsCaption = document.getElementById("reelsCaption");
     const reelsCounter = document.getElementById("reelsCounter");
     const soundToggle = document.getElementById("soundToggle");
     const reelStatus = document.createElement("div");
@@ -5318,21 +5325,44 @@
       promise.then(cleanup, cleanup);
       return promise;
     }
+    let reelWarmTimer = 0;
+    function bufferedAhead(video) {
+      if (!video) return 0;
+      const time = video.currentTime;
+      for (let i = 0; i < video.buffered.length; i++) {
+        if (video.buffered.start(i) <= time + .05 && video.buffered.end(i) >= time) return video.buffered.end(i) - time;
+      }
+      return 0;
+    }
+    function hasRunway(video, seconds) {
+      if (!hasReelFrame(video)) return false;
+      const remaining = Number.isFinite(video.duration) ? Math.max(0, video.duration - video.currentTime - .08) : seconds;
+      return bufferedAhead(video) >= Math.min(seconds, remaining);
+    }
     function warmReels() {
-      if (!reelNear) return;
-      const keep = new Set([currentReel, wrapReel(currentReel + 1), wrapReel(currentReel - 1)]);
+      clearTimeout(reelWarmTimer);
+      if (!reelNear || document.hidden) return;
+      const videos = reelVideos();
+      const startup = currentReel < 3;
+      const queue = startup
+        ? [...new Set([1, 2, ...(currentReel > 0 ? [3] : []), ...(currentReel > 1 ? [4] : [])])].filter(i => i > currentReel)
+        : [wrapReel(currentReel + 1), wrapReel(currentReel + 2)];
+      const keep = new Set([currentReel, ...queue, ...(startup ? [0, 1, 2] : [wrapReel(currentReel - 1)])]);
       if (pendingReel !== null) keep.add(pendingReel);
-      // Bound decoder memory and competing downloads to the local neighbourhood.
-      reelVideos().forEach((video, index) => {
+      if (!reelTransitioning) videos.forEach((video, index) => {
         if (!keep.has(index) && video.hasAttribute("src") && !reelLoads.has(index)) {
           video.pause(); video.removeAttribute("src"); video.load();
           video.closest(".reel-slide").classList.remove("is-ready");
         }
       });
-      ensureReel(currentReel).then(() => {
-        if (!reelNear) return;
-        [wrapReel(currentReel + 1), wrapReel(currentReel - 1)].forEach(index => ensureReel(index).catch(() => {}));
-      }).catch(() => {});
+      if (pendingReel !== null) return;
+      const current = videos[currentReel];
+      const next = queue.find(index => !videos[index].error && !hasRunway(videos[index], 5));
+      // Let the current video build a lead, then warm one future clip at a time.
+      if (next !== undefined) {
+        if (current?.error || hasRunway(current, 1.5)) attachReel(next);
+        reelWarmTimer = setTimeout(warmReels, 240);
+      }
     }
     function updateReelLayout(animate = true, offset = 0) {
       if (!reelsTrackVertical || !reelsPhone || reelTransitioning) return;
@@ -5344,12 +5374,12 @@
         slide.style.transition = animate ? "transform .34s cubic-bezier(.22,.8,.22,1)" : "none";
         slide.style.transform = `translate3d(0,calc(${relative * 100}% + ${offset}px),0)`;
       });
-      reelsCaption.textContent = showreelItems[currentReel].caption;
-      reelsCounter.textContent = String(currentReel + 1).padStart(2, "0") + " / " + String(showreelItems.length).padStart(2, "0");
+      reelsCounter.textContent = (currentReel + 1) + "/" + showreelItems.length;
     }
     async function playCurrentReel() {
       const video = activeReelVideo();
       if (!video || !reelVisible || document.hidden) return;
+      if (video.ended) video.currentTime = 0;
       video.muted = !soundEnabled;
       video.volume = soundEnabled ? .85 : 0;
       pauseAllOtherVideos(video);
@@ -5376,11 +5406,12 @@
       pendingReel = target;
       retryReel = target;
       // Snap an incomplete drag back while waiting; never expose an empty slide.
-      updateReelLayout(true, 0);
-      showReelStatus();
-      const indicator = setTimeout(() => { if (request === reelRequest) showReelStatus("Подготавливаем видео…"); }, 180);
       const video = attachReel(target);
-      if (target !== currentReel && video && video.readyState >= 1 && video.currentTime > .05) video.currentTime = 0;
+      if (!hasReelFrame(video)) updateReelLayout(true, 0);
+      showReelStatus();
+      const indicator = setTimeout(() => {
+        if (request === reelRequest) reelsPhone?.classList.add("reel-is-loading");
+      }, 850);
       try {
         await ensureReel(target);
         if (request !== reelRequest) return;
@@ -5389,14 +5420,15 @@
         const direction = index < previous ? -1 : 1;
         if (target !== previous && animate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
           const slides = [...reelsTrackVertical.children];
+          const start = getComputedStyle(slides[previous]).transform;
+          const offset = start === "none" ? 0 : new DOMMatrixReadOnly(start).m42;
           slides.forEach((slide, i) => { slide.style.transition = "none"; slide.style.visibility = i === previous || i === target ? "visible" : "hidden"; });
-          slides[previous].style.transform = "translate3d(0,0,0)";
-          slides[target].style.transform = `translate3d(0,${direction * 100}%,0)`;
+          slides[previous].style.transform = `translate3d(0,${offset}px,0)`;
+          slides[target].style.transform = `translate3d(0,calc(${direction * 100}% + ${offset}px),0)`;
           void reelsTrackVertical.offsetHeight;
           reelTransitioning = true;
           currentReel = target;
-          reelsCaption.textContent = showreelItems[target].caption;
-          reelsCounter.textContent = String(target + 1).padStart(2, "0") + " / 12";
+          reelsCounter.textContent = (target + 1) + "/" + showreelItems.length;
           [previous, target].forEach(i => { slides[i].style.transition = "transform .34s cubic-bezier(.22,.8,.22,1)"; });
           slides[previous].style.transform = `translate3d(0,${-direction * 100}%,0)`;
           slides[target].style.transform = "translate3d(0,0,0)";
@@ -5412,7 +5444,7 @@
         const filename = showreelItems[target].src;
         showReelStatus(error.message === "timeout" ? "Медленное соединение. Попробуйте ещё раз." : `Не удалось загрузить ${filename}`, true);
         updateReelLayout(true, 0);
-      } finally { clearTimeout(indicator); }
+      } finally { clearTimeout(indicator); if (request === reelRequest) { reelsPhone?.classList.remove("reel-is-loading"); warmReels(); } }
     }
     function nextReel() { setReel(currentReel + 1); }
     function prevReel() { setReel(currentReel - 1); }
@@ -5425,7 +5457,6 @@
           if (index === currentReel && pendingReel === null && !video.paused) showReelStatus();
         };
         ["loadeddata", "canplay", "seeked", "playing"].forEach(name => video.addEventListener(name, ready));
-        video.addEventListener("waiting", () => { if (index === currentReel && reelVisible && pendingReel === null) showReelStatus("Буферизация…"); });
         video.addEventListener("ended", () => { if (index === currentReel && reelVisible) nextReel(); });
         video.addEventListener("error", () => {
           if (index === currentReel && reelVisible && pendingReel === null) { retryReel = index; showReelStatus(`Не удалось загрузить ${showreelItems[index].src}`, true); }
@@ -5455,7 +5486,7 @@
       if (!reelDragging) return;
       reelDragOffset = event.clientY - reelDragStartY;
       const adjacent = wrapReel(currentReel + (reelDragOffset < 0 ? 1 : -1));
-      ensureReel(adjacent).catch(() => {});
+      if (!hasReelFrame(reelVideos()[adjacent]) && Math.abs(reelDragOffset) > 12) attachReel(adjacent);
       const preview = hasReelFrame(reelVideos()[adjacent]) ? clamp(reelDragOffset, -reelHeight, reelHeight) : 0;
       updateReelLayout(false, preview);
     });
@@ -5489,7 +5520,7 @@
     if (reelsStage) { showreelObserver.observe(reelsStage); reelWarmObserver.observe(reelsStage); }
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) reelVideos().forEach(video => video.pause());
-      else if (reelVisible) playCurrentReel();
+      else if (reelVisible) { playCurrentReel(); warmReels(); }
     });
     renderReels();
 
