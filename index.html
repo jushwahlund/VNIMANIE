@@ -3103,6 +3103,432 @@
       }
     }
 
+
+    /* =========================================================
+       VNIMANIE v18 — hero matching the approved reference
+       Required repo files:
+         hero-left.png
+         hero-center.png
+         hero-right.png
+       Put them in the same folder as this HTML file.
+       ========================================================= */
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      padding: 32px 0 56px;
+    }
+
+    .hero-card.hero-card--reference {
+      min-height: clamp(650px, 72vh, 760px);
+      padding: 0;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 17%, rgba(255,255,255,.075), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.042), rgba(255,255,255,.014)),
+        #0b0b0d;
+      box-shadow:
+        0 34px 120px rgba(0,0,0,.66),
+        inset 0 1px 0 rgba(255,255,255,.025);
+    }
+
+    .hero-card.hero-card--reference::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse 42% 58% at 50% 51%,
+          rgba(7,7,9,.96) 0%,
+          rgba(7,7,9,.92) 27%,
+          rgba(7,7,9,.77) 47%,
+          rgba(7,7,9,.38) 67%,
+          rgba(7,7,9,.08) 82%,
+          transparent 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(8,8,10,.08) 0%,
+          transparent 18%,
+          transparent 68%,
+          rgba(8,8,10,.28) 84%,
+          rgba(8,8,10,.70) 100%
+        );
+    }
+
+    .hero-card.hero-card--reference::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(96,82,125,.055), transparent 30%),
+        radial-gradient(circle at 84% 43%, rgba(117,101,151,.055), transparent 25%);
+      mix-blend-mode: screen;
+      opacity: .8;
+    }
+
+    .hero-bg-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .hero-bg-shot {
+      position: absolute;
+      aspect-ratio: 9 / 16;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #09090b;
+      border: 1px solid rgba(255,255,255,.105);
+      box-shadow:
+        0 34px 100px rgba(0,0,0,.47),
+        0 0 70px rgba(91,76,120,.035);
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .hero-bg-shot img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      filter:
+        saturate(.78)
+        brightness(.64)
+        contrast(1.06);
+    }
+
+    .hero-bg-shot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(7,7,9,.04) 0%,
+          transparent 28%,
+          rgba(7,7,9,.08) 58%,
+          rgba(7,7,9,.30) 100%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(7,7,9,.16) 0%,
+          transparent 40%,
+          rgba(7,7,9,.12) 100%
+        );
+    }
+
+    /* LEFT — lower, smaller, partly outside the card */
+    .hero-bg-shot--left {
+      width: clamp(225px, 21vw, 300px);
+      left: clamp(-72px, -3.4vw, -34px);
+      top: 26%;
+      opacity: .62;
+      transform: rotate(-7deg);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 8%,
+        #000 78%,
+        rgba(0,0,0,.64) 88%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 8%,
+        #000 78%,
+        rgba(0,0,0,.64) 88%,
+        transparent 100%
+      );
+    }
+
+    /* CENTER — upper, behind the title, deliberately subtle */
+    .hero-bg-shot--center {
+      width: clamp(190px, 17vw, 235px);
+      left: 31.5%;
+      top: -4.5%;
+      opacity: .27;
+      transform: rotate(6.5deg);
+      filter: blur(.18px);
+      -webkit-mask-image: radial-gradient(
+        ellipse 78% 91% at 50% 36%,
+        #000 0%,
+        #000 56%,
+        rgba(0,0,0,.70) 71%,
+        rgba(0,0,0,.20) 88%,
+        transparent 100%
+      );
+      mask-image: radial-gradient(
+        ellipse 78% 91% at 50% 36%,
+        #000 0%,
+        #000 56%,
+        rgba(0,0,0,.70) 71%,
+        rgba(0,0,0,.20) 88%,
+        transparent 100%
+      );
+    }
+
+    /* RIGHT — largest and most readable proof frame */
+    .hero-bg-shot--right {
+      width: clamp(285px, 28vw, 390px);
+      right: clamp(-92px, -4.5vw, -48px);
+      top: 7%;
+      opacity: .69;
+      transform: rotate(6deg);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 7%,
+        #000 78%,
+        rgba(0,0,0,.68) 88%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 7%,
+        #000 78%,
+        rgba(0,0,0,.68) 88%,
+        transparent 100%
+      );
+    }
+
+    .hero-card--reference .hero-content {
+      width: min(780px, 72%);
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 14px;
+      transform: translateY(8px);
+    }
+
+    .hero-card--reference .logo-eye-wrap {
+      width: 180px;
+      height: 100px;
+      margin: 0 auto 12px;
+    }
+
+    .hero-card--reference .logo-eye-wrap::before {
+      width: 190px;
+      height: 86px;
+      background: radial-gradient(
+        circle,
+        rgba(255,255,255,.21),
+        rgba(255,255,255,.055) 43%,
+        transparent 74%
+      );
+      filter: blur(22px);
+      opacity: .72;
+    }
+
+    .hero-card--reference .logo-eye {
+      width: 300px;
+      height: 300px;
+      filter:
+        drop-shadow(0 0 8px rgba(255,255,255,.30))
+        drop-shadow(0 0 26px rgba(255,255,255,.12))
+        drop-shadow(0 0 62px rgba(255,255,255,.07));
+    }
+
+    .hero-card--reference h1 {
+      max-width: none;
+      margin: 0 auto;
+      font-size: clamp(50px, 6vw, 78px);
+      line-height: .95;
+      letter-spacing: .015em;
+      font-weight: 780;
+      text-shadow: 0 5px 30px rgba(0,0,0,.54);
+    }
+
+    .hero-card--reference .hero-content > p {
+      max-width: 720px;
+      margin-top: 22px;
+      color: rgba(225,225,230,.72);
+      font-size: clamp(16px, 1.55vw, 20px);
+      line-height: 1.55;
+      text-shadow: 0 3px 24px rgba(0,0,0,.78);
+    }
+
+    .hero-card--reference .cta-row {
+      margin-top: 30px;
+      gap: 12px;
+    }
+
+    .hero-card--reference .hero-proof {
+      margin-top: 24px;
+    }
+
+    .hero-card--reference .pill {
+      color: rgba(225,225,230,.58);
+      background: rgba(255,255,255,.018);
+      border-color: rgba(255,255,255,.09);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Slightly calmer button treatment inside the hero */
+    .hero-card--reference .btn-secondary {
+      background: rgba(255,255,255,.025);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .hero-card--reference .btn-primary {
+      box-shadow:
+        0 0 22px rgba(255,255,255,.13),
+        0 14px 42px rgba(0,0,0,.20);
+    }
+
+    @media (max-width: 920px) {
+      .hero-card.hero-card--reference {
+        min-height: 660px;
+      }
+
+      .hero-card--reference .hero-content {
+        width: min(700px, 80%);
+      }
+
+      .hero-bg-shot--left {
+        width: 220px;
+        left: -92px;
+        top: 34%;
+        opacity: .43;
+      }
+
+      .hero-bg-shot--center {
+        width: 180px;
+        left: 27%;
+        top: -2%;
+        opacity: .18;
+      }
+
+      .hero-bg-shot--right {
+        width: 270px;
+        right: -112px;
+        top: 9%;
+        opacity: .50;
+      }
+
+      .hero-card.hero-card--reference::before {
+        background:
+          radial-gradient(
+            ellipse 58% 62% at 50% 52%,
+            rgba(7,7,9,.97) 0%,
+            rgba(7,7,9,.91) 42%,
+            rgba(7,7,9,.59) 68%,
+            rgba(7,7,9,.10) 87%,
+            transparent 100%
+          ),
+          linear-gradient(180deg, rgba(8,8,10,.08), transparent 66%, rgba(8,8,10,.66) 100%);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 20px;
+        padding-bottom: 32px;
+      }
+
+      .hero-card.hero-card--reference {
+        min-height: 610px;
+        border-radius: 26px;
+      }
+
+      .hero-card--reference .hero-content {
+        width: 100%;
+        padding: 0 18px;
+        transform: none;
+      }
+
+      .hero-card--reference .logo-eye-wrap {
+        width: 150px;
+        height: 88px;
+        margin-bottom: 10px;
+      }
+
+      .hero-card--reference .logo-eye {
+        width: 250px;
+        height: 250px;
+      }
+
+      .hero-card--reference h1 {
+        font-size: clamp(42px, 13vw, 54px);
+      }
+
+      .hero-card--reference .hero-content > p {
+        max-width: 92%;
+        font-size: 15px;
+        line-height: 1.48;
+        margin-top: 18px;
+      }
+
+      .hero-card--reference .cta-row {
+        width: min(100%, 310px);
+        margin-top: 24px;
+      }
+
+      .hero-card--reference .btn,
+      .hero-card--reference .contact-wrapper,
+      .hero-card--reference .contact-wrapper .btn {
+        width: 100%;
+      }
+
+      .hero-bg-shot {
+        border-radius: 22px;
+      }
+
+      .hero-bg-shot--left {
+        width: 175px;
+        left: -114px;
+        top: 43%;
+        opacity: .28;
+        transform: rotate(-7deg);
+      }
+
+      .hero-bg-shot--center {
+        display: none;
+      }
+
+      .hero-bg-shot--right {
+        width: 220px;
+        right: -132px;
+        top: 10%;
+        opacity: .31;
+        transform: rotate(6deg);
+      }
+
+      .hero-card.hero-card--reference::before {
+        background:
+          radial-gradient(
+            ellipse 88% 70% at 50% 52%,
+            rgba(7,7,9,.985) 0%,
+            rgba(7,7,9,.94) 48%,
+            rgba(7,7,9,.69) 72%,
+            rgba(7,7,9,.18) 90%,
+            transparent 100%
+          ),
+          linear-gradient(180deg, rgba(8,8,10,.12), transparent 58%, rgba(8,8,10,.78) 100%);
+      }
+
+      .hero-card--reference .hero-proof {
+        margin-top: 18px;
+      }
+    }
+
   </style>
 </head>
 
@@ -3123,7 +3549,42 @@
   <div class="page">
     <main>
       <section class="hero">
-        <div class="hero-card" data-reveal>
+        <div class="hero-card hero-card--reference" data-reveal>
+          <div class="hero-bg-stage" aria-hidden="true">
+            <div class="hero-bg-shot hero-bg-shot--left">
+              <img
+                src="hero-left.png"
+                alt=""
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                onerror="this.closest('.hero-bg-shot').style.display='none';"
+              >
+            </div>
+
+            <div class="hero-bg-shot hero-bg-shot--center">
+              <img
+                src="hero-center.png"
+                alt=""
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                onerror="this.closest('.hero-bg-shot').style.display='none';"
+              >
+            </div>
+
+            <div class="hero-bg-shot hero-bg-shot--right">
+              <img
+                src="hero-right.png"
+                alt=""
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                onerror="this.closest('.hero-bg-shot').style.display='none';"
+              >
+            </div>
+          </div>
+
           <div class="hero-content">
             <div class="logo-eye-wrap">
               <img class="logo-eye" src="logo.png" alt="VNIMANIE logo">
@@ -3148,7 +3609,6 @@
 
             <div class="hero-proof">
               <div class="pill">Reels / Shorts / TikTok</div>
-              <div class="pill">Серии, а не разовые ролики</div>
             </div>
           </div>
         </div>
