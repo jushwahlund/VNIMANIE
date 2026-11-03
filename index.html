@@ -4680,6 +4680,29 @@
   .hero-card--reference .hero-reel-progress { bottom: 16px; }
 }
 
+
+/* v23 — space for copy, retaining the v22 composition. */
+.hero-card--reference .hero-bg-shot--center {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 44%, rgba(0,0,0,.94) 53%, rgba(0,0,0,.65) 66%, rgba(0,0,0,.22) 82%, transparent 100%) !important;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 44%, rgba(0,0,0,.94) 53%, rgba(0,0,0,.65) 66%, rgba(0,0,0,.22) 82%, transparent 100%) !important;
+}
+/* A separate, hero-aligned shade stays horizontal despite the reel rotation.
+   The existing ::before remains the central vignette; this layer belongs
+   to the stage and sits above the reels but below the atmosphere and copy. */
+.hero-card--reference .hero-bg-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(ellipse 19% 12% at 72% 56%, rgba(10,9,14,.58) 0%, rgba(10,9,14,.37) 42%, rgba(10,9,14,.12) 72%, transparent 100%);
+}
+@media (max-width: 640px) {
+  .hero-card--reference .hero-bg-stage::after {
+    background: radial-gradient(ellipse 35% 17% at 70% 57%, rgba(10,9,14,.48), rgba(10,9,14,.18) 60%, transparent 100%);
+  }
+}
+
 </style>
 </head>
 
