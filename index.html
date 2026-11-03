@@ -6,7 +6,7 @@
 
   <title>VNIMANIE — Видеомонтаж для экспертов и брендов</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="description" content="Видеомонтаж серий Reels, Shorts и TikTok для экспертов, личных брендов и бизнеса. Выстраиваем визуальную систему, динамику и подачу роликов в едином стиле." />
+  <meta name="description" content="Видеомонтаж серий Reels*, Shorts и TikTok для экспертов, личных брендов и бизнеса. Выстраиваем визуальную систему, динамику и подачу роликов в едином стиле." />
 
   <style>
     :root {
@@ -4838,6 +4838,18 @@
 #reelsPhone.reel-is-loading::after { content: ""; position: absolute; z-index: 8; right: 18px; top: 23px; width: 13px; height: 13px; border: 2px solid rgba(255,255,255,.26); border-top-color: #fff; border-radius: 50%; animation: reel-loading-spin .8s linear infinite; pointer-events: none; }
 @keyframes reel-loading-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { #reelsPhone.reel-is-loading::after { animation: none; } }
+
+#reelsPhone.reel-is-loading::after {
+  inset: 50% auto auto 50%; width: 128px; height: 92px;
+  border: 0; border-radius: 50%; transform: translate(-50%,-50%);
+  background: url("logo.png") center / 240px no-repeat, radial-gradient(ellipse,rgba(12,9,20,.88),transparent 72%);
+  animation: reel-eye-breathe 1.8s ease-in-out infinite;
+}
+@keyframes reel-eye-breathe {
+  0%,100% { opacity: .64; scale: .92; filter: drop-shadow(0 0 6px #9175cf); }
+  50% { opacity: 1; scale: 1.09; filter: drop-shadow(0 0 17px #ba9aff); }
+}
+@media (prefers-reduced-motion: reduce) { #reelsPhone.reel-is-loading::after { animation: none; } }
 </style>
 </head>
 
@@ -4950,7 +4962,7 @@
             </div>
 
             <div class="hero-proof">
-              <div class="pill">Reels / Shorts / TikTok</div>
+              <div class="pill">Reels* / Shorts / TikTok</div>
             </div>
           </div>
         </div>
@@ -5010,13 +5022,13 @@
             <div class="featured-case-copy">
               <img class="case-profile-shot case-profile-shot--diana" src="diana-profile.png" alt="" aria-hidden="true" loading="lazy" decoding="async" fetchpriority="low">
               <div class="section-kicker"><span class="star-icon">01</span> флагманский кейс</div>
-              <h3>10 Reels для Дианы — личный бренд с аудиторией 272k</h3>
-              <p>Серия динамичных вертикальных роликов в едином стиле без ощущения шаблонного монтажа.</p>
+              <h3>10 Reels* для Дианы — личный бренд с аудиторией 272k</h3>
+              <p>Серия динамичных вертикальных роликов без ощущения шаблонного монтажа.</p>
 
               <div class="case-facts">
                 <div class="case-fact"><strong>10</strong><span>роликов в одной серии</span></div>
                 <div class="case-fact"><strong>272k</strong><span>аудитория клиента</span></div>
-                <div class="case-fact"><strong>1 стиль</strong><span>зафиксирован на всю серию</span></div>
+                <div class="case-fact"><strong>1 динамика</strong><span>зафиксирована на всю серию</span></div>
               </div>
 
 
@@ -5056,7 +5068,7 @@
               <div class="toyosu-copy-top">
                 <div class="toyosu-copy-lead">
                   <div class="section-kicker"><span class="star-icon">02</span> коммерческий формат</div>
-                  <h3>TOYOSU — яркий Reels для ресторана</h3>
+                  <h3>TOYOSU — яркий Reels* для ресторана</h3>
                   <div class="toyosu-copy-lower">
                     <p>Отдельный визуальный язык под бизнес-задачу: современный темп, приятная динамика, акценты и sound design.</p>
                     <div class="toyosu-profile-wrap" aria-hidden="true">
@@ -5068,22 +5080,20 @@
 
               <div class="case-facts">
                 <div class="case-fact"><strong>27k</strong><span>аудитория ресторана</span></div>
-                <div class="case-fact"><strong>Reels</strong><span>коммерческий вертикальный формат</span></div>
+                <div class="case-fact"><strong>Reels*</strong><span>коммерческий вертикальный формат</span></div>
                 <div class="case-fact"><strong>SFX</strong><span>звук как часть динамики</span></div>
               </div>
 
               <div class="tags">
-                <span class="tag">ресторан</span>
-                <span class="tag">коммерческий Reels</span>
-                <span class="tag">динамика</span>
-                <span class="tag">sound design</span>
+                <span class="tag">коммерческий Reels*</span>
+                <span class="tag">динамичный монтаж</span>
               </div>
             </div>
 
             <div class="featured-visual featured-visual--toyosu" aria-label="Ролик ресторана TOYOSU">
               <div class="toyosu-media-wrap">
                 <div class="featured-media-head featured-media-head--center">
-                  <div>TOYOSU / commercial reel</div>
+                  <div>TOYOSU / commercial reel*</div>
                   <span>вертикальный формат 9:16</span>
                 </div>
 
@@ -5142,7 +5152,7 @@
             <div class="reviews-title-wrap">
               <div class="reviews-rating"><span class="rating-star">★</span> говорят клиенты</div>
               <h2>Отзывы</h2>
-              <p class="reviews-context">Реальные отзывы о процессе, скорости и результате работы — без обезличенных маркетинговых формулировок.</p>
+              <p class="reviews-context">Реальные отзывы о процессе, скорости и результате работы.</p>
             </div>
 
             <div class="reviews-controls">
@@ -5159,13 +5169,13 @@
 
       <section id="process">
         <div class="section-head" data-reveal><h2 class="section-title">Процесс</h2></div>
-        <p class="process-intro" data-reveal>Сначала фиксируем визуальную систему на первом ролике, затем масштабируем её на серию — так каждый следующий ролик не приходится собирать заново с нуля.</p>
+        <p class="process-intro" data-reveal>Монтируем отдельные ролики и серии. Согласуем задачу и подачу, покажем черновик и подготовим видео к публикации.</p>
 
         <div class="grid steps-grid">
           <div class="step-card" data-reveal><div class="step-num">01</div><h3>Бриф</h3><p>Обсуждаем формат, задачу, аудиторию и референсы.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Первый ролик</h3><p>Собираем первую версию и фиксируем визуальный язык серии.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Серия</h3><p>Масштабируем утверждённую систему на пакет роликов в едином стиле.</p></div>
-          <div class="step-card" data-reveal><div class="step-num">04</div><h3>Анализ</h3><p>Смотрим реакцию аудитории и предлагаем, что усилить в следующих выпусках.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">02</div><h3>Черновик</h3><p>Собираем первую версию. Согласуем ритм, графику и подачу.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">03</div><h3>Доработка</h3><p>Вносим правки. Если заказана серия, применяем согласованный подход к остальным роликам.</p></div>
+          <div class="step-card" data-reveal><div class="step-num">04</div><h3>Сдача</h3><p>Передаём готовый ролик или серию в форматах для публикации.</p></div>
         </div>
       </section>
 
@@ -5187,7 +5197,7 @@
       </section>
     </main>
 
-    <footer><div class="footer-inner"><div>© VNIMANIE — video editing studio</div><div>Монтаж отдельных видео и серий для экспертов и брендов</div></div><p class="site-legal-note" id="platform-legal-note">* Instagram принадлежит компании Meta Platforms Inc., признанной экстремистской организацией; её деятельность запрещена на территории Российской Федерации.</p></footer>
+    <footer><div class="footer-inner"><div>© VNIMANIE — video editing studio</div><div>Монтаж отдельных видео и серий для экспертов и брендов</div></div><p class="site-legal-note" id="platform-legal-note">* Instagram* принадлежит компании Meta Platforms Inc., признанной экстремистской организацией; её деятельность запрещена на территории Российской Федерации.</p></footer>
   </div>
 
   <script>
@@ -5326,19 +5336,6 @@
       return promise;
     }
     let reelWarmTimer = 0;
-    function bufferedAhead(video) {
-      if (!video) return 0;
-      const time = video.currentTime;
-      for (let i = 0; i < video.buffered.length; i++) {
-        if (video.buffered.start(i) <= time + .05 && video.buffered.end(i) >= time) return video.buffered.end(i) - time;
-      }
-      return 0;
-    }
-    function hasRunway(video, seconds) {
-      if (!hasReelFrame(video)) return false;
-      const remaining = Number.isFinite(video.duration) ? Math.max(0, video.duration - video.currentTime - .08) : seconds;
-      return bufferedAhead(video) >= Math.min(seconds, remaining);
-    }
     function warmReels() {
       clearTimeout(reelWarmTimer);
       if (!reelNear || document.hidden) return;
@@ -5357,10 +5354,10 @@
       });
       if (pendingReel !== null) return;
       const current = videos[currentReel];
-      const next = queue.find(index => !videos[index].error && !hasRunway(videos[index], 5));
+      const next = queue.find(index => !videos[index].error && !hasReelFrame(videos[index]));
       // Let the current video build a lead, then warm one future clip at a time.
       if (next !== undefined) {
-        if (current?.error || hasRunway(current, 1.5)) attachReel(next);
+        if (current?.error || hasReelFrame(current)) attachReel(next);
         reelWarmTimer = setTimeout(warmReels, 240);
       }
     }
@@ -5411,7 +5408,7 @@
       showReelStatus();
       const indicator = setTimeout(() => {
         if (request === reelRequest) reelsPhone?.classList.add("reel-is-loading");
-      }, 850);
+      }, 400);
       try {
         await ensureReel(target);
         if (request !== reelRequest) return;
@@ -5477,29 +5474,59 @@
     soundToggle?.addEventListener("pointerdown", event => event.stopPropagation());
     soundToggle?.addEventListener("click", event => { event.stopPropagation(); soundEnabled = !soundEnabled; updateSoundIcon(); playCurrentReel(); });
     reelsPhone?.addEventListener("pointerdown", event => {
-      if (event.target.closest("button") || reelTransitioning || pendingReel !== null || (event.pointerType === "mouse" && event.button !== 0)) return;
+      if (event.pointerType === "touch" || event.target.closest("button") || reelTransitioning || (event.pointerType === "mouse" && event.button !== 0)) return;
       reelDragging = true; reelDragStartY = event.clientY; reelDragOffset = 0;
       reelsPhone.setPointerCapture(event.pointerId);
       updateReelLayout(false, 0);
     });
     reelsPhone?.addEventListener("pointermove", event => {
-      if (!reelDragging) return;
-      reelDragOffset = event.clientY - reelDragStartY;
+      if (event.pointerType === "touch" || !reelDragging) return;
+      previewReelDrag(event.clientY);
+    });
+    function previewReelDrag(y) {
+      reelDragOffset = y - reelDragStartY;
       const adjacent = wrapReel(currentReel + (reelDragOffset < 0 ? 1 : -1));
       if (!hasReelFrame(reelVideos()[adjacent]) && Math.abs(reelDragOffset) > 12) attachReel(adjacent);
       const preview = hasReelFrame(reelVideos()[adjacent]) ? clamp(reelDragOffset, -reelHeight, reelHeight) : 0;
       updateReelLayout(false, preview);
-    });
+    }
     function releaseReelDrag(event) {
-      if (!reelDragging) return;
+      if (event?.pointerType === "touch" || !reelDragging) return;
       reelDragging = false;
-      if (event?.type !== "pointercancel" && Math.abs(reelDragOffset) > Math.min(70, reelHeight * .14)) setReel(currentReel + (reelDragOffset < 0 ? 1 : -1));
+      if (!/cancel|lostpointercapture/.test(event?.type || "") && Math.abs(reelDragOffset) > Math.min(70, reelHeight * .14)) setReel(currentReel + (reelDragOffset < 0 ? 1 : -1));
       else updateReelLayout(true, 0);
       reelDragOffset = 0;
     }
     reelsPhone?.addEventListener("pointerup", releaseReelDrag);
     reelsPhone?.addEventListener("pointercancel", releaseReelDrag);
     reelsPhone?.addEventListener("lostpointercapture", releaseReelDrag);
+    let reelTouch = null;
+    reelsPhone?.addEventListener("touchstart", event => {
+      if (event.touches.length !== 1 || event.target.closest("button") || reelTransitioning) return;
+      const touch = event.changedTouches[0];
+      reelTouch = touch.identifier;
+      reelDragging = true;
+      reelDragStartY = touch.clientY;
+      reelDragOffset = 0;
+      updateReelLayout(false, 0);
+    }, { passive: true });
+    reelsPhone?.addEventListener("touchmove", event => {
+      if (reelTouch === null) return;
+      const touch = Array.from(event.changedTouches).find(item => item.identifier === reelTouch);
+      if (!touch) return;
+      if (event.cancelable) event.preventDefault();
+      previewReelDrag(touch.clientY);
+    }, { passive: false });
+    function finishReelTouch(event) {
+      if (reelTouch === null) return;
+      const touch = Array.from(event.changedTouches).find(item => item.identifier === reelTouch);
+      if (!touch) return;
+      reelTouch = null;
+      reelDragOffset = touch.clientY - reelDragStartY;
+      releaseReelDrag(event);
+    }
+    reelsPhone?.addEventListener("touchend", finishReelTouch);
+    reelsPhone?.addEventListener("touchcancel", finishReelTouch);
     let wheelLocked = false;
     reelsPhone?.addEventListener("wheel", event => {
       event.preventDefault();
