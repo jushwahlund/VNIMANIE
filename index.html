@@ -4756,6 +4756,65 @@
   .hero-card--reference .hero-content > p { font-size: 14px; }
 }
 
+
+/* v25 — cooler reference grade, curved rim light and copy-aware shading. */
+.hero-card--reference .hero-bg-shot img {
+  filter: saturate(.64) brightness(.84) contrast(.96) !important;
+}
+.hero-card--reference .hero-bg-shot--right img {
+  filter: saturate(.67) brightness(.86) contrast(.96) !important;
+}
+.hero-card--reference .hero-bg-shot::after {
+  background:
+    linear-gradient(180deg,rgba(92,78,115,.10),rgba(69,58,87,.12) 55%,rgba(28,24,37,.35)),
+    linear-gradient(110deg,rgba(122,107,145,.12),rgba(74,63,94,.07)) !important;
+}
+/* A one-pixel rim follows the actual rounded corner. No broad light strip. */
+.hero-card--reference .hero-bg-shot--right::before {
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg,rgba(237,226,252,.65) 0%,rgba(207,189,231,.36) 8%,rgba(183,165,210,.12) 19%,transparent 34%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  box-shadow: none;
+  filter: none;
+  opacity: .9;
+}
+.hero-card--reference .hero-bg-shot--center {
+  -webkit-mask-image: linear-gradient(to bottom,#000 0%,#000 37%,rgba(0,0,0,.82) 44%,rgba(0,0,0,.23) 55%,transparent 66%) !important;
+  mask-image: linear-gradient(to bottom,#000 0%,#000 37%,rgba(0,0,0,.82) 44%,rgba(0,0,0,.23) 55%,transparent 66%) !important;
+}
+/* Most of the shade follows the paragraph itself, including line wrapping. */
+.hero-card--reference .hero-content > p { position: relative; isolation: isolate; }
+.hero-card--reference .hero-content > p::before {
+  content: "";
+  position: absolute;
+  inset: -1.2cqw -3cqw;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 32% 72% at 94% 50%,rgba(10,9,14,.76),rgba(10,9,14,.46) 45%,transparent 100%),
+    radial-gradient(ellipse 25% 72% at 6% 50%,rgba(10,9,14,.65),rgba(10,9,14,.33) 48%,transparent 100%);
+  filter: blur(.65cqw);
+}
+.hero-card--reference .hero-bg-stage::after {
+  background: radial-gradient(ellipse 19% 10% at 73% 55%,rgba(12,10,17,.30),transparent 100%);
+}
+@media (min-width: 641px) {
+  .hero-card--reference .hero-bg-shot--right { transform: rotate(6deg) !important; }
+  .hero-card--reference .logo-eye { width: 20cqw; height: 20cqw; }
+  .hero-card--reference h1 { font-size: 6.6cqw !important; }
+  .hero-card--reference .hero-content > p { font-weight: 400; color: rgba(235,232,239,.80); }
+  .hero-card--reference .hero-reel-time { font-weight: 500; }
+}
+@media (max-width: 640px) {
+  .hero-card--reference .hero-content > p::before { inset: -14px -12px; filter: blur(8px); }
+  .hero-card--reference .hero-bg-stage::after { background: radial-gradient(ellipse 48% 19% at 67% 56%,rgba(10,9,14,.4),transparent 100%); }
+}
+
 </style>
 </head>
 
