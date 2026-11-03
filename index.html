@@ -4703,6 +4703,59 @@
   }
 }
 
+
+/* v24: corner highlight, tighter fade and mobile composition. */
+.hero-card--reference .hero-bg-shot img {
+  filter: saturate(.76) brightness(.86) contrast(1.04) !important;
+}
+.hero-card--reference .hero-bg-shot--center {
+  -webkit-mask-image: linear-gradient(to bottom,#000 0%,#000 36%,rgba(0,0,0,.85) 43%,rgba(0,0,0,.3) 54%,transparent 65%) !important;
+  mask-image: linear-gradient(to bottom,#000 0%,#000 36%,rgba(0,0,0,.85) 43%,rgba(0,0,0,.3) 54%,transparent 65%) !important;
+}
+.hero-card--reference .hero-bg-shot--right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse 33% 2% at 12% 0%,rgba(243,229,255,.63),transparent 100%),
+    radial-gradient(ellipse 2% 19% at 0% 6%,rgba(224,207,255,.46),transparent 100%),
+    radial-gradient(ellipse 37% 20% at 0% 0%,rgba(191,163,225,.18),transparent 76%);
+  box-shadow: inset 1px 1px 0 rgba(229,214,247,.12);
+}
+.hero-card--reference .hero-bg-stage::after {
+  background: radial-gradient(ellipse 21% 10% at 73% 56%,rgba(10,9,14,.7) 0%,rgba(10,9,14,.48) 40%,rgba(10,9,14,.15) 73%,transparent 100%);
+}
+.site-legal-note { max-width: var(--max); margin: 14px auto 0; padding: 0 32px; color: #9b97a2; font-size: 12px; line-height: 1.6; }
+.platform-note-mark { font-size: .75em; vertical-align: super; }
+@media (min-width: 641px) and (max-width: 920px) {
+  .hero-card--reference .cta-row .btn { min-height: 44px; font-size: 13px; padding: 10px 16px; }
+  .hero-card--reference .hero-content > p { font-size: max(14px,1.68cqw); }
+  .hero-card--reference .pill { font-size: 12px; }
+}
+@media (max-width: 640px) {
+  .hero { padding-top: 18px; padding-bottom: 28px; min-height: auto; }
+  .hero-card.hero-card--reference { min-height: 690px !important; }
+  .hero-card--reference .hero-content { position: relative; inset: auto; width: 100% !important; padding: 170px 18px 48px !important; }
+  .hero-card--reference .hero-bg-shot--center { width: 36% !important; left: 25% !important; top: 5% !important; opacity: .52 !important; }
+  .hero-card--reference .hero-bg-shot--left { width: 34% !important; left: 5% !important; top: 42% !important; opacity: .46 !important; }
+  .hero-card--reference .hero-bg-shot--right { width: 46% !important; right: 5% !important; top: 23% !important; opacity: .65 !important; }
+  .hero-card--reference .hero-content > p { font-size: 15px; line-height: 1.55; max-width: 370px; }
+  .hero-card--reference .hero-bg-stage::after { background: radial-gradient(ellipse 48% 19% at 67% 56%,rgba(10,9,14,.74),rgba(10,9,14,.4) 52%,transparent 100%); }
+  .hero-card--reference .cta-row { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 340px; gap: 10px; }
+  .hero-card--reference .cta-row .btn { min-height: 46px; width: auto; }
+  .hero-card--reference .cta-row > .contact-wrapper { flex-basis: 100%; display: flex; justify-content: center; }
+  .hero-card--reference .contact-trigger { min-width: 190px; }
+  .hero-card--reference .contact-popover { max-width: calc(100vw - 64px); }
+  .site-legal-note { padding: 0 18px; }
+}
+@media (max-width: 360px) {
+  .hero-card--reference .hero-content { padding-left: 14px !important; padding-right: 14px !important; }
+  .hero-card--reference .hero-content > p { font-size: 14px; }
+}
+
 </style>
 </head>
 
@@ -4799,7 +4852,7 @@
 
             <h1>VNIMANIE</h1>
 
-            <p>Собираем серии Reels, Shorts и TikTok для экспертов, личных брендов и бизнеса — с единым визуальным языком, динамикой и подачей.</p>
+            <p>Монтируем видео для экспертов и брендов — от одного ролика до регулярных серий. Продумываем стиль, ритм и подачу под вашу задачу.</p>
 
             <div class="cta-row">
               <a class="btn btn-primary btn-glow" href="#showreel">Showreel <span>→</span></a>
@@ -4809,7 +4862,7 @@
                 <button class="btn btn-secondary contact-trigger" type="button">Обсудить задачу</button>
                 <div class="contact-popover" aria-label="Контакты">
                   <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
-                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
+                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener" aria-describedby="platform-legal-note">IG<span class="platform-note-mark">*</span></a>
                 </div>
               </div>
             </div>
@@ -4855,7 +4908,7 @@
                 <button class="btn btn-secondary contact-trigger" type="button">Связаться</button>
                 <div class="contact-popover" aria-label="Контакты">
                   <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
-                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
+                  <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener" aria-describedby="platform-legal-note">IG<span class="platform-note-mark">*</span></a>
                 </div>
               </div>
             </div>
@@ -5065,7 +5118,7 @@
               <button class="btn btn-primary contact-trigger" type="button">Связаться <span>→</span></button>
               <div class="contact-popover" aria-label="Контакты">
                 <a href="https://t.me/vnimanieagency?direct" target="_blank" rel="noopener">TG</a>
-                <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener">IG</a>
+                <a href="https://www.instagram.com/vnimanie_agency/" target="_blank" rel="noopener" aria-describedby="platform-legal-note">IG<span class="platform-note-mark">*</span></a>
               </div>
             </div>
             <a class="btn btn-secondary" href="#cases">Посмотреть кейсы</a>
@@ -5074,7 +5127,7 @@
       </section>
     </main>
 
-    <footer><div class="footer-inner"><div>© VNIMANIE — video editing studio</div><div>Серийный вертикальный монтаж для экспертов и брендов</div></div></footer>
+    <footer><div class="footer-inner"><div>© VNIMANIE — video editing studio</div><div>Монтаж отдельных видео и серий для экспертов и брендов</div></div><p class="site-legal-note" id="platform-legal-note">* Instagram принадлежит компании Meta Platforms Inc., признанной экстремистской организацией; её деятельность запрещена на территории Российской Федерации.</p></footer>
   </div>
 
   <script>
